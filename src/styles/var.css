@@ -1,0 +1,50 @@
+:root {
+  --dy-primary-color: #ffc000;
+  --dy-secondary-color: #5ebfff;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  --dy-bg-color: #f8f8f8;
+  --dy-bg-content-color: #ffffff;
+  --dy-bg-input-color: #f3f0ff;
+  --dy-bg-gradient-color: linear-gradient(#e4ffe4 0%, #fff 100%);
+  --dy-bg-gradient-primary: linear-gradient(90deg, #26f2cd 0%, #9975ff 100%);
+
+  --dy-base-color: #fff;
+  --dy-text-color-base: #172859;
+  --dy-text-color1: #9f7eff;
+  --dy-text-color2: #8274a1;
+  --dy-text-color3: rgba(255, 255, 255, 0.52);
+
+  --dy-border-color-base: rgba(255, 255, 255, 0.24);
+  --dy-border-color1: #6636ee14;
+  --dy-border-color2: #3a2882;
+
+  min-height: 100vh;
+  color: var(--dy-text-color-base);
+  background-color: var(--dy-bg-color);
+}
+
+.dark body {
+  --dy-bg-color: #0d0d0d;
+  --dy-bg-content-color: #191a1a;
+  --dy-bg-input-color: rgba(255, 255, 255, 0.1);
+
+  /* min-height: 100vh; */
+  color: var(--dy-text-color-base);
+  background-color: var(--dy-bg-color);
+}
+
+.dark .n-modal-mask {
+  background-color: rgba(213, 207, 237, 0.4);
+}

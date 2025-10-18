@@ -1,0 +1,7 @@
+.n-data-table tr:hover td {
+  color: var(--dy-primary-color) !important;
+}
+
+.n-data-table-tbody .secondary {
+  color: var(--dy-secondary-color);
+}
