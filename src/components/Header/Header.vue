@@ -17,7 +17,7 @@ function toPage(name: any) {
   <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div class="ml-80px" @click="$router.replace({ name: 'Home' })">
+        <div class="ml-15px md:ml-80px" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.svg" alt="">
         </div>
         <div class="hidden md:flex">

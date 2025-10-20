@@ -22,10 +22,52 @@ const { bottom = true } = defineProps<PageProps>()
       style="height: 64px;"
     >
       <slot name="bottom">
-        <div class="container h-full flex items-center justify-center px-15 text-center">
-          江苏网信备31011521343153030049号Copyright © 2023-2025
-        </div>
+        <footer class="footerBg w-full flex flex-col items-center bg-cover bg-center md:min-h-[160px] lg:pt-[76px] md:pb-[30px] md:pt-[40px] sm:pt-[60px]">
+          <div class="w-full md:mx-0 md:max-w-[1440px]">
+            <div class="hidden lg:block">
+              <div class="mb-[20px] w-full flex items-center justify-between">
+                <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px]">
+                <div class="flex flex-row items-center text-[16px] text-white italic">
+                  <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Frequently Asked Questions (FAQ)
+                  </div> <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Contact us
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Media reports
+                  </div>
+                </div>
+              </div> <div class="flex flex-row items-center">
+                <img src="/src/assets/img/twitter.png" alt="Twitter" class="mr-[32px] h-[40px] w-[40px] cursor-pointer transition-opacity hover:opacity-80"> <img src="/src/assets/img/discord.png" alt="Discord" class="mr-[32px] h-[40px] w-[40px] cursor-pointer transition-opacity hover:opacity-80"> <img src="/src/assets/img/github.png" alt="GitHub" class="mr-[32px] h-[40px] w-[40px] cursor-pointer transition-opacity hover:opacity-80"> <img src="/src/assets/img/vector.png" alt="Vector" class="h-[40px] w-[40px] cursor-pointer transition-opacity hover:opacity-80">
+              </div>
+            </div>
+            <div class="mx-20px box-border h-[120px] pt-[27px] lg:hidden">
+              <div class="mb-[17px] w-full flex items-center justify-between">
+                <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px] sm:h-[32px] sm:w-[98.11px]">
+                <div class="flex flex-row items-center space-x-[20px]">
+                  <img src="/src/assets/img/twitter.png" alt="Twitter" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/discord.png" alt="Discord" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/github.png" alt="GitHub" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/vector.png" alt="Vector" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80">
+                </div>
+              </div> <div class="w-full text-center">
+                <div class="w-full flex flex-row items-center justify-between text-[10px] text-white italic space-x-[40px]">
+                  <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Frequently Asked Questions (FAQ)
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Contact us
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                    Media reports
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </slot>
     </n-layout-footer>
   </n-layout>
 </template>
+
+<style scoped>
+.footerBg {
+  background: url('/src/assets/img/footerBg.png');
+  background-size: 100% 100%;
+}
+</style>
