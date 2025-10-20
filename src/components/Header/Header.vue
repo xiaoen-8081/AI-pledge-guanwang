@@ -14,10 +14,10 @@ function toPage(name: any) {
 </script>
 
 <template>
-  <div class="z-10 w-full">
+  <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div @click="$router.replace({ name: 'Home' })">
+        <div class="ml-80px" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.svg" alt="">
         </div>
         <div class="hidden md:flex">
@@ -38,7 +38,7 @@ function toPage(name: any) {
               </n-flex>
             </n-flex>
           </n-flex>
-          <div class="btnBg ml-40px h40px w200px flex items-center justify-center text-white">
+          <div class="btnBg ml-40px mr-80px h40px w200px flex items-center justify-center text-white">
             Enrers LGNS Application
           </div>
         </div>

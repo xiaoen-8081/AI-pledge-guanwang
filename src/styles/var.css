@@ -11,6 +11,11 @@ html,
 body,
 #app {
   height: 100%;
+  font-family: 'Bayon', sans-serif;
+}
+
+.Roboto {
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
