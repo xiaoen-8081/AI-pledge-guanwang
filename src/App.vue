@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, enUS, zhCN } from 'naive-ui'
+import { darkTheme, enUS, lightTheme, zhCN } from 'naive-ui'
 import { useThemeSettingStore } from './stores/theme'
 import { storeToRefs } from 'pinia'
 import { locale } from './locales'
@@ -9,7 +9,7 @@ import { deepMerge } from '@/utils/utils'
 const themeSetting = useThemeSettingStore()
 const { commonThemeOverrides, lightThemeOverrides, darkThemeOverrides } = storeToRefs(themeSetting)
 const isDark = useDark()
-const theme = computed(() => isDark.value ? darkTheme : darkTheme)
+const theme = computed(() => isDark.value ? lightTheme : lightTheme)
 const localeLang = computed(() => {
   const obj = {
     cn: zhCN,
@@ -28,7 +28,7 @@ onMounted(() => {
 
 <template>
   <n-config-provider
-    class="h-full w-full" :theme="darkTheme" :locale="localeLang"
+    class="h-full w-full" :theme="lightTheme" :locale="localeLang"
     :theme-overrides="deepMerge(commonThemeOverrides, theme === null ? lightThemeOverrides : darkThemeOverrides)"
   >
     <Application>

@@ -46,7 +46,7 @@ async function initChart(echartInfo: info) {
       {
         data: txNum,
         itemStyle: {
-          color: '#ffc000',
+          color: '#e51922',
         },
         name: '交易消息数量',
         showSymbol: false,
@@ -70,7 +70,7 @@ async function initChart(echartInfo: info) {
       axisPointer: {
         // type: 'shadow',
         lineStyle: {
-          color: '#ffc000',
+          color: '#e51922',
           width: 0.5,
         },
       },

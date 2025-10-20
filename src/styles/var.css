@@ -1,5 +1,5 @@
 :root {
-  --dy-primary-color: #ffc000;
+  --dy-primary-color: #e51922;
   --dy-secondary-color: #5ebfff;
 }
 
@@ -14,7 +14,7 @@ body,
 }
 
 body {
-  --dy-bg-color: #f8f8f8;
+  --dy-bg-color: #ffffff;
   --dy-bg-content-color: #ffffff;
   --dy-bg-input-color: #f3f0ff;
   --dy-bg-gradient-color: linear-gradient(#e4ffe4 0%, #fff 100%);
@@ -36,7 +36,7 @@ body {
 }
 
 .dark body {
-  --dy-bg-color: #0d0d0d;
+  --dy-bg-color: #ffffff;
   --dy-bg-content-color: #191a1a;
   --dy-bg-input-color: rgba(255, 255, 255, 0.1);
 
@@ -47,4 +47,8 @@ body {
 
 .dark .n-modal-mask {
   background-color: rgba(213, 207, 237, 0.4);
+}
+
+.n-layout {
+  background: #ffffff;
 }

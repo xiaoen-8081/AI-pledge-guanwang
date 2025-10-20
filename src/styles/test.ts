@@ -24,7 +24,7 @@ export default {
   heightLarge: '40px',
   heightHuge: '46px',
   baseColor: '#000',
-  primaryColor: '#63e2b7',
+  primaryColor: '#ccc',
   primaryColorHover: '#7fe7c4',
   primaryColorPressed: '#5acea7',
   primaryColorSuppl: 'rgb(42, 148, 125)',

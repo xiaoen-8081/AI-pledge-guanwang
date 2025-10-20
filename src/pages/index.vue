@@ -5,7 +5,7 @@
 <template>
   <Page>
     <template #content>
-      <div class="container px-15">
+      <div class="w-full px-4 md:px-0">
         <Home />
       </div>
     </template>

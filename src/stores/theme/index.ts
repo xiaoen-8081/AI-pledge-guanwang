@@ -4,7 +4,7 @@ import { APP_NAME } from '@/config/app'
 import common from './common'
 
 export const useThemeSettingStore = defineStore(`${APP_NAME}_theme`, () => {
-  const appTheme = ref('#ffc000')
+  const appTheme = ref('#ff000')
   const commonThemeOverrides = ref<GlobalThemeOverrides>({
     common,
     Card: {
@@ -28,10 +28,10 @@ export const useThemeSettingStore = defineStore(`${APP_NAME}_theme`, () => {
     // },
   })
   const lightThemeOverrides = ref<GlobalThemeOverrides>({
-    // Popover: {
-    //   color: '#333',
-    //   textColor: '#fff',
-    // },
+    Popover: {
+      color: '#333',
+      textColor: '#fff',
+    },
   })
   const darkThemeOverrides = ref<GlobalThemeOverrides>({
     DataTable: {

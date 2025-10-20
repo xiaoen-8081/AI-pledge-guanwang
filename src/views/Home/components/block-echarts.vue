@@ -55,7 +55,7 @@ async function initChart(echartInfo: Service.BlockApi.BlockList[]) {
         },
         emphasis: {
           itemStyle: {
-            color: '#ffc000', // 悬停颜色
+            color: '#e51922', // 悬停颜色
           },
         },
       },
@@ -72,7 +72,7 @@ async function initChart(echartInfo: Service.BlockApi.BlockList[]) {
       axisPointer: {
         type: 'shadow',
         lineStyle: {
-          color: '#ffc000',
+          color: '#e51922',
           width: 0.5,
         },
       },

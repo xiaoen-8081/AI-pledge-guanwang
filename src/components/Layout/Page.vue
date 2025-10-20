@@ -7,12 +7,12 @@ const { bottom = true } = defineProps<PageProps>()
 
 <template>
   <n-layout position="absolute" :native-scrollbar="false">
-    <n-layout-header style="z-index: 1;" position="absolute">
+    <!-- <n-layout-header style="z-index: 1;" position="absolute" class="bg-#fff">
       <slot name="header">
         <Header />
       </slot>
-    </n-layout-header>
-    <n-layout class="content-min-h-164 lg:content-min-h-118 mt-100 pt-15 lg:mt-54">
+    </n-layout-header> -->
+    <n-layout class="content-min-h-164 lg:content-min-h-118">
       <slot name="content" />
     </n-layout>
 
@@ -22,7 +22,7 @@ const { bottom = true } = defineProps<PageProps>()
       style="height: 64px;"
     >
       <slot name="bottom">
-        <div class="container h-full flex items-center justify-center px-15 text-center text-textColor2">
+        <div class="container h-full flex items-center justify-center px-15 text-center">
           江苏网信备31011521343153030049号Copyright © 2023-2025
         </div>
       </slot>

@@ -8,7 +8,7 @@ defineProps<LogoProps>()
 
 <template>
   <n-flex align="center" :size="4">
-    <div class="font-shiss text-30 text-primary" :class="[logoClass]">
+    <div class="font-shiss text-30 text-primary">
       A
     </div>
     <span class="font-shiss text-30 text-primary" :class="[titleClass]">师石链</span>

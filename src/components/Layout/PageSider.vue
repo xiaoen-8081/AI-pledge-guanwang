@@ -4,11 +4,8 @@ import { useCollapsedPopupHooks } from '@/stores/application/hooks'
 const [collapsed, close] = useCollapsedPopupHooks()
 
 const options = [
-  { name: 'Home', label: '首页', class: 'i-carbon:home' },
-  { name: 'Blocks', label: '区块浏览', class: 'i-tabler:blocks' },
-  { name: 'Txs', label: '交易浏览', class: 'i-mingcute:exchange-dollar-line' },
-  { name: 'Nfts', label: 'NFT数据', class: 'i-tabler:cube' },
-  { name: 'Abount', label: '关于师石链', class: 'i-carbon:help' },
+  { name: 'Home', label: 'Home' },
+  { name: 'Blocks', label: 'News' },
 ]
 const router = useRouter()
 function toPage(name) {
@@ -22,7 +19,9 @@ function toPage(name) {
     <n-drawer-content :native-scrollbar="false">
       <template #header>
         <n-flex class="" justify="space-between">
-          <DyLogo />
+          <div @click="$router.replace({ name: 'Home' })">
+            <img src="/src/assets/img/logo.svg" alt="">
+          </div>
           <n-button text @click="collapsed = !collapsed">
             <template #icon>
               <div class="i-carbon:close-large text-30" />
@@ -39,7 +38,6 @@ function toPage(name) {
           text
           @click="toPage(x.name)"
         >
-          <div class="mr-10 text-18" :class="x.class" />
           <div class="text-16">
             {{ x.label }}
           </div>
