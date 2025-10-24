@@ -328,7 +328,8 @@
       <div class="mx-auto w-full flex flex-col items-center px-4 pb-[208px] pt-[72px] md:max-w-[1440px] md:px-0 md:pt-[200px]">
         <div data-aos="fade-up" class="aos-init aos-animate mb-[40px] w-full text-center text-[32px] text-black font-[Bayon] uppercase md:mb-[54px] md:text-[60px]">
           <span>Origin's Creed </span> <span class="gradient-text2"> of Freedom</span>
-        </div> <div class="max-w-[1280px] text-center text-[20px] leading-[40px] md:text-[24px] md:leading-[48px]">
+        </div>
+        <div class="max-w-[1280px] px-15px text-center text-[20px] leading-[40px] md:text-[24px] md:leading-[48px]">
           <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
             We believe every individual has the right to economic
             privacy and autonomous currency issuance.
