@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, enUS, lightTheme, zhCN } from 'naive-ui'
+import { enUS, lightTheme, zhCN } from 'naive-ui'
 import { useThemeSettingStore } from './stores/theme'
 import { storeToRefs } from 'pinia'
 import { locale } from './locales'

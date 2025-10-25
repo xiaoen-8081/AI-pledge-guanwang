@@ -59,7 +59,7 @@
       <!--  -->
       <div style="border: 2px solid #FF0000;" class="aos-init aos-animate box-border h-[186px] w-[335px] flex flex-row cursor-pointer items-center justify-center rounded-[6px] p-[6px] transition-opacity duration-300 md:h-[765px] md:w-full md:rounded-[30px] md:p-[24px] hover:opacity-90">
         <!----> <div class="relative h-full w-full">
-          <!----> <!----> <iframe width="100%" height="100%" src="https://www.youtube.com/embed/680hxlqEK80?autoplay=0&amp;rel=0&amp;modestbranding=1&amp;showinfo=0&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" class="h-full w-full rounded-[6px] md:rounded-[30px]" style="" />
+          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/680hxlqEK80?autoplay=0&amp;rel=0&amp;modestbranding=1&amp;showinfo=0&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="h-full w-full rounded-[6px] md:rounded-[30px]" style="" />
         </div>
       </div>
     </div>

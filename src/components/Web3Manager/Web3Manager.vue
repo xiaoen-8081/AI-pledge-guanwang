@@ -1,11 +1,9 @@
 <script setup lang="ts">
-const { sendGroupList } = useGlobalHooks()
 const loading = ref(true)
 
 onMounted(async () => {
   console.log('web3manager onMounted')
   loading.value = true
-  await sendGroupList()
   loading.value = false
 })
 </script>
