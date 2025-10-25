@@ -18,7 +18,7 @@ function toPage(name: any) {
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
         <div class="ml-15px md:ml-80px" @click="$router.replace({ name: 'Home' })">
-          <img src="/src/assets/img/logo.svg" alt="">
+          <img src="/src/assets/img/logo.jpg" style="width: 60px;" alt="">
         </div>
         <div class="hidden md:flex">
           <n-flex class="ml-20 flex-1" align="center" justify="space-between">

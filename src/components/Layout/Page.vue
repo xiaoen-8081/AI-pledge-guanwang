@@ -26,7 +26,8 @@ const { bottom = true } = defineProps<PageProps>()
           <div class="w-full md:mx-0 md:max-w-[1440px]">
             <div class="hidden lg:block">
               <div class="mb-[20px] w-full flex items-center justify-between">
-                <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px]">
+                <!-- <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px]"> -->
+                <img src="/src/assets/img/logo.jpg" alt="Oradin Logo" class="w-[80px]">
                 <div class="flex flex-row items-center text-[16px] text-white italic">
                   <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#F1676C]">
                     Frequently Asked Questions (FAQ)
@@ -42,7 +43,8 @@ const { bottom = true } = defineProps<PageProps>()
             </div>
             <div class="mx-20px box-border h-[120px] pt-[27px] lg:hidden">
               <div class="mb-[17px] w-full flex items-center justify-between">
-                <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px] sm:h-[32px] sm:w-[98.11px]">
+                <!-- <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px] sm:h-[32px] sm:w-[98.11px]"> -->
+                <img src="/src/assets/img/logo.jpg" alt="Oradin Logo" class="w-[40px]">
                 <div class="flex flex-row items-center space-x-[20px]">
                   <img src="/src/assets/img/twitter.png" alt="Twitter" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/discord.png" alt="Discord" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/github.png" alt="GitHub" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80"> <img src="/src/assets/img/vector.png" alt="Vector" class="h-[24px] w-[24px] cursor-pointer transition-opacity sm:h-[36px] hover:opacity-80">
                 </div>
