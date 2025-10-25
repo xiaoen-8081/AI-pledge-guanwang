@@ -89,19 +89,34 @@ function test(val: string) {
         <div class="w-full flex flex-col items-center justify-between bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
           <div class="mx-auto max-w-1440px flex flex-1 justify-between">
             <div class="mx-20px h-full flex-1 border-1px border-[#FF0A00] rounded-16px border-solid bg-#fff p-20px md:my-[40px]">
-              <div class="flex justify-between">
-                <n-tabs
-                  class="card-tabs"
-                  default-value=""
-                  size="large"
-                  animated
-                  pane-wrapper-style="margin: 0 -4px"
-                  pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;"
-                  @update:value="test"
-                >
-                  <n-tab-pane v-for="(item, index) in tabsList" :key="index" :name="item.id" :tab="item.name" />
-                </n-tabs>
-                <div class="w-170px">
+              <div class="hidden lg:block">
+                <div class="flex justify-between">
+                  <n-tabs
+                    class="card-tabs"
+                    default-value=""
+                    size="large"
+                    animated
+                    pane-wrapper-style="margin: 0 -4px"
+                    pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;"
+                    @update:value="test"
+                  >
+                    <n-tab-pane v-for="(item, index) in tabsList" :key="index" :name="item.id" :tab="item.name" />
+                  </n-tabs>
+                  <div class="w-170px">
+                    <n-checkbox v-model:checked="checkbox" style="margin-right: 12px">
+                      <div>
+                        <span class="mr-4px">{{ downTime }}</span>
+                        <span>秒后自动刷新</span>
+                      </div>
+                    </n-checkbox>
+                  </div>
+                </div>
+              </div>
+              <div class="lg:hidden">
+                <n-space vertical>
+                  <n-select v-model:value="tagId" :options="tabsList" label-field="name" value-field="id" @update:value="test" />
+                </n-space>
+                <div class="my-[10px] w-170px">
                   <n-checkbox v-model:checked="checkbox" style="margin-right: 12px">
                     <div>
                       <span class="mr-4px">{{ downTime }}</span>
