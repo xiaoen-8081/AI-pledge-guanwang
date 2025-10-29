@@ -88,7 +88,7 @@ function test(val: string) {
         </div>
         <div class="w-full flex flex-col items-center justify-between bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
           <div class="mx-auto max-w-1440px flex flex-1 justify-between">
-            <div class="mx-20px h-full flex-1 border-1px border-[#FF0A00] rounded-16px border-solid bg-#fff p-20px md:my-[40px]">
+            <div class="h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px md:my-[40px] lg:border-1px lg:border-[#FF0A00] lg:border-solid">
               <div class="hidden lg:block">
                 <div class="flex justify-between">
                   <n-tabs
@@ -160,7 +160,7 @@ function test(val: string) {
                         <div />
                       </template>
                       <template #default>
-                        <div class="w-full flex">
+                        <div class="w-full flex flex-col lg:flex-row">
                           <div class="h-full w-60px c-#222">
                             {{ timeFormat(i.ctime, 'hh:mm') }}
                           </div>
@@ -168,8 +168,11 @@ function test(val: string) {
                             <div class="text-20px c-#222">
                               {{ i.title }}
                             </div>
-                            <div class="mt-10px c-#666">
+                            <div class="line-clamp-3 mt-10px c-#666 lg:line-clamp-none" :class="i.isOp ? 'line-clamp-none' : 'line-clamp-3'">
                               {{ i.desc }}
+                            </div>
+                            <div class="flex justify-center text-[12px] c-[#FF0A00] lg:hidden" @click="i.isOp = !i.isOp">
+                              {{ i.isOp ? '收起' : '展开' }}
                             </div>
                           </div>
                         </div>
