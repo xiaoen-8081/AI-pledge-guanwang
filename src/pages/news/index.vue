@@ -70,9 +70,15 @@ async function send(lastTime?: string) {
   }
 }
 
-function test(val: string) {
+function getList(val: string) {
   tagId.value = val
   send()
+}
+
+const router = useRouter()
+function toDetail(i) {
+  sessionStorage.setItem('newsInfo', JSON.stringify(i))
+  router.push({ name: 'NewsDetail' })
 }
 </script>
 
@@ -88,7 +94,7 @@ function test(val: string) {
         </div>
         <div class="w-full flex flex-col items-center justify-between bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
           <div class="mx-auto max-w-1440px flex flex-1 justify-between">
-            <div class="h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px md:my-[40px] lg:border-1px lg:border-[#FF0A00] lg:border-solid">
+            <div class="mt-[20px] h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px lg:my-[40px] lg:border-1px lg:border-[#FF0A00] lg:border-solid">
               <div class="hidden lg:block">
                 <div class="flex justify-between">
                   <n-tabs
@@ -98,7 +104,7 @@ function test(val: string) {
                     animated
                     pane-wrapper-style="margin: 0 -4px"
                     pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;"
-                    @update:value="test"
+                    @update:value="getList"
                   >
                     <n-tab-pane v-for="(item, index) in tabsList" :key="index" :name="item.id" :tab="item.name" />
                   </n-tabs>
@@ -112,14 +118,14 @@ function test(val: string) {
                   </div>
                 </div>
               </div>
-              <div class="lg:hidden">
+              <div class="mb-[10px] flex items-center justify-between lg:hidden">
                 <n-space vertical>
-                  <n-select v-model:value="tagId" :options="tabsList" label-field="name" value-field="id" @update:value="test" />
+                  <n-select v-model:value="tagId" style="width: 120px;" :options="tabsList" label-field="name" value-field="id" @update:value="getList" />
                 </n-space>
-                <div class="my-[10px] w-170px">
+                <div class="my-[10px]">
                   <n-checkbox v-model:checked="checkbox" style="margin-right: 12px">
                     <div>
-                      <span class="mr-4px">{{ downTime }}</span>
+                      <span class="">{{ downTime }}</span>
                       <span>秒后自动刷新</span>
                     </div>
                   </n-checkbox>
@@ -165,14 +171,11 @@ function test(val: string) {
                             {{ timeFormat(i.ctime, 'hh:mm') }}
                           </div>
                           <div class="flex-1">
-                            <div class="text-20px c-#222">
+                            <div class="cursor-pointer text-20px c-#222" @click="toDetail(i)">
                               {{ i.title }}
                             </div>
-                            <div class="line-clamp-3 mt-10px c-#666 lg:line-clamp-none" :class="i.isOp ? 'line-clamp-none' : 'line-clamp-3'">
+                            <div class="line-clamp-3 mt-10px c-#666">
                               {{ i.desc }}
-                            </div>
-                            <div class="flex justify-center text-[12px] c-[#FF0A00] lg:hidden" @click="i.isOp = !i.isOp">
-                              {{ i.isOp ? '收起' : '展开' }}
                             </div>
                           </div>
                         </div>
@@ -195,10 +198,10 @@ function test(val: string) {
 
 <route lang="json">
   {
-    "name": "Blocks",
+    "name": "News",
     "meta": {
-      "activeMenu": "Blocks",
-      "title": "Blocks"
+      "activeMenu": "News",
+      "title": "News"
     }
   }
   </route>

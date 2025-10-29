@@ -5,9 +5,10 @@ const [collapsed] = useCollapsedPopupHooks()
 
 const options = [
   { name: 'Home', label: 'Home', class: 'i-carbon:home', value: 'cn' },
-  { name: 'Blocks', label: 'News', class: 'i-tabler:blocks', value: 'cn' },
+  { name: 'News', label: 'News', class: 'i-tabler:blocks', value: 'cn' },
 ]
 const router = useRouter()
+const route = useRoute()
 function toPage(name: any) {
   router.push({ name })
 }
@@ -17,8 +18,14 @@ function toPage(name: any) {
   <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div class="ml-15px md:ml-80px" @click="$router.replace({ name: 'Home' })">
+        <div v-if="route.name === 'Home' || route.name === 'News'" class="ml-15px md:ml-80px" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.jpg" style="width: 60px;" alt="">
+        </div>
+        <div v-else class="ml-15px flex cursor-pointer select-none items-center md:ml-80px" @click="$router.back()">
+          <div class="i-carbon:chevron-left text-[18px] text-[#000] font-bold lg:text-[24px]" />
+          <div class="text-[14px] text-[#000] lg:text-[20px]">
+            返回
+          </div>
         </div>
         <div class="hidden md:flex">
           <n-flex class="ml-20 flex-1" align="center" justify="space-between">

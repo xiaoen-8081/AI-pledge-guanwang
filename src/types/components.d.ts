@@ -38,6 +38,7 @@ declare module 'vue' {
     Header: typeof import('./../components/Header/Header.vue')['default']
     Home: typeof import('./../views/Home/Home.vue')['default']
     ImageText: typeof import('./../components/textRouter/ImageText.vue')['default']
+    NAvatar: typeof import('naive-ui')['NAvatar']
     NavBack: typeof import('./../components/Nav/NavBack.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
     NButtonGroup: typeof import('naive-ui')['NButtonGroup']

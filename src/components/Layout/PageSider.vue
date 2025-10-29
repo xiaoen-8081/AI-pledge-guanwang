@@ -5,7 +5,7 @@ const [collapsed, close] = useCollapsedPopupHooks()
 
 const options = [
   { name: 'Home', label: 'Home' },
-  { name: 'Blocks', label: 'News' },
+  { name: 'News', label: 'News' },
 ]
 const router = useRouter()
 function toPage(name) {
