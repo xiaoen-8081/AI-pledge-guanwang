@@ -8,13 +8,9 @@ interface PropsType {
   blocks?: number | string | null
 }
 
-const { skip = true, text, encrypt = true, blocks } = defineProps<PropsType>()
+const { skip = true, text, encrypt = true } = defineProps<PropsType>()
 const emit = defineEmits(['click'])
-const router = useRouter()
 function toPage() {
-  if (skip) {
-    router.push({ name: 'BlocksDetail', params: { blocks } })
-  }
   emit('click')
 }
 </script>

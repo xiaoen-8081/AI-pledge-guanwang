@@ -4,7 +4,7 @@ import { APP_NAME } from '@/config/app'
 import common from './common'
 
 export const useThemeSettingStore = defineStore(`${APP_NAME}_theme`, () => {
-  const appTheme = ref('#ff000')
+  const appTheme = ref('#87c94b')
   const commonThemeOverrides = ref<GlobalThemeOverrides>({
     common,
     Card: {

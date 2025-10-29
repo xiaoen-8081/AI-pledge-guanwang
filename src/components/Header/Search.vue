@@ -38,10 +38,6 @@ async function search() {
   if (/^[1-9]\d*$/.test(val)) {
     const [err] = await to(sendTransByBlock(groupId.value, val))
     console.log('err', err)
-    if (!err) {
-      router.push({ name: 'BlocksDetail', params: { blocks: val } })
-      return
-    }
   }
   // 数字和字母
   if (/^[a-z0-9]+$/i.test(val)) {
