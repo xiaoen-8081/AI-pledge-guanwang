@@ -20,7 +20,7 @@ function toPage(name) {
       <template #header>
         <n-flex class="" justify="space-between">
           <div @click="$router.replace({ name: 'Home' })">
-            <img src="/src/assets/img/logo.jpg" style="width: 60px;" alt="">
+            <img src="/src/assets/img/logo.svg" style="width: 60px;" alt="">
           </div>
           <n-button text @click="collapsed = !collapsed">
             <template #icon>

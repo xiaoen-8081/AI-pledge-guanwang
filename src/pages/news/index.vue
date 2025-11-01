@@ -92,9 +92,9 @@ function toDetail(i) {
             <Header />
           </div>
         </div>
-        <div class="w-full flex flex-col items-center justify-between bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
+        <div class="w-full flex flex-col items-center justify-between bg-[rgba(115,204,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
           <div class="mx-auto max-w-1440px flex flex-1 justify-between">
-            <div class="mt-[20px] h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px lg:my-[40px] lg:border-1px lg:border-[#FF0A00] lg:border-solid">
+            <div class="mt-[20px] h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px lg:my-[40px] lg:border-1px lg:border-[#73CC2E] lg:border-solid">
               <div class="hidden lg:block">
                 <div class="flex justify-between">
                   <n-tabs
@@ -134,11 +134,11 @@ function toDetail(i) {
               <!--  -->
               <div v-for="(item, index) in flashNews" :key="index">
                 <div class="flex">
-                  <div class="h-60px w-50px overflow-hidden border border-[#FF0A00] rounded-6px border-solid">
-                    <div class="h-30px w-full flex items-center justify-center bg-[rgba(239,65,46)] c-#fff">
+                  <div class="h-60px w-50px overflow-hidden border border-[#73CC2E] rounded-6px border-solid">
+                    <div class="h-30px w-full flex items-center justify-center bg-[rgba(115,204,46)] c-#fff">
                       {{ item.month }}
                     </div>
-                    <div class="h-30px w-full flex items-center justify-center text-20px c-[rgba(239,65,46)]">
+                    <div class="h-30px w-full flex items-center justify-center text-20px c-[rgba(115,204,46)]">
                       {{ item.date.split('-')[2] }}
                     </div>
                   </div>
@@ -185,7 +185,7 @@ function toDetail(i) {
                 </n-space>
               </div>
               <!--  -->
-              <div class="mt-20px flex cursor-pointer justify-center text-20px c-[rgba(239,65,46)]" @click="send(flashNews?.[flashNews?.length - 1]?.list?.[flashNews?.[flashNews?.length - 1]?.list?.length - 1]?.ctime)">
+              <div class="mt-20px flex cursor-pointer justify-center text-20px c-[rgba(115,204,46)]" @click="send(flashNews?.[flashNews?.length - 1]?.list?.[flashNews?.[flashNews?.length - 1]?.list?.length - 1]?.ctime)">
                 加载更多快讯
               </div>
             </div>
@@ -211,7 +211,7 @@ function toDetail(i) {
   margin: auto;
   width: 10px;
   height: 10px;
-  background-color: #f00;
+  background-color: #73cc2e;
   border-radius: 50%;
   margin-top: 16px;
 }
@@ -222,7 +222,7 @@ function toDetail(i) {
 }
 ::v-deep(.n-step-splitor) {
   width: 2px !important;
-  background: #f00;
+  background: #73cc2e;
   left: 10px !important;
   height: calc(100% + 14px) !important;
   bottom: -36px !important;

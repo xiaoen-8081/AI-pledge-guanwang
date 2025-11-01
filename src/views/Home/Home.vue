@@ -57,7 +57,7 @@
         </div>
       </div>
       <!--  -->
-      <div style="border: 2px solid #FF0000;" class="aos-init aos-animate box-border h-[186px] w-[335px] flex flex-row cursor-pointer items-center justify-center rounded-[6px] p-[6px] transition-opacity duration-300 md:h-[765px] md:w-full md:rounded-[30px] md:p-[24px] hover:opacity-90">
+      <div style="border: 2px solid #73CC2E;" class="aos-init aos-animate box-border h-[186px] w-[335px] flex flex-row cursor-pointer items-center justify-center rounded-[6px] p-[6px] transition-opacity duration-300 md:h-[765px] md:w-full md:rounded-[30px] md:p-[24px] hover:opacity-90">
         <!----> <div class="relative h-full w-full">
           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/680hxlqEK80?autoplay=0&amp;rel=0&amp;modestbranding=1&amp;showinfo=0&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="h-full w-full rounded-[6px] md:rounded-[30px]" style="" />
         </div>
@@ -66,7 +66,7 @@
     <!-- 3 -->
     <div class="bgImg1 z-11 w-full flex flex-col items-center bg-cover bg-center bg-no-repeat pb-[80px] md:h-[1126px] md:px-0">
       <div data-aos="fade-up" data-aos-duration="800" class="aos-init aos-animate mb-[20px] pt-[120px] text-center text-[32px] text-white font-[Bayon] uppercase md:mb-[90px] md:w-full md:text-[60px]">
-        <span>Awakening Protocol </span> <span class="text-[#E51922]">Core System</span>
+        <span>Awakening Protocol </span> <span class="text-[#1d4806]">Core System</span>
       </div>
       <div class="grid grid-cols-1 w-full items-center justify-between pb-[67px] md:grid-cols-2 md:max-w-[1440px]">
         <img src="/src/assets/img/qiu.png" alt="" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="600" class="aos-init aos-animate mx-auto max-w-[335px] w-full md:mr-[30px] md:max-w-[600px]"> <div class="grid grid-cols-1 w-full gap-y-[20px] md:grid-cols-2 md:flex-1 md:gap-y-[52px]">
@@ -122,15 +122,15 @@
     <!-- 4 -->
     <div class="mx-auto max-w-[1440px] w-full flex flex-col items-center pb-[80px] pt-[80px] md:px-0 md:pb-[200px] md:pt-[283px]">
       <div class="aos-init aos-animate mb-[36px] w-[233px] text-center text-[32px] text-black font-[Bayon] uppercase md:mb-[100px] md:w-full md:text-[60px]">
-        <span class="text-[#E51922]">Awakening Protocol </span> <span>Core System</span>
+        <span class="text-[#73CC2E]">Awakening Protocol </span> <span>Core System</span>
       </div>
       <div class="w-full text-[10px] text-[#1A1A1A] italic md:h-[560px] md:text-[24px]">
         <div class="flex flex-row justify-between">
-          <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
+          <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
             LGNS-USDT accumulates sufficient liquidity
-          </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
+          </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
             LGNS single currency pledge compound interest
-          </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
+          </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
             Increase LGNS casting volume
           </div>
         </div> <div class="flex flex-row justify-between">
@@ -143,7 +143,7 @@
           </div>
         </div>
         <div class="flex flex-row items-center justify-between">
-          <div class="box-border h-[48px] w-[63px] flex flex-row items-center justify-center border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] text-center md:h-[120px] md:w-[240px] md:rounded-[24px]">
+          <div class="box-border h-[48px] w-[63px] flex flex-row items-center justify-center border border-[#73CC2E] rounded-[6px] bg-[#e9ffd4] text-center md:h-[120px] md:w-[240px] md:rounded-[24px]">
             Liquid bond
           </div> <div class="relative w-[73px] md:w-[360px]">
             <div class="absolute left-0 top-[4px] w-full text-center text-[8px] text-[#1A1A1A] md:top-[-28px] md:text-[22px]">
@@ -159,7 +159,7 @@
               purchase
             </div>
             <img src="/src/assets/img/lineArrow3.png" alt="" srcset="" class="w-full">
-          </div> <div class="box-border h-[48px] w-[63px] flex flex-row items-center justify-center border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] text-center md:h-[120px] md:w-[240px] md:rounded-[24px]">
+          </div> <div class="box-border h-[48px] w-[63px] flex flex-row items-center justify-center border border-[#73CC2E] rounded-[6px] bg-[#e9ffd4] text-center md:h-[120px] md:w-[240px] md:rounded-[24px]">
             Liquid bond
           </div>
         </div>
@@ -170,7 +170,7 @@
             </div> <img src="/src/assets/img/lineArrow1.png" alt="" srcset="" class="h-[36.07px] md:h-[100px]"> <div>
               LGINS
             </div>
-          </div> <div class="mx-auto h-[48px] w-[151px] flex flex-row items-center justify-center border border-[#FF0A00] rounded-[6px] bg-[#FFF1F1] bg-opacity-70 md:h-[120px] md:w-[582px] md:rounded-[24px]">
+          </div> <div class="mx-auto h-[48px] w-[151px] flex flex-row items-center justify-center border border-[#73CC2E] rounded-[6px] bg-[#e9ffd4] bg-opacity-70 md:h-[120px] md:w-[582px] md:rounded-[24px]">
             Treasury risk-free funds mint LGNS
           </div>
         </div>
@@ -249,7 +249,7 @@
         <span>How to </span> <span class="gradient-text2">participate</span>
       </div>
       <div class="grid grid-cols-1 mb-[40px] px-10px md:grid-cols-2 md:mb-0 md:px-0">
-        <img src="/src/assets/img/yyz.png" style="width: 100%; height: 100%;" alt="" data-aos="fade-right" data-aos-delay="200" class="aos-init aos-animate rounded-tl-[24px] rounded-tr-[24px] md:rounded-tr-[0px]"> <div data-aos="fade-left" data-aos-delay="400" class="aos-init aos-animate box-border border border-[#EF412E] rounded-b-[24px] border-solid px-[24px] py-[32px] md:rounded-b-[0px] md:rounded-tr-[24px] md:pl-[104px] md:pt-[94px]">
+        <img src="/src/assets/img/yyz.png" style="width: 100%; height: 100%;" alt="" data-aos="fade-right" data-aos-delay="200" class="aos-init aos-animate rounded-tl-[24px] rounded-tr-[24px] md:rounded-tr-[0px]"> <div data-aos="fade-left" data-aos-delay="400" class="aos-init aos-animate box-border border border-[#73CC2E] rounded-b-[24px] border-solid px-[24px] py-[32px] md:rounded-b-[0px] md:rounded-tr-[24px] md:pl-[104px] md:pt-[94px]">
           <div class="mb-[20px] text-[24px] text-black font-[Bayon] uppercase md:mb-[30px] md:text-[44px]">
             Provide liquidity.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
@@ -262,7 +262,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 px-10px md:grid-cols-2 md:px-0">
-        <div data-aos="fade-right" data-aos-delay="600" class="aos-init aos-animate box-border border border-[#EF412E] rounded-t-[24px] border-solid px-[24px] py-[32px] md:rounded-t-[0px] md:rounded-bl-[24px] md:pl-[104px] md:pt-[94px]">
+        <div data-aos="fade-right" data-aos-delay="600" class="aos-init aos-animate box-border border border-[#73CC2E] rounded-t-[24px] border-solid px-[24px] py-[32px] md:rounded-t-[0px] md:rounded-bl-[24px] md:pl-[104px] md:pt-[94px]">
           <div class="mb-[30px] text-[24px] text-black font-[Bayon] uppercase md:text-[44px]">
             Loan mortgage.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
@@ -276,15 +276,15 @@
       </div>
     </div>
     <!-- 7 -->
-    <div class="w-full flex flex-col items-center bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[60px] md:h-[958px] md:pb-0 md:pt-[120px]">
+    <div class="w-full flex flex-col items-center bg-[rgba(115,204,46,0.1)] pb-[60px] pt-[60px] md:h-[958px] md:pb-0 md:pt-[120px]">
       <div data-aos="fade-up" class="aos-init aos-animate mb-[10px] w-full text-center text-[32px] text-black font-[Bayon] uppercase md:max-w-[1440px] md:text-[60px]">
         <span class="gradient-text2">Origin </span> <span> ecological planning</span>
       </div> <div data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate mb-[84px] hidden w-full flex-row items-center justify-between px-4 md:max-w-[1440px] md:flex md:px-0">
         <div class="h-[1px] max-w-[1222px] flex-1 bg-[#9E8C8A]" /> <img src="/src/assets/img/moreArrow.png" alt="" class="ml-4 h-[46px] w-[184px]">
       </div> <div class="grid grid-cols-1 w-full gap-y-[40px] px-4 md:grid-cols-3 md:max-w-[1440px] md:px-0">
-        <div data-aos="fade-up" data-aos-delay="300" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#FF0A00] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
+        <div data-aos="fade-up" data-aos-delay="300" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#73CC2E] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
           <div class="flex flex-row items-center justify-between">
-            <div class="plan-card-text text-[50px] text-[#EF412E] font-[Bayon] transition-colors duration-300">
+            <div class="plan-card-text text-[50px] text-[#73CC2E] font-[Bayon] transition-colors duration-300">
               1.0
             </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan1.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
@@ -295,9 +295,9 @@
             Build a non-stablecoin issuance flywheel, complete the native incentive mechanism of the LGNS
             protocol
           </div>
-        </div> <div data-aos="fade-up" data-aos-delay="500" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#FF0A00] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
+        </div> <div data-aos="fade-up" data-aos-delay="500" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#73CC2E] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
           <div class="flex flex-row items-center justify-between">
-            <div class="plan-card-text text-[50px] text-[#EF412E] font-[Bayon] transition-colors duration-300">
+            <div class="plan-card-text text-[50px] text-[#73CC2E] font-[Bayon] transition-colors duration-300">
               2.0
             </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan2.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
@@ -308,9 +308,9 @@
             Launch of Stablecoin A + Privacy Payment Protocol A Pay, initiating the era of crypto
             sovereignty
           </div>
-        </div> <div data-aos="fade-up" data-aos-delay="700" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#FF0A00] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
+        </div> <div data-aos="fade-up" data-aos-delay="700" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#73CC2E] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
           <div class="flex flex-row items-center justify-between">
-            <div class="plan-card-text text-[50px] text-[#EF412E] font-[Bayon] transition-colors duration-300">
+            <div class="plan-card-text text-[50px] text-[#73CC2E] font-[Bayon] transition-colors duration-300">
               3.0
             </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan3.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
@@ -336,24 +336,24 @@
             ORIGIN is building a digital civilization where algorithmic creation, anonymous exchange, and
             self-sovereign assets are no longer future ideals—but present realities.
           </p> <p data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
-            <span class="text-[#FF0A00]">①</span> LGNS represents
+            <span class="text-[#73CC2E]">①</span> LGNS represents
             algorithmic freedom—decentralized,
             programmable, and resistant to inflationary coercion.
           </p> <p data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate">
-            <span class="text-[#FF0A00]">②</span> Stablecoin A is the
+            <span class="text-[#73CC2E]">②</span> Stablecoin A is the
             shield of privacy—enabling cross-chain
             transactions and payments without surveillance or censorship.
           </p> <p data-aos="fade-up" data-aos-delay="800" class="aos-init aos-animate">
-            <span class="text-[#FF0A00]">③</span> A Pay empowers
+            <span class="text-[#73CC2E]">③</span> A Pay empowers
             every wallet with the ability to act
             anonymously, bridging the gap between freedom and function.
           </p> <p data-aos="fade-up" data-aos-delay="1000" class="aos-init aos-animate">
-            <span class="text-[#FF0A00]">④</span> We build not just
+            <span class="text-[#73CC2E]">④</span> We build not just
             a financial system, but a civilization
             layer
             where technology, values, and trust are symbiotic.
           </p> <p data-aos="fade-up" data-aos-delay="1200" class="aos-init aos-animate">
-            <span class="text-[#FF0A00]">⑤</span> In this era of
+            <span class="text-[#73CC2E]">⑤</span> In this era of
             awakening, ORIGIN is not merely a
             protocol—it is
             the awakening force of a new financial humanity.
@@ -386,7 +386,7 @@
   background-position: right;
 }
 .textColor {
-  background: linear-gradient(to right, #f1676c, #e51922);
+  background: linear-gradient(to right, #9dc35b, #74b154);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -396,13 +396,13 @@
   background-size: 100% 100%;
 }
 .gradient-text {
-  background: linear-gradient(to right, #e66b9f, #0d1624);
+  background: linear-gradient(to right, rgb(115, 204, 46), #0d1624);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .gradient-text2 {
-  background: linear-gradient(to right, #f1676c, #e51922);
+  background: linear-gradient(to right, #629901, #4d8d2b);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -418,7 +418,7 @@
   color: #fff;
 }
 .plan-card:hover .plan-card-circle {
-  background-color: rgba(239, 65, 46, 0.8) !important;
+  background-color: rgba(115, 204, 46, 0.8) !important;
   opacity: 0.8;
 }
 .plan-card:hover .plan-card-icon {

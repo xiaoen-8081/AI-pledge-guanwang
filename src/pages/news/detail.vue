@@ -17,9 +17,9 @@ onMounted(() => {
             <Header />
           </div>
         </div>
-        <div class="min-h-[80vh] w-full flex flex-col items-center justify-between bg-[rgba(239,65,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
+        <div class="min-h-[80vh] w-full flex flex-col items-center justify-between bg-[rgba(115,204,46,0.1)] pb-[60px] pt-[80px] md:pb-0">
           <div class="mx-auto max-w-1440px flex flex-1 justify-between">
-            <div class="mt-[10px] h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px lg:my-[40px] lg:border-1px lg:border-[#FF0A00] lg:border-solid">
+            <div class="mt-[10px] h-full flex-1 rounded-16px bg-#fff p-20px lg:mx-20px lg:my-[40px] lg:border-1px lg:border-[#73CC2E] lg:border-solid">
               <div class="text-center text-[20px]">
                 {{ info.title }}
               </div>
