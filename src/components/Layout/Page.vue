@@ -29,11 +29,11 @@ const { bottom = true } = defineProps<PageProps>()
                 <img src="/src/assets/img/logo2.svg" alt="Oradin Logo" class="h-[32px] w-[98.11px]">
                 <!-- <img src="/src/assets/img/logo.svg" alt="Oradin Logo" class="w-[80px]"> -->
                 <div class="flex flex-row items-center text-[16px] text-white italic">
-                  <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#F1676C]">
+                  <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Frequently Asked Questions (FAQ)
-                  </div> <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#F1676C]">
+                  </div> <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Contact us
-                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Media reports
                   </div>
                 </div>
@@ -50,11 +50,11 @@ const { bottom = true } = defineProps<PageProps>()
                 </div>
               </div> <div class="w-full text-center">
                 <div class="w-full flex flex-row items-center justify-between text-[10px] text-white italic space-x-[40px]">
-                  <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                  <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Frequently Asked Questions (FAQ)
-                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Contact us
-                  </div> <div class="cursor-pointer transition-colors hover:text-[#F1676C]">
+                  </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     Media reports
                   </div>
                 </div>

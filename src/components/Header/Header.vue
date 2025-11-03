@@ -46,7 +46,7 @@ function toPage(name: any) {
             </n-flex>
           </n-flex>
           <div class="btnBg ml-40px mr-80px h40px w200px flex items-center justify-center text-white">
-            Enrers LGNS Application
+            Enrers TGN Application
           </div>
         </div>
         <div class="mr-10px md:hidden">

@@ -13,13 +13,13 @@
     <div class="bgImg z-11 h-[550px] w-full sm:h-880px">
       <div class="mx-auto max-w-1440px px-15px pt-88px md:pt-200px">
         <div class="textColor text-[36px] font-bold md:text-[60px]">
-          ORIGIN · Awake
+          TENGEN · Awake
         </div>
         <div class="aos-init aos-animate text-[36px] text-[#1A1A1A] leading-[44px] font-[Bayon] uppercase md:text-[60px] md:leading-[78px]">
           the Era of Financial Sovereignty
         </div>
         <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate mb-[24px] mt-[12px] text-[16px] text-[#1A1A1A] leading-[28px] italic md:mt-[24px] md:w-[754px] md:text-[24px] md:leading-[38px]">
-          Powered by the algorithmic currency LGNS, ORIGIN initiates the second chapter of digital
+          Powered by the algorithmic currency TGN, TENGEN initiates the second chapter of digital
           civilization—Awakening. By launching anonymous stablecoin A and privacy payment protocol A Pay, we
           are building a decentralized financial operating syste m where privacy is a right, not a luxury.
         </div>
@@ -44,7 +44,7 @@
           </div>
         </div> <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate md:text-center">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
-            LGNS value
+            TGN value
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
             $ 203,153,663
           </div>
@@ -86,7 +86,7 @@
             <div class="gradient-text2 mr-[20px] flex-shrink-0 text-[32px] font-[Bayon] md:text-[48px]">
               03
             </div> <div class="text-[18px] text-white font-bold md:text-[26px]">
-              LGNS Bond Generator
+              TGN Bond Generator
             </div>
           </div> <div data-aos="fade-up" data-aos-delay="600" data-aos-duration="500" class="aos-init aos-animate flex flex-row items-center px-15 pb-[20px] md:px-0" style="border-bottom: 1px solid #fff;">
             <div class="gradient-text2 mr-[20px] flex-shrink-0 text-[32px] font-[Bayon] md:text-[48px]">
@@ -127,11 +127,11 @@
       <div class="w-full text-[10px] text-[#1A1A1A] italic md:h-[560px] md:text-[24px]">
         <div class="flex flex-row justify-between">
           <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
-            LGNS-USDT accumulates sufficient liquidity
+            TGN-USDT accumulates sufficient liquidity
           </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
-            LGNS single currency pledge compound interest
+            TGN single currency pledge compound interest
           </div> <div class="mechanism-box aos-init aos-animate box-border h-[66px] w-[89px] border rounded-[6px] bg-[#e9ffd4] px-[10px] py-[8px] text-center md:h-[120px] md:w-[340px] md:rounded-[24px] md:px-[39px] md:py-[32px]">
-            Increase LGNS casting volume
+            Increase TGN casting volume
           </div>
         </div> <div class="flex flex-row justify-between">
           <div class="w-[89px] flex flex-row items-center justify-center md:w-[240px]">
@@ -171,7 +171,7 @@
               LGINS
             </div>
           </div> <div class="mx-auto h-[48px] w-[151px] flex flex-row items-center justify-center border border-[#73CC2E] rounded-[6px] bg-[#e9ffd4] bg-opacity-70 md:h-[120px] md:w-[582px] md:rounded-[24px]">
-            Treasury risk-free funds mint LGNS
+            Treasury risk-free funds mint TGN
           </div>
         </div>
       </div>
@@ -183,8 +183,8 @@
           <div class="mb-[20px] text-[32px] text-white font-[Bayon] uppercase md:h-[108px] md:text-[60px]">
             <span>Staking income </span> <span class="gradient-text2">forecast</span>
           </div> <div class="mb-[32px] text-[16px] text-white leading-[24px] italic md:mb-[78px] md:h-[210px] md:w-[674px] md:text-[20px] md:leading-[42px]">
-            Stake LGNS, awaken value. By participating in the new algorithmic issuance engine, users can
-            earn rewards through a dual-track system combining non-stable LGNS and stable A. Returns are
+            Stake TGN, awaken value. By participating in the new algorithmic issuance engine, users can
+            earn rewards through a dual-track system combining non-stable TGN and stable A. Returns are
             adjusted based on ecosystem demand and user contribution.
           </div>
         </div> <div data-aos="fade-left" data-aos-delay="200" class="aos-init aos-animate relative h-[443.65px] w-[335px] md:h-[637px] md:w-[481px]">
@@ -253,7 +253,7 @@
           <div class="mb-[20px] text-[24px] text-black font-[Bayon] uppercase md:mb-[30px] md:text-[44px]">
             Provide liquidity.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
-            Provide liquidity to the LGNS/A pool and earn yield from every transaction in the ecosystem.
+            Provide liquidity to the TGN/A pool and earn yield from every transaction in the ecosystem.
             Participation fuels the birth of stablecoin A.
           </div>
           <div class="btnBg Roboto mt-50px h50px w180px flex items-center justify-center text-white italic">
@@ -266,7 +266,7 @@
           <div class="mb-[30px] text-[24px] text-black font-[Bayon] uppercase md:text-[44px]">
             Loan mortgage.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
-            Stake LGNS to generate Stablecoin A. Use A for anonymous payment, DAO governance, and borderless
+            Stake TGN to generate Stablecoin A. Use A for anonymous payment, DAO governance, and borderless
             DeFi interactions—without disclosing your identity.
           </div>
           <div class="btnBg Roboto mt-50px h50px w180px flex items-center justify-center text-white italic">
@@ -278,7 +278,7 @@
     <!-- 7 -->
     <div class="w-full flex flex-col items-center bg-[rgba(115,204,46,0.1)] pb-[60px] pt-[60px] md:h-[958px] md:pb-0 md:pt-[120px]">
       <div data-aos="fade-up" class="aos-init aos-animate mb-[10px] w-full text-center text-[32px] text-black font-[Bayon] uppercase md:max-w-[1440px] md:text-[60px]">
-        <span class="gradient-text2">Origin </span> <span> ecological planning</span>
+        <span class="gradient-text2">Tengen </span> <span> ecological planning</span>
       </div> <div data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate mb-[84px] hidden w-full flex-row items-center justify-between px-4 md:max-w-[1440px] md:flex md:px-0">
         <div class="h-[1px] max-w-[1222px] flex-1 bg-[#9E8C8A]" /> <img src="/src/assets/img/moreArrow.png" alt="" class="ml-4 h-[46px] w-[184px]">
       </div> <div class="grid grid-cols-1 w-full gap-y-[40px] px-4 md:grid-cols-3 md:max-w-[1440px] md:px-0">
@@ -290,9 +290,9 @@
               <img src="/src/assets/img/plan1.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
             </div>
           </div> <div class="plan-card-text mb-[22px] mt-[33px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
-            Origin Stage
+            Tengen Stage
           </div> <div class="plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
-            Build a non-stablecoin issuance flywheel, complete the native incentive mechanism of the LGNS
+            Build a non-stablecoin issuance flywheel, complete the native incentive mechanism of the TGN
             protocol
           </div>
         </div> <div data-aos="fade-up" data-aos-delay="500" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#73CC2E] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
@@ -327,16 +327,16 @@
     <div class="freedom">
       <div class="mx-auto w-full flex flex-col items-center px-4 pb-[208px] pt-[72px] md:max-w-[1440px] md:px-0 md:pt-[200px]">
         <div data-aos="fade-up" class="aos-init aos-animate mb-[40px] w-full text-center text-[32px] text-black font-[Bayon] uppercase md:mb-[54px] md:text-[60px]">
-          <span>Origin's Creed </span> <span class="gradient-text2"> of Freedom</span>
+          <span>Tengen's Creed </span> <span class="gradient-text2"> of Freedom</span>
         </div>
         <div class="max-w-[1280px] px-15px text-center text-[20px] leading-[40px] md:text-[24px] md:leading-[48px]">
           <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
             We believe every individual has the right to economic
             privacy and autonomous currency issuance.
-            ORIGIN is building a digital civilization where algorithmic creation, anonymous exchange, and
+            TENGEN is building a digital civilization where algorithmic creation, anonymous exchange, and
             self-sovereign assets are no longer future ideals—but present realities.
           </p> <p data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
-            <span class="text-[#73CC2E]">①</span> LGNS represents
+            <span class="text-[#73CC2E]">①</span> TGN represents
             algorithmic freedom—decentralized,
             programmable, and resistant to inflationary coercion.
           </p> <p data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate">
@@ -354,7 +354,7 @@
             where technology, values, and trust are symbiotic.
           </p> <p data-aos="fade-up" data-aos-delay="1200" class="aos-init aos-animate">
             <span class="text-[#73CC2E]">⑤</span> In this era of
-            awakening, ORIGIN is not merely a
+            awakening, TENGEN is not merely a
             protocol—it is
             the awakening force of a new financial humanity.
           </p>
