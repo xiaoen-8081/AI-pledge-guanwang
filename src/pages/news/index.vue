@@ -132,58 +132,67 @@ function toDetail(i) {
                 </div>
               </div>
               <!--  -->
-              <div v-for="(item, index) in flashNews" :key="index">
-                <div class="flex">
-                  <div class="h-60px w-50px overflow-hidden border border-[#73CC2E] rounded-6px border-solid">
-                    <div class="h-30px w-full flex items-center justify-center bg-[rgba(115,204,46)] c-#fff">
-                      {{ item.month }}
+
+              <template v-if="flashNews && flashNews.length ">
+                <div v-for="(item, index) in flashNews" :key="index">
+                  <div class="flex">
+                    <div class="h-60px w-50px overflow-hidden border border-[#73CC2E] rounded-6px border-solid">
+                      <div class="h-30px w-full flex items-center justify-center bg-[rgba(115,204,46)] c-#fff">
+                        {{ item.month }}
+                      </div>
+                      <div class="h-30px w-full flex items-center justify-center text-20px c-[rgba(115,204,46)]">
+                        {{ item.date.split('-')[2] }}
+                      </div>
                     </div>
-                    <div class="h-30px w-full flex items-center justify-center text-20px c-[rgba(115,204,46)]">
-                      {{ item.date.split('-')[2] }}
+                    <div class="ml-10px h-60px w-100px">
+                      <div class="mt-2px h-30px w-full flex items-center text-18px c-#222">
+                        <span v-if="Number(item.date.split('-')[2]) === Number(new Date().getDate())">今天</span>
+                        <span v-else-if="Number(item.date.split('-')[2]) === Number(new Date().getDate() - 1)">昨天</span>
+                        <span v-else />
+                      </div>
+                      <div class="mt-2px h-30px w-full flex items-center c-#222">
+                        {{ item.week }}
+                      </div>
                     </div>
                   </div>
-                  <div class="ml-10px h-60px w-100px">
-                    <div class="mt-2px h-30px w-full flex items-center text-18px c-#222">
-                      <span v-if="Number(item.date.split('-')[2]) === Number(new Date().getDate())">今天</span>
-                      <span v-else-if="Number(item.date.split('-')[2]) === Number(new Date().getDate() - 1)">昨天</span>
-                      <span v-else />
-                    </div>
-                    <div class="mt-2px h-30px w-full flex items-center c-#222">
-                      {{ item.week }}
-                    </div>
-                  </div>
+                  <n-space vertical>
+                    <n-steps vertical :current="current" :status="currentStatus" size="small" indicator-placement="outside">
+                      <n-step
+                        v-for="(i) in flashNews?.[index]?.list" :key="i.id"
+                        :description="i.desc"
+                      >
+                        <template #icon>
+                          <div class="dot" />
+                        </template>
+                        <template #title>
+                          <div />
+                        </template>
+                        <template #default>
+                          <div class="w-full flex flex-col lg:flex-row">
+                            <div class="h-full w-60px c-#222">
+                              {{ timeFormat(i.ctime, 'hh:mm') }}
+                            </div>
+                            <div class="flex-1">
+                              <div class="cursor-pointer text-20px c-#222" @click="toDetail(i)">
+                                {{ i.title }}
+                              </div>
+                              <div class="line-clamp-3 mt-10px c-#666">
+                                {{ i.desc }}
+                              </div>
+                            </div>
+                          </div>
+                        </template>
+                      </n-step>
+                    </n-steps>
+                  </n-space>
                 </div>
-                <n-space vertical>
-                  <n-steps vertical :current="current" :status="currentStatus" size="small" indicator-placement="outside">
-                    <n-step
-                      v-for="(i) in flashNews?.[index]?.list" :key="i.id"
-                      :description="i.desc"
-                    >
-                      <template #icon>
-                        <div class="dot" />
-                      </template>
-                      <template #title>
-                        <div />
-                      </template>
-                      <template #default>
-                        <div class="w-full flex flex-col lg:flex-row">
-                          <div class="h-full w-60px c-#222">
-                            {{ timeFormat(i.ctime, 'hh:mm') }}
-                          </div>
-                          <div class="flex-1">
-                            <div class="cursor-pointer text-20px c-#222" @click="toDetail(i)">
-                              {{ i.title }}
-                            </div>
-                            <div class="line-clamp-3 mt-10px c-#666">
-                              {{ i.desc }}
-                            </div>
-                          </div>
-                        </div>
-                      </template>
-                    </n-step>
-                  </n-steps>
-                </n-space>
-              </div>
+              </template>
+              <template v-else>
+                <div>
+                  <n-skeleton text style="width: 50%" />
+                  <n-skeleton text :repeat="4" style="width: 100%" class="min-w-200px lg:min-w-400px" />
+                </div>
+              </template>
               <!--  -->
               <div class="mt-20px flex cursor-pointer justify-center text-20px c-[rgba(115,204,46)]" @click="send(flashNews?.[flashNews?.length - 1]?.list?.[flashNews?.[flashNews?.length - 1]?.list?.length - 1]?.ctime)">
                 加载更多快讯

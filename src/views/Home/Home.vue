@@ -20,7 +20,7 @@
         </div>
         <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate mb-[24px] mt-[12px] text-[16px] text-[#1A1A1A] leading-[28px] italic md:mt-[24px] md:w-[754px] md:text-[24px] md:leading-[38px]">
           Powered by the algorithmic currency TGN, TENGEN initiates the second chapter of digital
-          civilization—Awakening. By launching anonymous stablecoin A and privacy payment protocol A Pay, we
+          civilization—Awakening. By launching anonymous stablecoin and privacy payment protocol A Pay, we
           are building a decentralized financial operating syste m where privacy is a right, not a luxury.
         </div>
         <div class="btnBg Roboto mt-50px h50px w180px flex items-center justify-center text-white italic">
@@ -31,24 +31,26 @@
     <!-- 2 -->
     <div class="mx-auto max-w-[1440px] max-w-1440px w-full px-15px pb-[80px] pt-[80px] md:px-0 md:pb-[200px]">
       <!--  -->
-      <div data-aos="fade-up" class="aos-init aos-animate mb-[30px] text-[24px] text-[#1A1A1A] font-[Bayon] uppercase md:mb-[50px] md:text-[32px]">
+      <div data-aos="fade-up" class="aos-init aos-animate mb-[30px] text-center text-[24px] text-[#1A1A1A] font-[Bayon] uppercase md:mb-[50px] md:text-[32px]">
         Agreement data statistics
       </div>
       <!--  -->
-      <div class="grid grid-cols-1 mb-[60px] gap-y-[40px] md:grid-cols-3 md:mb-[106px]">
-        <div data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate text-left">
+      <div class="grid mb-[60px] flex justify-evenly gap-y-[40px] md:grid-cols-3 md:mb-[106px]">
+        <!-- <div data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate text-left">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
             Treasury value
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
             $ 9,992,783
           </div>
-        </div> <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate md:text-center">
+        </div> -->
+        <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate md:text-center">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
             TGN value
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
             $ 203,153,663
           </div>
-        </div> <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate md:text-right">
+        </div>
+        <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate md:text-right">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
             Operation start time
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
@@ -57,11 +59,11 @@
         </div>
       </div>
       <!--  -->
-      <div style="border: 2px solid #73CC2E;" class="aos-init aos-animate box-border h-[186px] w-[335px] flex flex-row cursor-pointer items-center justify-center rounded-[6px] p-[6px] transition-opacity duration-300 md:h-[765px] md:w-full md:rounded-[30px] md:p-[24px] hover:opacity-90">
-        <!----> <div class="relative h-full w-full">
+      <!-- <div style="border: 2px solid #73CC2E;" class="aos-init aos-animate box-border h-[186px] w-[335px] flex flex-row cursor-pointer items-center justify-center rounded-[6px] p-[6px] transition-opacity duration-300 md:h-[765px] md:w-full md:rounded-[30px] md:p-[24px] hover:opacity-90">
+        <div class="relative h-full w-full">
           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/680hxlqEK80?autoplay=0&amp;rel=0&amp;modestbranding=1&amp;showinfo=0&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" class="h-full w-full rounded-[6px] md:rounded-[30px]" style="" />
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- 3 -->
     <div class="bgImg1 z-11 w-full flex flex-col items-center bg-cover bg-center bg-no-repeat pb-[80px] md:h-[1126px] md:px-0">
@@ -168,7 +170,7 @@
             <div>
               Sales
             </div> <img src="/src/assets/img/lineArrow1.png" alt="" srcset="" class="h-[36.07px] md:h-[100px]"> <div>
-              LGINS
+              TGN
             </div>
           </div> <div class="mx-auto h-[48px] w-[151px] flex flex-row items-center justify-center border border-[#73CC2E] rounded-[6px] bg-[#e9ffd4] bg-opacity-70 md:h-[120px] md:w-[582px] md:rounded-[24px]">
             Treasury risk-free funds mint TGN
@@ -254,7 +256,7 @@
             Provide liquidity.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
             Provide liquidity to the TGN/A pool and earn yield from every transaction in the ecosystem.
-            Participation fuels the birth of stablecoin A.
+            Participation fuels the birth of stablecoin.
           </div>
           <div class="btnBg Roboto mt-50px h50px w180px flex items-center justify-center text-white italic">
             Get to know
@@ -266,7 +268,7 @@
           <div class="mb-[30px] text-[24px] text-black font-[Bayon] uppercase md:text-[44px]">
             Loan mortgage.
           </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
-            Stake TGN to generate Stablecoin A. Use A for anonymous payment, DAO governance, and borderless
+            Stake TGN to generate Stablecoin. Use A for anonymous payment, DAO governance, and borderless
             DeFi interactions—without disclosing your identity.
           </div>
           <div class="btnBg Roboto mt-50px h50px w180px flex items-center justify-center text-white italic">
@@ -305,7 +307,7 @@
           </div> <div class="plan-card-text mb-[22px] mt-[33px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
             Awakening Stage
           </div> <div class="plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
-            Launch of Stablecoin A + Privacy Payment Protocol A Pay, initiating the era of crypto
+            Launch of Stablecoin + Privacy Payment Protocol A Pay, initiating the era of crypto
             sovereignty
           </div>
         </div> <div data-aos="fade-up" data-aos-delay="700" class="plan-card aos-init aos-animate hoverBg mx-20px box-border h-[396px] w-[335px] overflow-hidden border border-[#73CC2E] rounded-[24px] border-solid bg-white px-[16px] py-[36px] transition-all duration-300 md:mx-0 md:h-[458px] md:w-[440px] hover:border-transparent hover:bg-cover hover:bg-center md:px-[36px]">
@@ -340,7 +342,7 @@
             algorithmic freedom—decentralized,
             programmable, and resistant to inflationary coercion.
           </p> <p data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate">
-            <span class="text-[#73CC2E]">②</span> Stablecoin A is the
+            <span class="text-[#73CC2E]">②</span> Stablecoin is the
             shield of privacy—enabling cross-chain
             transactions and payments without surveillance or censorship.
           </p> <p data-aos="fade-up" data-aos-delay="800" class="aos-init aos-animate">
