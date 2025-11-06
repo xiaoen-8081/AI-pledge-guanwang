@@ -19,18 +19,7 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     'Home': RouteRecordInfo<'Home', '/', Record<never, never>, Record<never, never>>,
-    '404': RouteRecordInfo<'404', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
-    'Abount': RouteRecordInfo<'Abount', '/abount', Record<never, never>, Record<never, never>>,
-    'AddressDetail': RouteRecordInfo<'AddressDetail', '/address/:address?', { address?: ParamValueZeroOrOne<true> }, { address?: ParamValueZeroOrOne<false> }>,
-    'ContractAddress': RouteRecordInfo<'ContractAddress', '/contract/:contract?', { contract?: ParamValueZeroOrOne<true> }, { contract?: ParamValueZeroOrOne<false> }>,
     'News': RouteRecordInfo<'News', '/news', Record<never, never>, Record<never, never>>,
     'NewsDetail': RouteRecordInfo<'NewsDetail', '/news/detail', Record<never, never>, Record<never, never>>,
-    'Nfts': RouteRecordInfo<'Nfts', '/nft', Record<never, never>, Record<never, never>>,
-    'NftDetail': RouteRecordInfo<'NftDetail', '/nft/detail', Record<never, never>, Record<never, never>>,
-    'NftCate': RouteRecordInfo<'NftCate', '/nft-cate', Record<never, never>, Record<never, never>>,
-    'NftCateDetail': RouteRecordInfo<'NftCateDetail', '/nft-cate/detail', Record<never, never>, Record<never, never>>,
-    'SearchResult': RouteRecordInfo<'SearchResult', '/searchResult', Record<never, never>, Record<never, never>>,
-    'Txs': RouteRecordInfo<'Txs', '/txs', Record<never, never>, Record<never, never>>,
-    'TxsDetail': RouteRecordInfo<'TxsDetail', '/txs/:transHash?', { transHash?: ParamValueZeroOrOne<true> }, { transHash?: ParamValueZeroOrOne<false> }>,
   }
 }
