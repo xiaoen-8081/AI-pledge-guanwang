@@ -101,8 +101,8 @@ onMounted(() => {
                     }}
                   </span>
                 </div>
-                <!-- :disabled="txLoading || userBaseInfo.queryReleaseAmount.equalTo(0)" -->
                 <n-button
+                  :disabled="txLoading || userBaseInfo.queryReleaseAmount.equalTo(0)"
                   :loading="txLoading"
                   type="primary"
                   color="#73CC2E"

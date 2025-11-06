@@ -42,6 +42,7 @@ onMounted(() => {
         </div>
         <div class="mx-auto max-w-[480px] pt-[80px]">
           <n-image width="100%" :src="bg" preview-disabled />
+          <!-- <div class="h-[140px] w-[100%]" /> -->
           <div class="flex flex-1 flex-col bg-#fff px-[20px]">
             <div
               class="relative mt-[-20px] h-[120px] flex items-center rounded-xl bg-[#d8eec9] px-[20px]"
@@ -90,7 +91,7 @@ onMounted(() => {
                   >
                     {{ timeFormat(Number(userBaseInfo.lockEndTime) * 1000, 'yyyy/mm/dd hh:MM') }}
                   </span>
-                  <span v-else class="mt-[4px] text-[14px] text-[#000]">
+                  <span v-else class="mt-[4px] text-[16px] text-[#000]">
                     {{
                       timeFormat(
                         Calc.Add(
@@ -101,8 +102,8 @@ onMounted(() => {
                     }}
                   </span>
                 </div>
-                <!-- :disabled="txLoading || userBaseInfo.queryReleaseAmount.equalTo(0)" -->
                 <n-button
+                  :disabled="txLoading || userBaseInfo.queryReleaseAmount.equalTo(0)"
                   :loading="txLoading"
                   type="primary"
                   color="#73CC2E"
