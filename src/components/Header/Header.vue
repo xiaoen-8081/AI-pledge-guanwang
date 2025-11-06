@@ -25,10 +25,10 @@ function toPage(item: any) {
   <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div v-if="route.name === 'Home' || route.name === 'News'" class="md:ml-80px" @click="$router.replace({ name: 'Home' })">
+        <div v-if="route.name === 'Home' || route.name === 'News'" class="" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.svg" style="width: 120px;" alt="">
         </div>
-        <div v-else class="ml-15px flex cursor-pointer select-none items-center md:ml-80px" @click="$router.back()">
+        <div v-else class="ml-15px flex cursor-pointer select-none items-center" @click="$router.back()">
           <div class="i-carbon:chevron-left text-[18px] text-[#000] font-bold lg:text-[24px]" />
           <div class="text-[14px] text-[#000] lg:text-[20px]">
             返回
@@ -52,7 +52,7 @@ function toPage(item: any) {
               </n-flex>
             </n-flex>
           </n-flex>
-          <div class="btnBg ml-40px mr-80px h40px w200px flex items-center justify-center text-white">
+          <div class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
             Enrers TGN Application
           </div>
         </div>
