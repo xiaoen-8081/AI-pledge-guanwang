@@ -6,8 +6,8 @@ const [collapsed, close] = useCollapsedPopupHooks()
 const options = [
   { name: 'Home', label: 'Home' },
   { name: 'News', label: 'News' },
-  { name: 'Public', label: 'Public Offering', value: 'cn', url: 'http://tengenscan.org/lock' },
-  { name: 'Private', label: 'Private Placement', value: 'cn', url: 'http://tengenscan.org/lock' },
+  { name: 'Public', label: 'Public Offering', value: 'cn' },
+  { name: 'Private', label: 'Private Placement', value: 'cn' },
 ]
 const router = useRouter()
 function toPage(item) {

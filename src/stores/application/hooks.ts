@@ -9,3 +9,15 @@ export function useCollapsedPopupHooks(): [Ref<boolean>, () => void] {
   }
   return [collapsed, close]
 }
+
+// 区块高度
+export function useAppBlockHooks() {
+  const application = useApplicationStore()
+  const { chainId } = useActiveChainId()
+  const { blockNumber } = storeToRefs(application)
+
+  const block = computed(() => {
+    return blockNumber.value[chainId.value]
+  })
+  return { blockNumber: block }
+}

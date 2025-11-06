@@ -12,7 +12,7 @@ export const useApplicationStore = defineStore(`${APP_NAME}_APP`, () => {
   // // 注册
   // const registerPopup = ref(false)
   // // 当前区块高度
-  // const blockNumber = ref<string | undefined>(undefined)
+  const blockNumber = ref<{ [chainId: number]: number | undefined }>({})
 
   return {
     collapsed,
@@ -20,6 +20,6 @@ export const useApplicationStore = defineStore(`${APP_NAME}_APP`, () => {
     // loginPopup,
     // signerPopup,
     // registerPopup,
-    // blockNumber,
+    blockNumber,
   }
 })

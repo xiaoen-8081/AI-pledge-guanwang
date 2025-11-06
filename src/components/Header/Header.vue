@@ -6,11 +6,17 @@ const [collapsed] = useCollapsedPopupHooks()
 const options = [
   { name: 'Home', label: 'Home', value: 'cn' },
   { name: 'News', label: 'News', value: 'cn' },
-  { name: 'Public', label: 'Public Offering', value: 'cn', url: 'http://tengenscan.org/lock' },
-  { name: 'Private', label: 'Private Placement', value: 'cn', url: 'http://tengenscan.org/lock' },
+  { name: 'Public', label: 'Public Offering', value: 'cn' },
+  { name: 'Private', label: 'Private Placement', value: 'cn' },
 ]
+
 const router = useRouter()
 const route = useRoute()
+
+const isOptionRoute = computed(() => {
+  return options.some(o => o.name === String(route.name))
+})
+
 function toPage(item: any) {
   if (item.url) {
     window.open(item.url, '_blank')
@@ -25,7 +31,7 @@ function toPage(item: any) {
   <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div v-if="route.name === 'Home' || route.name === 'News'" class="" @click="$router.replace({ name: 'Home' })">
+        <div v-if="isOptionRoute" class="" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.svg" style="width: 120px;" alt="">
         </div>
         <div v-else class="ml-15px flex cursor-pointer select-none items-center" @click="$router.back()">
@@ -52,11 +58,15 @@ function toPage(item: any) {
               </n-flex>
             </n-flex>
           </n-flex>
-          <div class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
+          <div v-if="route.name === 'Public'" class="ml-40px mr-40px h40px">
+            <Web3Status v-if="route.name === 'Public'" />
+          </div>
+          <div v-else class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
             Enrers TGN Application
           </div>
         </div>
-        <div class="mr-10px md:hidden">
+        <div class="mr-10px flex md:hidden">
+          <Web3Status v-if="route.name === 'Public'" class="mr-10px" />
           <n-button text type="default">
             <div class="i-carbon:list text-28" @click="collapsed = !collapsed" />
           </n-button>

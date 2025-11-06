@@ -1,9 +1,11 @@
-import memoize from 'lodash/memoize'
-import { CHAINS } from '@/utils/chains'
+import type { Transport } from 'viem'
+
+import { QueryClient } from '@tanstack/vue-query'
 import { createConfig, fallback, http } from '@wagmi/vue'
 import { injected } from '@wagmi/vue/connectors'
-import type { Transport } from 'viem'
-import { QueryClient } from '@tanstack/vue-query'
+import memoize from 'lodash/memoize'
+
+import { CHAINS } from './chains'
 
 declare module '@wagmi/vue' {
   interface Register {
@@ -14,12 +16,15 @@ export const chains = CHAINS
 
 export const CHAIN_IDS = chains.map(c => c.id)
 
-export const transports = chains.reduce((pre, chain) => {
-  if (pre) {
-    return { ...pre, [chain.id]: fallback([http()]) }
-  }
-  return { [chain.id]: http() }
-}, {} as Record<number, Transport>)
+export const transports = chains.reduce(
+  (pre, chain) => {
+    if (pre) {
+      return { ...pre, [chain.id]: fallback([http()]) }
+    }
+    return { [chain.id]: http() }
+  },
+  {} as Record<number, Transport>,
+)
 
 export const wagmiConfig = createConfig({
   chains,
@@ -29,7 +34,9 @@ export const wagmiConfig = createConfig({
 
 export const queryClient = new QueryClient()
 
-export const isChainSupported = memoize((chainId: number) => (CHAIN_IDS).includes(chainId))
+export const isChainSupported = memoize((chainId: number) =>
+  CHAIN_IDS.includes(chainId),
+)
 
 export const isChainTestnet = memoize((chainId: number) => {
   const found = chains.find(c => c.id === chainId)
