@@ -58,15 +58,17 @@ function toPage(item: any) {
               </n-flex>
             </n-flex>
           </n-flex>
-          <div v-if="route.name === 'Public'" class="ml-40px mr-40px h40px">
-            <Web3Status v-if="route.name === 'Public'" />
+          <div v-if="route.name === 'Public' || route.name === 'Private'" class="ml-40px mr-40px h40px">
+            <Web3Status />
           </div>
           <div v-else class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
             Enrers TGN Application
           </div>
         </div>
         <div class="mr-10px flex md:hidden">
-          <Web3Status v-if="route.name === 'Public'" class="mr-10px" />
+          <div class="mr-10px">
+            <Web3Status v-if="route.name === 'Public' || route.name === 'Private'" />
+          </div>
           <n-button text type="default">
             <div class="i-carbon:list text-28" @click="collapsed = !collapsed" />
           </n-button>
