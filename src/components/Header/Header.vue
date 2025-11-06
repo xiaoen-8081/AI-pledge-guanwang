@@ -4,13 +4,20 @@ import { useCollapsedPopupHooks } from '@/stores/application/hooks'
 const [collapsed] = useCollapsedPopupHooks()
 
 const options = [
-  { name: 'Home', label: 'Home', class: 'i-carbon:home', value: 'cn' },
-  { name: 'News', label: 'News', class: 'i-tabler:blocks', value: 'cn' },
+  { name: 'Home', label: 'Home', value: 'cn' },
+  { name: 'News', label: 'News', value: 'cn' },
+  { name: 'Public', label: 'Public Offering', value: 'cn', url: 'http://tengenscan.org/lock' },
+  { name: 'Private', label: 'Private Placement', value: 'cn', url: 'http://tengenscan.org/lock' },
 ]
 const router = useRouter()
 const route = useRoute()
-function toPage(name: any) {
-  router.push({ name })
+function toPage(item: any) {
+  if (item.url) {
+    window.open(item.url, '_blank')
+    return
+  }
+
+  router.push({ name: item.name })
 }
 </script>
 
@@ -37,7 +44,7 @@ function toPage(name: any) {
                 class="cursor-pointer text-16"
                 :size="4"
                 align="center"
-                @click="toPage(x.name)"
+                @click="toPage(x)"
               >
                 <div>
                   {{ x.label }}

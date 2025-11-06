@@ -6,10 +6,16 @@ const [collapsed, close] = useCollapsedPopupHooks()
 const options = [
   { name: 'Home', label: 'Home' },
   { name: 'News', label: 'News' },
+  { name: 'Public', label: 'Public Offering', value: 'cn', url: 'http://tengenscan.org/lock' },
+  { name: 'Private', label: 'Private Placement', value: 'cn', url: 'http://tengenscan.org/lock' },
 ]
 const router = useRouter()
-function toPage(name) {
-  router.push({ name })
+function toPage(item) {
+  if (item.url) {
+    window.open(item.url, '_blank')
+    return
+  }
+  router.push({ name: item.name })
   close()
 }
 </script>
@@ -36,7 +42,7 @@ function toPage(name) {
           class="w-full justify-start"
           align="center"
           text
-          @click="toPage(x.name)"
+          @click="toPage(x)"
         >
           <div class="text-16">
             {{ x.label }}

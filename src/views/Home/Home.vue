@@ -35,7 +35,7 @@
         Agreement data statistics
       </div>
       <!--  -->
-      <div class="grid mb-[60px] flex justify-evenly gap-y-[40px] md:grid-cols-3 md:mb-[106px]">
+      <div class="grid mb-[60px] gap-y-[40px] md:grid-cols-2 md:mb-[106px]">
         <!-- <div data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate text-left">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
             Treasury value
@@ -50,7 +50,7 @@
             $ 203,153,663
           </div>
         </div>
-        <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate md:text-right">
+        <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate md:text-center">
           <div class="text-[16px] leading-[38px] italic md:text-[24px]">
             Operation start time
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
