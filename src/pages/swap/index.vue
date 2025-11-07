@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useGetAmountsOut, useTokenBalance } from '@/hooks/useSwap'
+import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
 import { SWAP_ADDRESS } from '@/constants'
+import { calcSwapParams } from './useCalc'
 // import tryParseAmount from '@/utils/tryParseAmount'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
@@ -55,8 +56,10 @@ const _getAmountsOut = debounce(async () => {
     value2.value = ''
     return
   }
+  // 查授权
   allowanceNum.value = await _getAllowance((is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value) as `0x${string}`)
   console.log(allowanceNum.value, 'allowanceNum')
+  // 算兑换
   const res: any = await getAmountsOut({
     amountIn: BigInt(parseUnits(isInput1.value ? value1.value.toString() : value2.value.toString(), isInput1.value ? (is_TgToU.value ? 18 : 6) : (is_TgToU.value ? 6 : 18))),
     address1: isInput1.value ? (is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value) : (is_TgToU.value ? usdtTokenAddress.value : tgTokenAddress.value),
@@ -64,8 +67,6 @@ const _getAmountsOut = debounce(async () => {
     decimals1: isInput1.value ? (is_TgToU.value ? 18 : 6) : (is_TgToU.value ? 6 : 18),
     decimals2: isInput1.value ? (is_TgToU.value ? 6 : 18) : (is_TgToU.value ? 18 : 6),
   })
-  console.log(isInput1.value)
-
   if (isInput1.value) {
     value2.value = res?.amountOut ?? ''
   }
@@ -141,6 +142,63 @@ async function handleApprove() {
       },
     },
   )
+}
+
+// 兑换
+const amountOutMin = ref('')
+const amountInMax = ref('')
+async function swap() {
+  const opts = is_TgToU.value
+    ? {
+        amountIn: value1.value,
+        feeRate: 0.003,
+        slippage: 0.1,
+
+      }
+    : {
+        expectedAmountIn: value1.value,
+        slippage: 0.1,
+      }
+  const res: any = await calcSwapParams(is_TgToU.value ? 'EXACT_IN' : 'EXACT_OUT', opts)
+  if (is_TgToU.value) {
+    amountOutMin.value = (res.amountOutMin * 10).toFixed()
+  }
+  else {
+    amountInMax.value = (res.amountInMax * 10).toFixed()
+  }
+  executeSwap()
+}
+
+const { swapExactTokensForTokensSupportingFeeOnTransferTokens } = useSwapExactTokensForTokensSupportingFeeOnTransferTokens()
+
+const swapLoading = ref(false)
+async function executeSwap() {
+  swapLoading.value = true
+  await swapExactTokensForTokensSupportingFeeOnTransferTokens({
+    amountIn: BigInt(parseUnits(value1.value.toString(), is_TgToU.value ? 18 : 6)),
+    amountOutMin: amountOutMin.value,
+    path: [tgTokenAddress.value, usdtTokenAddress.value] as `0x${string}`[],
+    to: '0x8122DDDe1Da137Fa27534e3A3190b79C1A71e268',
+    deadline: '3525001715',
+  }, {
+    onSuccess: () => {
+      window.$NaiveMessage.success(('兑换成功'), {
+        showIcon: false,
+      })
+      swapLoading.value = false
+      value1.value = ''
+      value2.value = ''
+    },
+    onError: () => {
+      window.$NaiveMessage.error(('兑换失败，请重试'), {
+        showIcon: false,
+      })
+      swapLoading.value = false
+    },
+    onStop: () => {
+      swapLoading.value = false
+    },
+  })
 }
 
 onMounted(() => {
@@ -247,10 +305,12 @@ onMounted(() => {
                 <span class="text-[18px]"> Approve {{ is_TgToU ? 'TG' : 'USDT' }} </span>
               </n-button>
               <n-button
-                :disabled="!allowanceNum || allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2))"
+                :disabled="!allowanceNum || allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) || swapLoading"
+                :loading="swapLoading"
                 class="flex-1"
                 type="primary"
                 style="height: 40px;border-radius: 12px;"
+                @click="swap"
               >
                 <span class="text-[18px]"> Swap </span>
               </n-button>

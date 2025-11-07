@@ -6,11 +6,9 @@ import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 import { readContract } from '@wagmi/core'
 import { useAccount } from '@wagmi/vue'
 
-import { RewardToken, SWAP_ADDRESS } from '@/constants'
-import { PLEDGE_INTERFACE, pledgeAbi } from '@/constants/abi/pledge'
+import { SWAP_ADDRESS } from '@/constants'
 import { swapAbi } from '@/constants/abi/swap'
 import { erc20Abi } from '@/constants/abi/erc20'
-import { useSingleCallResult } from '@/stores/multicall/hooks'
 import { wagmiConfig } from '@/utils/wagmi'
 import { getTransactionsResFinally } from '@/hooks/useTransRes'
 
@@ -21,113 +19,34 @@ export interface tokenParams {
   decimals2: number
   amountIn: bigint
 }
-// 基本信息
-export function useBaseInfo() {
-  const { address: account } = useAccount()
-  const tokenAddress = computed(() => SWAP_ADDRESS)
-  const args = computed(() => {
-    return [account.value]
-  })
-
-  // 查看资金池余额
-  const balanceRes = useSingleCallResult<bigint>(
-    tokenAddress,
-    PLEDGE_INTERFACE,
-    'mapUserInfo',
-    args,
-  )
-  // 待提现
-  const queryReleaseAmountRes = useSingleCallResult<bigint>(
-    tokenAddress,
-    PLEDGE_INTERFACE,
-    'queryReleaseAmount',
-    args,
-  )
-  //
-  const lockEndTimeRes = useSingleCallResult<bigint>(
-    tokenAddress,
-    PLEDGE_INTERFACE,
-    'lockEndTime',
-    undefined,
-  )
-  const withdrawExtracIntervalTimeRes = useSingleCallResult<bigint>(
-    tokenAddress,
-    PLEDGE_INTERFACE,
-    'withdrawExtracIntervalTime',
-    undefined,
-  )
-
-  const userBaseInfo = computed(() => {
-    const [
-      pledgeAmount = 0n,
-      withdrawAmount = 0n,
-      withdrawBalance = 0n,
-      lastWithdraTime = 0n,
-    ] = balanceRes.value.result || []
-    const [queryReleaseAmount = 0n] = queryReleaseAmountRes.value.result || []
-    const [lockEndTime = 0n] = lockEndTimeRes.value.result || []
-    const [withdrawExtracIntervalTime = 0n]
-      = withdrawExtracIntervalTimeRes.value.result || []
-
-    return {
-      pledgeAmount: CurrencyAmount.fromRawAmount(RewardToken, pledgeAmount),
-      withdrawAmount: CurrencyAmount.fromRawAmount(RewardToken, withdrawAmount),
-      withdrawBalance: CurrencyAmount.fromRawAmount(
-        RewardToken,
-        withdrawBalance,
-      ),
-      lastWithdraTime: Number(lastWithdraTime),
-      //
-      queryReleaseAmount: CurrencyAmount.fromRawAmount(
-        RewardToken,
-        queryReleaseAmount,
-      ),
-      //
-      lockEndTime: Number(lockEndTime),
-      withdrawExtracIntervalTime: Number(withdrawExtracIntervalTime),
-    }
-  })
-
-  const isLoading = computed(() => balanceRes.value.loading)
-  return {
-    userBaseInfo,
-    isLoading,
-  } as const
+export interface swapU {
+  amountIn: bigint
+  amountOutMin: string
+  path: `0x${string}`[]
+  to: string
+  deadline: string
 }
 
-// 提现
-export function useWithdraw() {
+// 兑换 TG -> USDT
+export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
   const { writeContractCallBack } = wagmiWriteContract()
   const txHash: any = ref('')
   const { address: account } = useAccount()
 
-  const withdraw = async (op?: {
+  const swapExactTokensForTokensSupportingFeeOnTransferTokens = async (options: swapU, op?: {
     onError?: () => void
     onStop?: () => void
     onSuccess?: () => void
   }) => {
     const args = {
-      abi: pledgeAbi,
+      abi: swapAbi,
       account: account.value,
       address: SWAP_ADDRESS,
-      functionName: 'withdraw',
-      args: [],
+      functionName: 'swapExactTokensForTokensSupportingFeeOnTransferTokens',
+      args: [options.amountIn, BigInt(options.amountOutMin), options.path, options.to, BigInt(options.deadline)],
     }
     if (!account.value) {
       window.$Toast.show('请连接钱包')
-      op?.onStop?.()
-      return
-    }
-    const isWithdrawTimeRes = await readContract(wagmiConfig, {
-      abi: pledgeAbi,
-      address: SWAP_ADDRESS,
-      functionName: 'isWithdrawTime',
-      args: [account.value],
-    })
-    console.log(isWithdrawTimeRes, 'isWithdrawTimeRes')
-
-    if (!isWithdrawTimeRes) {
-      window.$Toast.show('领取时间间隔未到')
       op?.onStop?.()
       return
     }
@@ -153,7 +72,7 @@ export function useWithdraw() {
       op?.onError?.()
     }
   }
-  return { withdraw } as const
+  return { swapExactTokensForTokensSupportingFeeOnTransferTokens } as const
 }
 
 // 查询某个币余额
