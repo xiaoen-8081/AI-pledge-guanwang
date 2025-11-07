@@ -17,6 +17,7 @@ export const POOR_ADDRESS: Address = '0x34576aA4a93824d4DAEe876AD72b44cad6448DcD
 // 合约地址
 export const PLEDGE_ADDRESS: Address
   = '0xC8f9058558EA46A713040D0015d963D8884A8fAc' // 测试
+  // = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试
 // 代币
 export const REWARD_TOKEN_ADDRESS: Address
   = '0x0ed9d9Cc5e2E0219E689f14411959fcfD9D6e6fD' // 测试

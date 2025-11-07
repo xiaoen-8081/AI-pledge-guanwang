@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const ApprovalState: typeof import('../hooks/useApproveCallback')['ApprovalState']
   const EffectScope: typeof import('vue')['EffectScope']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const computed: typeof import('vue')['computed']
@@ -62,9 +63,12 @@ declare global {
   const useAccountActiveChain: typeof import('../hooks/useAccountActiveChain')['useAccountActiveChain']
   const useActiveChainId: typeof import('../hooks/useActiveChainId')['useActiveChainId']
   const useAddTolentoWallet: typeof import('../hooks/token')['useAddTolentoWallet']
+  const useApprove: typeof import('../hooks/useApprove')['useApprove']
+  const useApproveCall: typeof import('../hooks/useApprove')['useApproveCall']
+  const useApproveCallback: typeof import('../hooks/useApproveCallback')['useApproveCallback']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAutoRequest: typeof import('alova/client')['useAutoRequest']
-  const useBaseInfo: typeof import('../hooks/usePledge')['useBaseInfo']
+  const useBaseInfo: typeof import('../hooks/useSwap')['useBaseInfo']
   const useBlockNumber: typeof import('../hooks/useBlockNumber')['useBlockNumber']
   const useCollectWallet: typeof import('../hooks/useCollectWallethooks')['useCollectWallet']
   const useCommonPagination: typeof import('../hooks/usePagination')['useCommonPagination']
@@ -80,6 +84,8 @@ declare global {
   const useElementBounding: typeof import('@vueuse/core')['useElementBounding']
   const useElementSize: typeof import('@vueuse/core')['useElementSize']
   const useForm: typeof import('alova/client')['useForm']
+  const useGetAllowance: typeof import('../hooks/useApprove')['useGetAllowance']
+  const useGetAmountsOut: typeof import('../hooks/useSwap')['useGetAmountsOut']
   const useGetMulticallAddress: typeof import('../hooks/useMulticallHooks')['useGetMulticallAddress']
   const useGlobalHooks: typeof import('../hooks/useGlobalHooks')['useGlobalHooks']
   const useI18n: typeof import('vue-i18n')['useI18n']
@@ -94,6 +100,7 @@ declare global {
   const usePaginationCommon: typeof import('../hooks/usePageCommon')['usePaginationCommon']
   const usePaginationDefaultConfig: typeof import('../hooks/usePageCommon')['usePaginationDefaultConfig']
   const usePopupHeghtHooks: typeof import('../hooks/usePopupHeghtHooks')['usePopupHeghtHooks']
+  const usePublicClient: typeof import('../hooks/useClient')['usePublicClient']
   const useRequest: typeof import('alova/client')['useRequest']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
@@ -106,9 +113,12 @@ declare global {
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useToggle: typeof import('@vueuse/core')['useToggle']
   const useToken: typeof import('../hooks/token')['useToken']
+  const useTokenAllowance: typeof import('../hooks/useTokenAllowance')['default']
+  const useTokenBalance: typeof import('../hooks/useSwap')['useTokenBalance']
+  const useWalletClient: typeof import('../hooks/useClient')['useWalletClient']
   const useWatcher: typeof import('alova/client')['useWatcher']
   const useWindowSize: typeof import('@vueuse/core')['useWindowSize']
-  const useWithdraw: typeof import('../hooks/usePledge')['useWithdraw']
+  const useWithdraw: typeof import('../hooks/useSwap')['useWithdraw']
   const useuPaginationDefaultConfig: typeof import('../hooks/usePageCommon')['useuPaginationDefaultConfig']
   const wagmiWriteContract: typeof import('../hooks/useWagmiWriteContract')['wagmiWriteContract']
   const watch: typeof import('vue')['watch']
@@ -121,4 +131,7 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { ApprovalState } from '../hooks/useApproveCallback'
+  import('../hooks/useApproveCallback')
 }

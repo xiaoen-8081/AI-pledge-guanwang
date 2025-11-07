@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@alova/adapter-axios": "^2.0.11",
+    "@ethersproject/web": "^5.8.0",
     "@pancakeswap/swap-sdk-core": "^1.5.1",
     "@pancakeswap/swap-sdk-evm": "^1.1.7",
     "@tanstack/vue-query": "^5.59.16",
@@ -46,6 +47,7 @@
     "@iconify-json/material-symbols": "^1.2.14",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/mingcute": "^1.2.0",
+    "@iconify-json/ri": "^1.2.6",
     "@iconify-json/tabler": "^1.2.16",
     "@intlify/unplugin-vue-i18n": "^5.2.0",
     "@types/node": "^22.8.4",

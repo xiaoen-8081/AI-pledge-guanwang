@@ -6,6 +6,7 @@ const [collapsed] = useCollapsedPopupHooks()
 const options = [
   { name: 'Home', label: 'Home', value: 'cn' },
   { name: 'News', label: 'News', value: 'cn' },
+  { name: 'Swap', label: 'Swap', value: 'cn' },
   { name: 'Public', label: 'Public Offering', value: 'cn' },
   { name: 'Private', label: 'Private Placement', value: 'cn' },
 ]
@@ -58,7 +59,7 @@ function toPage(item: any) {
               </n-flex>
             </n-flex>
           </n-flex>
-          <div v-if="route.name === 'Public' || route.name === 'Private'" class="ml-40px mr-40px h40px">
+          <div v-if="route.name === 'Public' || route.name === 'Private' || route.name === 'Swap'" class="ml-40px mr-40px h40px">
             <Web3Status />
           </div>
           <div v-else class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
@@ -67,7 +68,7 @@ function toPage(item: any) {
         </div>
         <div class="mr-10px flex md:hidden">
           <div class="mr-10px">
-            <Web3Status v-if="route.name === 'Public' || route.name === 'Private'" />
+            <Web3Status v-if="route.name === 'Public' || route.name === 'Private' || route.name === 'Swap'" />
           </div>
           <n-button text type="default">
             <div class="i-carbon:list text-28" @click="collapsed = !collapsed" />
@@ -75,6 +76,8 @@ function toPage(item: any) {
         </div>
       </n-flex>
     </n-flex>
+    <!-- ["0xc2132D05D31c914a87C6611C10748AEb04B58e8F","0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f"]
+    ["0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f","0xc2132D05D31c914a87C6611C10748AEb04B58e8F"] -->
   </div>
 
   <PageSider />
