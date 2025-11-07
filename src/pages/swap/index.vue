@@ -2,14 +2,15 @@
 import { useGetAmountsOut, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
-import { useApprove, useApproveCall, useGetAllowance } from '@/hooks/useApprove'
-import { PLEDGE_ADDRESS, RewardToken, SWAP_ADDRESS } from '@/constants'
+import { useApprove, useGetAllowance } from '@/hooks/useApprove'
+import { SWAP_ADDRESS } from '@/constants'
 // import tryParseAmount from '@/utils/tryParseAmount'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
 // const pledgeAdd = computed(() => PLEDGE_ADDRESS)
+const getAllowanceLoading = ref(false)
 const isAdd_Addr = ref(false)
-const value1 = ref('1')
+const value1 = ref('')
 const value2 = ref('')
 const allowanceNum = ref(0)
 const isInput1 = ref(true)
@@ -18,13 +19,7 @@ const tgTokenAddress = ref('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f')
 const usdtTokenAddress = ref('0xc2132D05D31c914a87C6611C10748AEb04B58e8F')
 const banance1 = ref('')
 const banance2 = ref('')
-// const parsedAmount = computed(() => {
-//   console.log(tryParseAmount(value1.value, RewardToken ?? undefined), 'parsedAmount')
-//   console.log(pledgeAdd.value, 'pledgeAdd')
 
-//   return tryParseAmount(value1.value, RewardToken ?? undefined)
-// })
-// const { approve } = useApproveCall(parsedAmount, pledgeAdd)
 const { approve } = useApprove()
 const { getAllowance } = useGetAllowance()
 const { getTokenBalance } = useTokenBalance()
@@ -45,6 +40,7 @@ async function _getBalance(tokenAddress: `0x${string}`, type: number, decimals: 
 }
 
 function debounce(fn: (...args: any[]) => void, delay = 500) {
+  getAllowanceLoading.value = true
   let timer: null | ReturnType<typeof setTimeout> = null
   return function (this: any, ...args: any[]) {
     if (timer)
@@ -115,7 +111,9 @@ async function _getOnePrice() {
 
 // 查授权
 async function _getAllowance(tokenAddress: `0x${string}`) {
+  getAllowanceLoading.value = true
   const res = await getAllowance(tokenAddress, SWAP_ADDRESS)
+  getAllowanceLoading.value = false
   console.warn(res)
   return Number(res)
 }
@@ -240,7 +238,7 @@ onMounted(() => {
             <!--  -->
             <div class="flex">
               <n-button
-                v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2))"
+                v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) && !getAllowanceLoading"
                 class="mr-10px flex-1"
                 type="primary"
                 style="height: 40px;border-radius: 12px;"
