@@ -24,5 +24,6 @@ declare module 'vue-router/auto-routes' {
     'Private': RouteRecordInfo<'Private', '/private', Record<never, never>, Record<never, never>>,
     'Public': RouteRecordInfo<'Public', '/public', Record<never, never>, Record<never, never>>,
     'Swap': RouteRecordInfo<'Swap', '/swap', Record<never, never>, Record<never, never>>,
+    '/swap/setModal': RouteRecordInfo<'/swap/setModal', '/swap/setModal', Record<never, never>, Record<never, never>>,
   }
 }

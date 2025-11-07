@@ -5,10 +5,12 @@ import { parseUnits } from 'viem'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
 import { SWAP_ADDRESS } from '@/constants'
 import { calcSwapParams } from './useCalc'
+import setModal from './setModal.vue'
 // import tryParseAmount from '@/utils/tryParseAmount'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
 // const pledgeAdd = computed(() => PLEDGE_ADDRESS)
+const showMoadl = ref(true)
 const getAllowanceLoading = ref(false)
 const isAdd_Addr = ref(false)
 const value1 = ref('')
@@ -21,6 +23,8 @@ const tgTokenAddress = ref('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f')
 const usdtTokenAddress = ref('0xc2132D05D31c914a87C6611C10748AEb04B58e8F')
 const banance1 = ref('')
 const banance2 = ref('')
+const slippageTolerance = ref(0.5)
+const deadlineMinutes = ref(1)
 
 const { approve } = useApprove()
 const { getAllowance } = useGetAllowance()
@@ -177,12 +181,12 @@ async function swap() {
     ? {
         amountIn: value1.value,
         feeRate: 0.003,
-        slippage: 0.1,
+        slippage: slippageTolerance.value,
 
       }
     : {
         expectedAmountIn: is_TgToU.value ? value1.value : value2.value,
-        slippage: 0.1,
+        slippage: slippageTolerance.value,
       }
   const res: any = await calcSwapParams(is_TgToU.value ? 'EXACT_IN' : 'EXACT_OUT', opts)
   console.log(res, 'calcSwapParams')
@@ -216,12 +220,13 @@ function executeSwap() {
   }
 }
 async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
+  const _deadline = Math.floor(Date.now() / 1000) + deadlineMinutes.value * 60
   await swapExactTokensForTokensSupportingFeeOnTransferTokens({
     amountIn: BigInt(parseUnits(value1.value.toString(), 18)),
     amountOutMin: amountOutMin.value,
     path: [tgTokenAddress.value, usdtTokenAddress.value] as `0x${string}`[],
     to: isAdd_Addr.value ? toAddress.value : (address.value ?? ''),
-    deadline: '3525001715',
+    deadline: _deadline.toString(),
   }, {
     onSuccess: () => {
       window.$NaiveMessage.success(('兑换成功'), {
@@ -243,12 +248,13 @@ async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
   })
 }
 async function _swapTokensForExactTokens() {
+  const _deadline = Math.floor(Date.now() / 1000) + deadlineMinutes.value * 60
   await swapTokensForExactTokens({
     amountOut: BigInt(parseUnits(value2.value.toString(), 18)),
     amountInMax: amountInMax.value,
     path: [usdtTokenAddress.value, tgTokenAddress.value] as `0x${string}`[],
     to: isAdd_Addr.value ? toAddress.value : (address.value ?? ''),
-    deadline: '3525001715',
+    deadline: _deadline.toString(),
   }, {
     onSuccess: () => {
       window.$NaiveMessage.success(('兑换成功'), {
@@ -268,6 +274,11 @@ async function _swapTokensForExactTokens() {
       swapLoading.value = false
     },
   })
+}
+
+//
+function submitSet(value: { slippageTolerance: number, deadlineMinutes: number }) {
+  console.log('submitSet', value)
 }
 
 onMounted(() => {
@@ -320,7 +331,7 @@ onMounted(() => {
             <!--  -->
             <div class="flex items-center justify-between p-20px">
               <div class="i-material-symbols:arrow-downward text-20 text-primary" @click="exchange" />
-              <span class="text-primary">
+              <span class="cursor-pointer text-primary" @click="showMoadl = true">
                 高级设置
               </span>
             </div>
@@ -388,8 +399,10 @@ onMounted(() => {
         </div>
       </div>
     </template>
+    <!--  -->
   </Page>
 
+  <setModal v-model:show="showMoadl" @submit="submitSet" />
   <!--  -->
 </template>
 
