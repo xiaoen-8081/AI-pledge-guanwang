@@ -6,10 +6,10 @@ import type { RefOrComputedRef } from '@/constants/types'
 
 import { readContract, waitForTransactionReceipt } from '@wagmi/core'
 import { useAccount } from '@wagmi/vue'
-import { erc20Abi } from 'viem'
+import { erc20Abi } from '@/constants/abi/erc20'
 
 import { wagmiConfig } from '@/utils/wagmi'
-import { PLEDGE_ADDRESS, REWARD_TOKEN_ADDRESS } from '@/constants'
+import { SWAP_ADDRESS } from '@/constants'
 
 export interface AddTaskParams {
   taskName: string
@@ -112,7 +112,7 @@ export function useApprove() {
   const txHash: any = ref('')
   const { address: account } = useAccount()
 
-  const approve = async (op?: {
+  const approve = async (option: { tokenAddress }, op?: {
     onError?: () => void
     onStop?: () => void
     onSuccess?: () => void
@@ -120,9 +120,9 @@ export function useApprove() {
     const args = {
       abi: erc20Abi,
       account: account.value,
-      address: REWARD_TOKEN_ADDRESS,
+      address: option.tokenAddress,
       functionName: 'approve',
-      args: [PLEDGE_ADDRESS, MaxUint256],
+      args: [SWAP_ADDRESS, MaxUint256],
     }
     if (!account.value) {
       window.$Toast.show('请连接钱包')

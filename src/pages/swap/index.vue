@@ -3,7 +3,7 @@ import { useGetAmountsOut, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
 import { useApprove, useApproveCall, useGetAllowance } from '@/hooks/useApprove'
-import { PLEDGE_ADDRESS, RewardToken } from '@/constants'
+import { PLEDGE_ADDRESS, RewardToken, SWAP_ADDRESS } from '@/constants'
 // import tryParseAmount from '@/utils/tryParseAmount'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
@@ -115,7 +115,7 @@ async function _getOnePrice() {
 
 // 查授权
 async function _getAllowance(tokenAddress: `0x${string}`) {
-  const res = await getAllowance(tokenAddress, PLEDGE_ADDRESS)
+  const res = await getAllowance(tokenAddress, SWAP_ADDRESS)
   console.warn(res)
   return Number(res)
 }
@@ -124,22 +124,25 @@ async function _getAllowance(tokenAddress: `0x${string}`) {
 const approveLoading = ref(false)
 async function handleApprove() {
   approveLoading.value = true
-  approve({
-    onSuccess: () => {
-      window.$NaiveMessage.success(('授权成功'), {
-        showIcon: false,
-      })
-      approveLoading.value = true
+  approve(
+    { tokenAddress: is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value }
+    , {
+      onSuccess: () => {
+        window.$NaiveMessage.success(('授权成功'), {
+          showIcon: false,
+        })
+        approveLoading.value = true
+      },
+      onError: () => {
+        approveLoading.value = true
+        window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
+          showIcon: false,
+        })
+      },
+      onStop: () => {
+      },
     },
-    onError: () => {
-      approveLoading.value = true
-      window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
-        showIcon: false,
-      })
-    },
-    onStop: () => {
-    },
-  })
+  )
 }
 
 onMounted(() => {

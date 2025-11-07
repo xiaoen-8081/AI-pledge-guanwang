@@ -2,25 +2,25 @@ import { bsc, bscTestnet, coreDao } from '@wagmi/vue/chains'
 import type { Chain } from '@wagmi/vue/chains'
 import { defineChain } from 'viem'
 
-const coreDatTestnet = defineChain({
-  id: 1115, // 请替换为实际的链ID
-  name: 'Core Blockchain Testnet',
-  nativeCurrency: { decimals: 18, name: 'TCORE', symbol: 'tCORE' },
+const polChain = defineChain({
+  id: 137,
+  name: 'Polygon',
+  nativeCurrency: { decimals: 18, name: 'MATIC', symbol: 'MATIC' },
   rpcUrls: {
-    default: { http: ['https://rpc.test.btcs.network'] },
+    default: { http: ['https://polygon-rpc.com'] },
   },
   blockExplorers: {
-    default: { name: 'CoreDao', url: 'https://scan.test.btcs.network' },
+    default: { name: 'Polygonscan', url: 'https://polygonscan.com' },
   },
   contracts: {
-    multicall3: { address: '0xcA11bde05977b3631167028862bE2a173976CA11' },
+    multicall3: { address: '0x275617327c958bD06b5D6b871E7f491D76113dd8' },
   },
-  testnet: true,
+  testnet: false,
 }) satisfies Chain
 
 export const CHAINS: [Chain, ...Chain[]] = [
   bsc,
   bscTestnet,
   coreDao,
-  coreDatTestnet,
+  polChain,
 ]

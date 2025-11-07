@@ -6,8 +6,9 @@ import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 import { readContract } from '@wagmi/core'
 import { useAccount } from '@wagmi/vue'
 
-import { PLEDGE_ADDRESS, RewardToken } from '@/constants'
+import { RewardToken, SWAP_ADDRESS } from '@/constants'
 import { PLEDGE_INTERFACE, pledgeAbi } from '@/constants/abi/pledge'
+import { swapAbi } from '@/constants/abi/swap'
 import { erc20Abi } from '@/constants/abi/erc20'
 import { useSingleCallResult } from '@/stores/multicall/hooks'
 import { wagmiConfig } from '@/utils/wagmi'
@@ -23,7 +24,7 @@ export interface tokenParams {
 // 基本信息
 export function useBaseInfo() {
   const { address: account } = useAccount()
-  const tokenAddress = computed(() => PLEDGE_ADDRESS)
+  const tokenAddress = computed(() => SWAP_ADDRESS)
   const args = computed(() => {
     return [account.value]
   })
@@ -108,7 +109,7 @@ export function useWithdraw() {
     const args = {
       abi: pledgeAbi,
       account: account.value,
-      address: PLEDGE_ADDRESS,
+      address: SWAP_ADDRESS,
       functionName: 'withdraw',
       args: [],
     }
@@ -119,7 +120,7 @@ export function useWithdraw() {
     }
     const isWithdrawTimeRes = await readContract(wagmiConfig, {
       abi: pledgeAbi,
-      address: PLEDGE_ADDRESS,
+      address: SWAP_ADDRESS,
       functionName: 'isWithdrawTime',
       args: [account.value],
     })
@@ -206,8 +207,8 @@ export function useGetAmountsOut() {
       return
     }
     const res: any = await readContract(wagmiConfig, {
-      abi: pledgeAbi,
-      address: PLEDGE_ADDRESS,
+      abi: swapAbi,
+      address: SWAP_ADDRESS,
       functionName: 'getAmountsOut',
       args: [options.amountIn, [options.address1, options.address2]],
     })
