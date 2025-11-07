@@ -107,6 +107,7 @@ declare global {
   const useRouterHook: typeof import('../hooks/useRouterHook')['useRouterHook']
   const useSlots: typeof import('vue')['useSlots']
   const useSwapExactTokensForTokensSupportingFeeOnTransferTokens: typeof import('../hooks/useSwap')['useSwapExactTokensForTokensSupportingFeeOnTransferTokens']
+  const useSwapTokensForExactTokens: typeof import('../hooks/useSwap')['useSwapTokensForExactTokens']
   const useTableContentHeight: typeof import('../hooks/useTableContentHeight')['useTableContentHeight']
   const useTablerCol: typeof import('../hooks/useTablerColRender')['useTablerCol']
   const useTablerColItems: typeof import('../hooks/useTablerColRender')['useTablerColItems']

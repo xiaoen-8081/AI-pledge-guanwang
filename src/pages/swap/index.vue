@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useTokenBalance } from '@/hooks/useSwap'
+import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useSwapTokensForExactTokens, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
@@ -13,6 +13,7 @@ const getAllowanceLoading = ref(false)
 const isAdd_Addr = ref(false)
 const value1 = ref('')
 const value2 = ref('')
+const toAddress = ref('')
 const allowanceNum = ref(0)
 const isInput1 = ref(true)
 const is_TgToU = ref(true)
@@ -144,10 +145,34 @@ async function handleApprove() {
   )
 }
 
+function addTOAddress() {
+  isAdd_Addr.value = !isAdd_Addr.value
+  console.log(isAdd_Addr.value, 'isAdd_Addr')
+  if (!isAdd_Addr.value) {
+    toAddress.value = ''
+  }
+}
+
 // 兑换
 const amountOutMin = ref('')
 const amountInMax = ref('')
 async function swap() {
+  if (is_TgToU.value) {
+    if (Number(value1.value) > Number(banance1.value)) {
+      window.$NaiveMessage.success(('余额不足'), {
+        showIcon: false,
+      })
+      return
+    }
+  }
+  else {
+    if (Number(value1.value) > Number(banance2.value)) {
+      window.$NaiveMessage.success(('余额不足'), {
+        showIcon: false,
+      })
+      return
+    }
+  }
   const opts = is_TgToU.value
     ? {
         amountIn: value1.value,
@@ -156,29 +181,73 @@ async function swap() {
 
       }
     : {
-        expectedAmountIn: value1.value,
+        expectedAmountIn: is_TgToU.value ? value1.value : value2.value,
         slippage: 0.1,
       }
   const res: any = await calcSwapParams(is_TgToU.value ? 'EXACT_IN' : 'EXACT_OUT', opts)
+  console.log(res, 'calcSwapParams')
+
   if (is_TgToU.value) {
     amountOutMin.value = (res.amountOutMin * 10).toFixed()
   }
   else {
     amountInMax.value = (res.amountInMax * 10).toFixed()
   }
+  if (isAdd_Addr.value && !toAddress.value) {
+    window.$NaiveMessage.success(('请输入钱包地址'), {
+      showIcon: false,
+    })
+    return
+  }
   executeSwap()
 }
 
 const { swapExactTokensForTokensSupportingFeeOnTransferTokens } = useSwapExactTokensForTokensSupportingFeeOnTransferTokens()
+const { swapTokensForExactTokens } = useSwapTokensForExactTokens()
 
 const swapLoading = ref(false)
-async function executeSwap() {
+function executeSwap() {
   swapLoading.value = true
+  if (is_TgToU.value) {
+    _swapExactTokensForTokensSupportingFeeOnTransferTokens()
+  }
+  else {
+    _swapTokensForExactTokens()
+  }
+}
+async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
   await swapExactTokensForTokensSupportingFeeOnTransferTokens({
-    amountIn: BigInt(parseUnits(value1.value.toString(), is_TgToU.value ? 18 : 6)),
+    amountIn: BigInt(parseUnits(value1.value.toString(), 18)),
     amountOutMin: amountOutMin.value,
     path: [tgTokenAddress.value, usdtTokenAddress.value] as `0x${string}`[],
-    to: '0x8122DDDe1Da137Fa27534e3A3190b79C1A71e268',
+    to: isAdd_Addr.value ? toAddress.value : (address.value ?? ''),
+    deadline: '3525001715',
+  }, {
+    onSuccess: () => {
+      window.$NaiveMessage.success(('兑换成功'), {
+        showIcon: false,
+      })
+      swapLoading.value = false
+      value1.value = ''
+      value2.value = ''
+    },
+    onError: () => {
+      window.$NaiveMessage.error(('兑换失败，请重试'), {
+        showIcon: false,
+      })
+      swapLoading.value = false
+    },
+    onStop: () => {
+      swapLoading.value = false
+    },
+  })
+}
+async function _swapTokensForExactTokens() {
+  await swapTokensForExactTokens({
+    amountOut: BigInt(parseUnits(value2.value.toString(), 18)),
+    amountInMax: amountInMax.value,
+    path: [usdtTokenAddress.value, tgTokenAddress.value] as `0x${string}`[],
+    to: isAdd_Addr.value ? toAddress.value : (address.value ?? ''),
     deadline: '3525001715',
   }, {
     onSuccess: () => {
@@ -276,7 +345,7 @@ onMounted(() => {
               <div v-else />
               <div class="flex cursor-pointer items-center">
                 <div class="text-14" :class="isAdd_Addr ? 'i-material-symbols:check-indeterminate-small-rounded text-[#ff8e18]' : 'i-material-symbols:add  text-primary'" />
-                <span :class="isAdd_Addr ? 'text-[#ff8e18]' : 'text-primary' " @click="isAdd_Addr = !isAdd_Addr">
+                <span :class="isAdd_Addr ? 'text-[#ff8e18]' : 'text-primary' " @click="addTOAddress">
                   {{ isAdd_Addr ? '移除接收方' : '添加接收方' }}
                 </span>
               </div>
@@ -287,7 +356,7 @@ onMounted(() => {
               </div>
               <div class="mt-10px flex items-center">
                 <n-input
-                  v-model:value="value2"
+                  v-model:value="toAddress"
                   style="border: none;" clearable placeholder="请输入钱包地址"
                   class="flex-1"
                 />

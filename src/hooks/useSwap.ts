@@ -26,6 +26,13 @@ export interface swapU {
   to: string
   deadline: string
 }
+export interface swapTG {
+  amountOut: bigint
+  amountInMax: string
+  path: `0x${string}`[]
+  to: string
+  deadline: string
+}
 
 // 兑换 TG -> USDT
 export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
@@ -38,6 +45,8 @@ export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
     onStop?: () => void
     onSuccess?: () => void
   }) => {
+    console.log(options)
+
     const args = {
       abi: swapAbi,
       account: account.value,
@@ -73,6 +82,55 @@ export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
     }
   }
   return { swapExactTokensForTokensSupportingFeeOnTransferTokens } as const
+}
+// 兑换 USDT -> TG
+export function useSwapTokensForExactTokens() {
+  const { writeContractCallBack } = wagmiWriteContract()
+  const txHash: any = ref('')
+  const { address: account } = useAccount()
+
+  const swapTokensForExactTokens = async (options: swapTG, op?: {
+    onError?: () => void
+    onStop?: () => void
+    onSuccess?: () => void
+  }) => {
+    const args = {
+      abi: swapAbi,
+      account: account.value,
+      address: SWAP_ADDRESS,
+      functionName: 'swapTokensForExactTokens',
+      args: [options.amountOut, BigInt(options.amountInMax), options.path, options.to, BigInt(options.deadline)],
+    }
+    console.log(options)
+
+    if (!account.value) {
+      window.$Toast.show('请连接钱包')
+      op?.onStop?.()
+      return
+    }
+
+    const [err, res] = await to(writeContractCallBack(args))
+    if (err) {
+      op?.onStop?.()
+      throw err
+    }
+    txHash.value = res
+
+    const [err1, res1] = await to(
+      getTransactionsResFinally(txHash.value as Hash),
+    )
+    if (err1) {
+      op?.onError?.()
+      throw err1
+    }
+    if (res1.status === 'success') {
+      op?.onSuccess?.()
+    }
+    else {
+      op?.onError?.()
+    }
+  }
+  return { swapTokensForExactTokens } as const
 }
 
 // 查询某个币余额
