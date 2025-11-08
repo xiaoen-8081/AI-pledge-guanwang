@@ -16,8 +16,8 @@ export const POOR_ADDRESS: Address = '0x34576aA4a93824d4DAEe876AD72b44cad6448DcD
 // ------------------------------------------------------
 // 锁仓合约地址
 export const PLEDGE_ADDRESS: Address
-  // = '0x2F6Eea9EDd9D791e4C1542F83Ad4D1B52b8709E0' // 测试
-  = '0xC8f9058558EA46A713040D0015d963D8884A8fAc' // 测试
+// = '0xC8f9058558EA46A713040D0015d963D8884A8fAc' // 测试
+= '0x2F6Eea9EDd9D791e4C1542F83Ad4D1B52b8709E0' // 测试
 // swap合约地址
 export const SWAP_ADDRESS: Address
   = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试
