@@ -41,6 +41,7 @@ onMounted(() => {
           </div>
         </div>
         <div class="mx-auto max-w-[480px] pt-[80px]">
+          <div />
           <n-image width="100%" :src="bg" preview-disabled />
           <!-- <div class="h-[140px] w-[100%]" /> -->
           <div class="flex flex-1 flex-col bg-#fff px-[20px]">

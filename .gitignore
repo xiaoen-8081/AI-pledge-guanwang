@@ -24,3 +24,7 @@ solidity
 
 # Misc
 .DS_Store
+
+src/languages/api.json
+src/languages/translates/*/*.bak.*.json
+**/*.wrapped.*

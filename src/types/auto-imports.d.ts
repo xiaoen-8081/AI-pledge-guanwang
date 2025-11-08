@@ -6,6 +6,7 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const $t: typeof import('../languages/index')['$t']
   const ApprovalState: typeof import('../hooks/useApproveCallback')['ApprovalState']
   const EffectScope: typeof import('vue')['EffectScope']
   const RouterLink: typeof import('vue-router')['RouterLink']
@@ -20,11 +21,13 @@ declare global {
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getTransactionsResFinally: typeof import('../hooks/useTransRes')['getTransactionsResFinally']
   const h: typeof import('vue')['h']
+  const i18nScope: typeof import('../languages/index')['i18nScope']
   const inject: typeof import('vue')['inject']
   const isProxy: typeof import('vue')['isProxy']
   const isReactive: typeof import('vue')['isReactive']
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
+  const loader: typeof import('../languages/loader')['default']
   const markRaw: typeof import('vue')['markRaw']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
@@ -52,6 +55,7 @@ declare global {
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
   const sueTableContentHeight: typeof import('../hooks/usePageCommon')['sueTableContentHeight']
+  const t: typeof import('../languages/index')['t']
   const to: typeof import('await-to-js')['to']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']

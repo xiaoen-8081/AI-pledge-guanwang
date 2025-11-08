@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { t } from '@/languages'
 import usdtImg from '@/assets/img/usdt.png'
 import tgnImg from '@/assets/img/tgn.jpg'
 import { useCollectWallet } from '@/hooks/useCollectWallethooks'
@@ -326,7 +327,7 @@ onMounted(() => {
             <div class="rounded-16 bg-#fafafa">
               <div class="rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
                 <div class="flex items-center justify-between">
-                  <span>支付</span>
+                  <span>{{ t('支付') }}</span>
                   <span>余额：{{ address ? is_TgToU ? banance1 : banance2 : '--' }}</span>
                 </div>
                 <div class="mt-10px flex items-center justify-between">
