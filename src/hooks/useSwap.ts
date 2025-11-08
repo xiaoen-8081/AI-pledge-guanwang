@@ -34,7 +34,7 @@ export interface swapTG {
   deadline: string
 }
 
-// 兑换 TG -> USDT
+// 兑换 TGN -> USDT
 export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
   const { writeContractCallBack } = wagmiWriteContract()
   const txHash: any = ref('')
@@ -83,7 +83,7 @@ export function useSwapExactTokensForTokensSupportingFeeOnTransferTokens() {
   }
   return { swapExactTokensForTokensSupportingFeeOnTransferTokens } as const
 }
-// 兑换 USDT -> TG
+// 兑换 USDT -> TGN
 export function useSwapTokensForExactTokens() {
   const { writeContractCallBack } = wagmiWriteContract()
   const txHash: any = ref('')

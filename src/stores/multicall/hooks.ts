@@ -60,7 +60,7 @@ function useCallsData(
   const serializedCallKeys = computed(() => {
     const jsonStr = JSON.stringify(
       calls.value
-        ?.filter(val => !!val)
+        ?.filter((val): val is Call => !!val)
         ?.map(val => toCallKey(val))
         ?.sort() ?? [],
     )

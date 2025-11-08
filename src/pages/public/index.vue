@@ -48,7 +48,7 @@ onMounted(() => {
               class="relative mt-[-20px] h-[120px] flex items-center rounded-xl bg-[#d8eec9] px-[20px]"
             >
               <div class="flex flex-col">
-                <span class="text-[18px] text-[#666666]">公募锁仓数量（TG）</span>
+                <span class="text-[18px] text-[#666666]">公募锁仓数量（TGN）</span>
                 <div class="mt-[12px]">
                   <span class="text-[30px] text-[#73CC2E] font-bold">
                     {{
@@ -71,7 +71,7 @@ onMounted(() => {
                 </div>
                 <div class="h-[38px] w-[1px] bg-[#E0E0E0]" />
                 <div class="flex flex-1 flex-col items-center justify-center">
-                  <span class="text-[#999]">待提现（TG）</span>
+                  <span class="text-[#999]">待提现（TGN）</span>
                   <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
                     {{
                       Calc.Mul(

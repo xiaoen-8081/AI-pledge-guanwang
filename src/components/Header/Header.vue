@@ -76,8 +76,6 @@ function toPage(item: any) {
         </div>
       </n-flex>
     </n-flex>
-    <!-- ["0xc2132D05D31c914a87C6611C10748AEb04B58e8F","0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f"]
-    ["0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f","0xc2132D05D31c914a87C6611C10748AEb04B58e8F"] -->
   </div>
 
   <PageSider />

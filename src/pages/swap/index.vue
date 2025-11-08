@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import usdtImg from '@/assets/img/usdt.png'
+import tgnImg from '@/assets/img/tgn.jpg'
+
 import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useSwapTokensForExactTokens, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
@@ -10,7 +13,7 @@ import setModal from './setModal.vue'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
 // const pledgeAdd = computed(() => PLEDGE_ADDRESS)
-const showMoadl = ref(true)
+const showMoadl = ref(false)
 const getAllowanceLoading = ref(false)
 const isAdd_Addr = ref(false)
 const value1 = ref('')
@@ -298,12 +301,12 @@ onMounted(() => {
           </div>
         </div>
         <div class="mx-auto max-w-[480px] pb-[40px] pt-[80px]">
-          <div class="relative w-full overflow-hidden rounded-20px bg-#fff p-20px pt-88px">
+          <div class="relative overflow-hidden rounded-20px bg-#fff p-20px pt-88px">
             <div class="absolute right-0 top-0 h-60px w-88px flex items-center justify-center rounded-bl-[30px] bg-[rgba(115,204,46,0.1)]">
               <span class="text-[20px] text-primary">V2</span>
             </div>
             <!--  -->
-            <div class="w-full rounded-16 bg-#fafafa">
+            <div class="rounded-16 bg-#fafafa">
               <div class="rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
                 <div class="flex items-center justify-between">
                   <span>支付</span>
@@ -312,17 +315,22 @@ onMounted(() => {
                 <div class="mt-10px flex items-center justify-between">
                   <n-input
                     v-model:value="value1"
-                    style="border: none;"
+                    :bordered="false"
+                    style="border: none;padding-left: 0px;padding: 0px;"
                     clearable placeholder="请输入数量" class="flex-1"
                     @input="isInput1 = true, _getAmountsOut()"
                   />
-                  <span class="flex-1 text-right text-[24px]">{{ is_TgToU ? 'TG' : 'USDT' }}</span>
+                  <div class="flex flex-1 items-center justify-end">
+                    <n-avatar v-if="is_TgToU" round size="small" :src="tgnImg" />
+                    <n-avatar v-else round size="small" :src="usdtImg" />
+                    <span class="ml-6px text-[24px]">{{ is_TgToU ? 'TGN' : 'USDT' }}</span>
+                  </div>
                 </div>
               </div>
               <div class="flex items-center justify-between p-20px">
                 <span>价格</span>
                 <div class="flex items-center">
-                  <span v-if="toUSDT" class="mr-4px">1 TG 兑换 {{ oneTG }} USDT </span>
+                  <span v-if="toUSDT" class="mr-4px">1 TGN 兑换 {{ oneTG }} USDT </span>
                   <span v-else class="mr-4px">1 USDT 兑换 {{ oneUSDT }} USDT </span>
                   <div class="i-ri:exchange-line text-20 text-primary" @click="toUSDT = !toUSDT" />
                 </div>
@@ -343,11 +351,16 @@ onMounted(() => {
               <div class="mt-10px flex items-center justify-between">
                 <n-input
                   v-model:value="value2"
+                  :bordered="false"
                   style="border: none;"
                   clearable placeholder="请输入数量" class="flex-1"
                   @input="isInput1 = false, _getAmountsOut()"
                 />
-                <span class="flex-1 text-right text-[24px]">{{ !is_TgToU ? 'TG' : 'USDT' }}</span>
+                <div class="flex flex-1 items-center justify-end">
+                  <n-avatar v-if="!is_TgToU" round size="small" :src="tgnImg" />
+                  <n-avatar v-else round size="small" :src="usdtImg" />
+                  <span class="ml-6px text-[24px]">{{ !is_TgToU ? 'TGN' : 'USDT' }}</span>
+                </div>
               </div>
             </div>
             <!--  -->
@@ -361,14 +374,16 @@ onMounted(() => {
                 </span>
               </div>
             </div>
-            <div v-if="isAdd_Addr" class="rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
+            <div v-if="isAdd_Addr" class="mb-20px rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
               <div class="flex items-center">
                 <span>接收方</span>
               </div>
               <div class="mt-10px flex items-center">
                 <n-input
                   v-model:value="toAddress"
-                  style="border: none;" clearable placeholder="请输入钱包地址"
+                  :bordered="false"
+                  clearable
+                  placeholder="请输入钱包地址"
                   class="flex-1"
                 />
               </div>
@@ -382,7 +397,7 @@ onMounted(() => {
                 style="height: 40px;border-radius: 12px;"
                 @click="handleApprove"
               >
-                <span class="text-[18px]"> Approve {{ is_TgToU ? 'TG' : 'USDT' }} </span>
+                <span class="text-[18px]"> Approve {{ is_TgToU ? 'TGN' : 'USDT' }} </span>
               </n-button>
               <n-button
                 :disabled="!allowanceNum || allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) || swapLoading"
@@ -424,5 +439,8 @@ onMounted(() => {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-size: cover;
+}
+::v-deep(.n-input-wrapper) {
+  padding-left: 0px !important;
 }
 </style>

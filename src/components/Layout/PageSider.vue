@@ -6,6 +6,7 @@ const [collapsed, close] = useCollapsedPopupHooks()
 const options = [
   { name: 'Home', label: 'Home' },
   { name: 'News', label: 'News' },
+  { name: 'Swap', label: 'Swap', value: 'cn' },
   { name: 'Public', label: 'Public Offering', value: 'cn' },
   { name: 'Private', label: 'Private Placement', value: 'cn' },
 ]
