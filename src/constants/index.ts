@@ -14,20 +14,21 @@ export const DEFAULT_TTRANS_GAS = 0
 export const POOR_ADDRESS: Address = '0x34576aA4a93824d4DAEe876AD72b44cad6448DcD'
 
 // ------------------------------------------------------
-// 合约地址
+// 锁仓合约地址
 export const PLEDGE_ADDRESS: Address
+  // = '0x2F6Eea9EDd9D791e4C1542F83Ad4D1B52b8709E0' // 测试
   = '0xC8f9058558EA46A713040D0015d963D8884A8fAc' // 测试
-  // = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试
 // swap合约地址
 export const SWAP_ADDRESS: Address
   = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试
-// 代币
+// 锁仓代币
 export const REWARD_TOKEN_ADDRESS: Address
-  = '0x0ed9d9Cc5e2E0219E689f14411959fcfD9D6e6fD' // 测试
+  // = '0x0ed9d9Cc5e2E0219E689f14411959fcfD9D6e6fD' // 测试
+  = '0xdf745Ce4513f1B6b5AdC07A82F76253377f70c9e' // 测试
 export const RewardToken = new ERC20Token(
   137,
   REWARD_TOKEN_ADDRESS,
-  18,
+  6,
   'USDT',
   'USDT Token',
 )
