@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import usdtImg from '@/assets/img/usdt.png'
 import tgnImg from '@/assets/img/tgn.jpg'
+import { useCollectWallet } from '@/hooks/useCollectWallethooks'
 
 import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useSwapTokensForExactTokens, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
@@ -282,12 +283,28 @@ async function _swapTokensForExactTokens() {
 //
 function submitSet(value: { slippageTolerance: number, deadlineMinutes: number }) {
   console.log('submitSet', value)
+  slippageTolerance.value = value.slippageTolerance
+  deadlineMinutes.value = value.deadlineMinutes
+}
+
+const [isLoading, handleCollect] = useCollectWallet()
+async function collect() {
+  await to(handleCollect())
 }
 
 onMounted(() => {
   _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
   _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
   _getOnePrice()
+
+  if (window.ethereum) {
+    window.ethereum.on('accountsChanged', async () => {
+      location.reload()
+    })
+    window.ethereum.on('chainChanged', async () => {
+      location.reload()
+    })
+  }
 })
 </script>
 
@@ -330,8 +347,8 @@ onMounted(() => {
               <div class="flex items-center justify-between p-20px">
                 <span>价格</span>
                 <div class="flex items-center">
-                  <span v-if="toUSDT" class="mr-4px">1 TGN 兑换 {{ oneTG }} USDT </span>
-                  <span v-else class="mr-4px">1 USDT 兑换 {{ oneUSDT }} USDT </span>
+                  <span v-if="toUSDT" class="mr-4px">1 TGN 兑换 {{ oneTG || '--' }} USDT </span>
+                  <span v-else class="mr-4px">1 USDT 兑换 {{ oneUSDT || '--' }} USDT </span>
                   <div class="i-ri:exchange-line text-20 text-primary" @click="toUSDT = !toUSDT" />
                 </div>
               </div>
@@ -400,6 +417,17 @@ onMounted(() => {
                 <span class="text-[18px]"> Approve {{ is_TgToU ? 'TGN' : 'USDT' }} </span>
               </n-button>
               <n-button
+                v-if="!address"
+                :loading="isLoading" :disabled="isLoading"
+                class="flex-1"
+                type="primary"
+                style="height: 40px;border-radius: 12px;"
+                @click="collect"
+              >
+                <span class="text-[18px]"> 连接钱包 </span>
+              </n-button>
+              <n-button
+                v-else
                 :disabled="!allowanceNum || allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) || swapLoading"
                 :loading="swapLoading"
                 class="flex-1"

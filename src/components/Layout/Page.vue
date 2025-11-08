@@ -1,12 +1,58 @@
 <script setup lang="ts">
+import type { BaseError } from '@wagmi/vue'
+import {
+  useAccount,
+  useSwitchChain,
+} from '@wagmi/vue'
+
 interface PageProps {
   bottom?: boolean
 }
 const { bottom = true } = defineProps<PageProps>()
+const route = useRoute()
+const { address, chainId: collectChain } = useAccount()
+const { chains, switchChainAsync } = useSwitchChain()
+const supportChain = computed(() => chains.value[0])
+const showSwitchChainPopup = ref(false)
+watchEffect(() => {
+  if (chains.value) {
+    const ids = chains.value.map(x => x.id)
+    // console.log('chains', ids, chains.value, collectChain.value);
+    if (route.name === 'Swap' || route.name === 'Private' || route.name === 'Public') {
+      showSwitchChainPopup.value = address.value
+        ? !ids.includes(collectChain.value as number)
+        : false
+    }
+  }
+})
+async function handleSwitch() {
+  try {
+    // disabled.value = true
+    await switchChainAsync({ chainId: supportChain.value.id })
+  }
+  catch (error) {
+    window.$NaiveMessage.info((error as BaseError).shortMessage)
+  }
+  finally {
+    // disabled.value = false
+  }
+}
 </script>
 
 <template>
   <n-layout position="absolute" :native-scrollbar="false">
+    <n-modal
+      v-model:show="showSwitchChainPopup"
+      preset="dialog"
+      :closable="false"
+      :mask-closable="false"
+      type="warning"
+      :title="$t('提示')"
+      :content="`此页面属于${supportChain.name}, 切换网络以继续。`"
+      positive-text="切换"
+      @positive-click="handleSwitch()"
+    />
+
     <!-- <n-layout-header style="z-index: 1;" position="absolute" class="bg-#fff">
       <slot name="header">
         <Header />

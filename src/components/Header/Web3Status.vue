@@ -8,6 +8,7 @@ const [isLoading, handleCollect] = useCollectWallet()
 
 async function collect() {
   await to(handleCollect())
+  location.reload()
 }
 
 const { disconnectAsync } = useDisconnect()

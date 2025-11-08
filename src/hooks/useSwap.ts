@@ -146,7 +146,7 @@ export function useTokenBalance() {
       'USDT Token',
     )
     if (!account.value) {
-      window.$Toast.show('请连接钱包')
+      // window.$Toast.show('请连接钱包')
       return
     }
     const balanceRes = await readContract(wagmiConfig, {
@@ -180,7 +180,7 @@ export function useGetAmountsOut() {
       'USDT Token',
     )
     if (!account.value) {
-      window.$Toast.show('请连接钱包')
+      // window.$Toast.show('请连接钱包')
       return
     }
     const res: any = await readContract(wagmiConfig, {
