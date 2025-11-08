@@ -8,7 +8,7 @@ const options = [
   { name: 'News', label: 'News', value: 'cn' },
   { name: 'Swap', label: 'Swap', value: 'cn' },
   { name: 'Public', label: 'Public Offering', value: 'cn' },
-  { name: 'Private', label: 'Private Placement', value: 'cn' },
+  { name: 'Private', label: 'Private Sale', value: 'cn' },
 ]
 
 const router = useRouter()
