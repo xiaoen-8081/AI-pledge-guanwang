@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import bg from '@/assets/img/bg.png'
 import tgn from '@/assets/img/tgn.png'
-import { useBaseInfo, useWithdraw } from '@/hooks/usePledge'
+import usdt from '@/assets/img/usdt.png'
+import { useMapUserInfo, useWithdraw } from '@/hooks/usePledge'
 import { Calc, timeFormat } from '@/utils/utils'
+import { useAppBlockHooks } from '@/stores/application/hooks'
+import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
+import { RewardToken, TgnToken } from '@/constants'
+import { useTokenBalance } from '@/hooks/useSwap'
+import { useAccount } from '@wagmi/vue'
 
+const { address } = useAccount()
 const value = ref(null)
-
-// ==== 数据 ====
-const { userBaseInfo } = useBaseInfo()
 
 const txLoading = ref(false)
 const { withdraw } = useWithdraw()
@@ -28,6 +32,87 @@ async function _withdraw() {
       window.$Toast.show('提现成功')
     },
   })
+}
+
+const userInfo: any = ref({})
+const { getTokenBalance } = useTokenBalance()
+
+const {
+  getMapUserInfo,
+  getqueryReleaseAmount,
+  getlockEndTime,
+  getwithdrawExtracIntervalTime,
+  getTgnPrice,
+} = useMapUserInfo()
+
+async function _get_usdt_balance() {
+  const usdtBalance = await getTokenBalance(RewardToken.address, RewardToken.decimals)
+  userInfo.value.usdtBalance = Number(usdtBalance)
+}
+// getTokenBalance
+
+async function _getMapUserInfo() {
+  const res = await getMapUserInfo()
+  const [
+    pledgeAmount = 0n,
+    withdrawAmount = 0n,
+    withdrawBalance = 0n,
+    lastWithdraTime = 0n,
+  ] = Array.isArray(res) ? res : []
+  userInfo.value.pledgeAmount = CurrencyAmount.fromRawAmount(TgnToken, pledgeAmount)
+  userInfo.value.withdrawAmount = CurrencyAmount.fromRawAmount(TgnToken, withdrawAmount)
+  userInfo.value.withdrawBalance = CurrencyAmount.fromRawAmount(TgnToken, withdrawBalance)
+  userInfo.value.lastWithdraTime = Number(lastWithdraTime)
+}
+async function _getqueryReleaseAmount() {
+  const queryReleaseAmount = await getqueryReleaseAmount()
+  userInfo.value.queryReleaseAmount = CurrencyAmount.fromRawAmount(TgnToken, queryReleaseAmount as bigint)
+}
+async function _getlockEndTime() {
+  const lockEndTime = await getlockEndTime()
+  userInfo.value.lockEndTime = Number(lockEndTime)
+}
+async function _getwithdrawExtracIntervalTime() {
+  const res = await getwithdrawExtracIntervalTime()
+  userInfo.value.withdrawExtracIntervalTime = Number(res)
+}
+async function _getTgnPrice() {
+  const tgnPrice = await getTgnPrice()
+  userInfo.value.tgnPrice = CurrencyAmount.fromRawAmount(TgnToken, tgnPrice as bigint)
+}
+
+const { blockNumber } = useAppBlockHooks()
+watch(blockNumber, () => {
+  _init()
+}, { immediate: true })
+
+function _init() {
+  if (!address)
+    return
+  _getMapUserInfo()
+  _getqueryReleaseAmount()
+  _getlockEndTime()
+  _getwithdrawExtracIntervalTime()
+  _getTgnPrice()
+  _get_usdt_balance()
+}
+
+function max() {
+  if (!address)
+    return
+  value.value = userInfo.value.usdtBalance
+  toUSDT()
+}
+const toU = ref(0)
+function toUSDT() {
+  if (value.value === null || value.value === undefined || value.value === 0) {
+    toU.value = 0
+    return
+  }
+  const res = Calc.Div(value.value, userInfo.value.tgnPrice?.toSignificant(6))
+  toU.value = res
+
+  // 计算获得的TGN数量
 }
 
 onMounted(() => {
@@ -56,7 +141,7 @@ onMounted(() => {
                 <div class="">
                   <span class="text-[30px] text-[#73CC2E] font-bold">
                     {{
-                      userBaseInfo.pledgeAmount.toSignificant(6)
+                      userInfo.pledgeAmount?.toSignificant(6)
                     }}
                   </span>
                   <!-- <span class="text-[20px] font-bold text-[#73CC2E]"> USDT </span> -->
@@ -66,51 +151,56 @@ onMounted(() => {
             <div class="box w-full py-[20px]">
               <div class="flex items-center">
                 <div class="flex flex-1 flex-col items-center justify-center">
-                  <span class="text-[#999]">锁仓价值（$）</span>
+                  <div class="flex items-center">
+                    <n-image width="20px" :src="usdt" preview-disabled />
+                    <span class="ml-4px text-[#999]">锁仓价值</span>
+                  </div>
                   <span class="mt-[4px] text-[20px] text-[#000] font-bold">
                     {{
-                      Calc.Mul(userBaseInfo.pledgeAmount.toSignificant(6), 1)
-                    }}
+                      userInfo.pledgeAmount
+                        ? Calc.Mul(userInfo.pledgeAmount?.toSignificant(6), userInfo.tgnPrice?.toSignificant(6)) : '--'
+                    }} $
                   </span>
                 </div>
                 <div class="h-[38px] w-[1px] bg-[#E0E0E0]" />
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="tgn" preview-disabled />
-                    <span class="ml-4px text-[#999]">待提现（TGN）</span>
+                    <span class="ml-4px text-[#999]">待提现</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
-                    {{
-                      Calc.Mul(
-                        userBaseInfo.queryReleaseAmount.toSignificant(6),
+                    {{ userInfo.queryReleaseAmount
+                      ? Calc.Mul(
+                        userInfo.queryReleaseAmount.toSignificant(6),
                         1,
                       )
-                    }}
+                      : '--'
+                    }} TGN
                   </span>
                 </div>
               </div>
-              <div class="mt-[20px] flex items-center justify-between px-[20px]">
+              <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="flex flex-col items-center justify-center">
                   <span class="text-[#999]">预计释放时间</span>
                   <span
-                    v-if="userBaseInfo.lockEndTime > userBaseInfo.lastWithdraTime"
+                    v-if="userInfo.lockEndTime > userInfo.lastWithdraTime"
                     class="mt-[4px] text-[14px] text-[#000]"
                   >
-                    {{ timeFormat(Number(userBaseInfo.lockEndTime) * 1000, 'yyyy/mm/dd hh:MM') }}
+                    {{ timeFormat(Number(userInfo.lockEndTime) * 1000, 'yyyy/mm/dd hh:MM') }}
                   </span>
                   <span v-else class="mt-[4px] text-[16px] text-[#000]">
                     {{
                       timeFormat(
                         Calc.Add(
-                          Number(userBaseInfo.lastWithdraTime),
-                          Number(userBaseInfo.withdrawExtracIntervalTime),
+                          Number(userInfo.lastWithdraTime),
+                          Number(userInfo.withdrawExtracIntervalTime),
                         ) * 1000, 'yyyy/mm/dd hh:MM',
                       )
                     }}
                   </span>
                 </div>
                 <n-button
-                  :disabled="txLoading || userBaseInfo.queryReleaseAmount.equalTo(0)"
+                  :disabled="txLoading || userInfo?.queryReleaseAmount?.equalTo(0)"
                   :loading="txLoading"
                   type="primary"
                   color="#73CC2E"
@@ -135,29 +225,33 @@ onMounted(() => {
                   <span class="text-[16px] text-[#666]">Price</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
-                  <span class="text-24px text-primary font-bold">0.02</span>
+                  <span class="text-24px text-primary font-bold">{{ userInfo.tgnPrice?.toSignificant(6) }}</span>
                   <span class="text-[16px] text-[#666]">USD</span>
                 </div>
                 <!--  -->
-                <div class="my-4px">
+                <div class="my-4px flex justify-between">
                   <span class="text-[16px] text-[#666]">USDT</span>
+                  <span class="text-[16px] text-[#666]">balance: {{ userInfo.usdtBalance || '--' }}</span>
                 </div>
-                <n-input
+                <n-input-number
                   v-model:value="value"
+                  :show-button="false"
                   :bordered="false"
                   style="border: none;"
                   clearable placeholder="请输入数量" class="flex-1"
+                  @input="toUSDT"
+                  @clear="toU = 0"
                 >
                   <template #suffix>
-                    <span>MAX</span>
+                    <span @click="max">MAX</span>
                   </template>
-                </n-input>
+                </n-input-number>
                 <!--  -->
                 <div class="mt-10px">
                   <span class="text-[14px] text-[#666]">获得</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
-                  <span class="text-24px text-[#000] font-bold">0.02</span>
+                  <span class="text-24px text-[#000] font-bold">{{ toU }}</span>
                   <span class="text-[16px] text-[#666]">TGN</span>
                 </div>
                 <!--  -->

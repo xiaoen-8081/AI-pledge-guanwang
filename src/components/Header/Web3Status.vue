@@ -20,6 +20,7 @@ async function handleDisconnect() {
 <template>
   <template v-if="address">
     <n-popover
+      trigger="click"
       :theme-overrides="{
         padding: '0px',
         color: 'transparent',

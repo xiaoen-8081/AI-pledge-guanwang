@@ -53,6 +53,8 @@ export function useBaseInfo() {
   )
 
   const userBaseInfo = computed(() => {
+    // console.log(balanceRes.value, 'balanceRes.value')
+
     const [
       pledgeAmount = 0n,
       withdrawAmount = 0n,
@@ -149,4 +151,78 @@ export function useWithdraw() {
     }
   }
   return { withdraw } as const
+}
+
+// 查看资金池余额
+export function useMapUserInfo() {
+  const { address: account } = useAccount()
+
+  const getMapUserInfo = async () => {
+    if (!account.value) {
+      // window.$Toast.show('请连接钱包')
+      return
+    }
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'mapUserInfo',
+      args: [account.value],
+    })
+    return res
+  }
+  //
+  const getqueryReleaseAmount = async () => {
+    if (!account.value) {
+      // window.$Toast.show('请连接钱包')
+      return
+    }
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'queryReleaseAmount',
+      args: [account.value],
+    })
+    return res
+  }
+  //
+  const getlockEndTime = async () => {
+    if (!account.value) {
+      // window.$Toast.show('请连接钱包')
+      return
+    }
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'lockEndTime',
+      args: [],
+    })
+    return res
+  }
+  //
+  const getwithdrawExtracIntervalTime = async () => {
+    if (!account.value) {
+      // window.$Toast.show('请连接钱包')
+      return
+    }
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'withdrawExtracIntervalTime',
+      args: [],
+    })
+    return res
+  }
+  //
+  const getTgnPrice = async () => {
+    if (!account.value)
+      return
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'tgnPrice',
+      args: [],
+    })
+    return res
+  }
+  return { getMapUserInfo, getqueryReleaseAmount, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
 }

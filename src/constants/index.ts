@@ -21,9 +21,11 @@ export const PLEDGE_ADDRESS: Address
 // swap合约地址
 export const SWAP_ADDRESS: Address
   = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试
-// 锁仓代币
+// 代币TGN地址
+export const TGN_ADDRESS: Address
+  = '0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f' // 测试
+// 锁仓代币USDT地址
 export const REWARD_TOKEN_ADDRESS: Address
-  // = '0x0ed9d9Cc5e2E0219E689f14411959fcfD9D6e6fD' // 测试
   = '0xdf745Ce4513f1B6b5AdC07A82F76253377f70c9e' // 测试
 export const RewardToken = new ERC20Token(
   137,
@@ -31,4 +33,11 @@ export const RewardToken = new ERC20Token(
   6,
   'USDT',
   'USDT Token',
+)
+export const TgnToken = new ERC20Token(
+  137,
+  TGN_ADDRESS,
+  18,
+  'TGN',
+  'TGN Token',
 )

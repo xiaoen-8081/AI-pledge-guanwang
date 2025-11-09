@@ -94,6 +94,7 @@ declare global {
   const useGlobalHooks: typeof import('../hooks/useGlobalHooks')['useGlobalHooks']
   const useI18n: typeof import('vue-i18n')['useI18n']
   const useId: typeof import('vue')['useId']
+  const useMapUserInfo: typeof import('../hooks/usePledge')['useMapUserInfo']
   const useModel: typeof import('vue')['useModel']
   const useMulticallAddress: typeof import('../hooks/useContract')['useMulticallAddress']
   const usePageActivated: typeof import('../hooks/usePageActivated')['usePageActivated']

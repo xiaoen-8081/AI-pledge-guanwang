@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BlockUpdater from '@/stores/application/updater'
 import type { BaseError } from '@wagmi/vue'
 import {
   useAccount,
@@ -9,6 +10,9 @@ interface PageProps {
   bottom?: boolean
 }
 const { bottom = true } = defineProps<PageProps>()
+
+BlockUpdater()
+
 const route = useRoute()
 const { address, chainId: collectChain } = useAccount()
 const { chains, switchChainAsync } = useSwitchChain()

@@ -54,7 +54,7 @@ function useCallsData(
 
   const multicallStore = useMulticallStore()
   const { callResults } = storeToRefs(multicallStore)
-  // console.warn('callResults', calls.value);
+  // console.warn('callResults', calls.value)
 
   // 将 calls 过滤、转换为唯一键，并序列化为 JSON 字符串
   const serializedCallKeys = computed(() => {
@@ -104,6 +104,8 @@ function useCallsData(
       return { valid: true, data, blockNumber: res?.blockNumber }
     })
   })
+  // console.log(results.value, 'results.value')
+
   return results
 }
 
@@ -287,6 +289,7 @@ export function useSingleCallResult<T = any>(
   // 返回调用结果
   const result = useCallsData(calls, options)
   const { blockNumber } = useAppBlockHooks()
+  // console.log(blockNumber)
 
   const formartRes = computed(() => {
     const resMap = toCallState<T>(
@@ -295,7 +298,7 @@ export function useSingleCallResult<T = any>(
       fragment.value,
       blockNumber.value,
     )
-    // console.warn('resMap', resMap);
+    // console.warn('resMap', resMap)
     return resMap
   })
   return formartRes
