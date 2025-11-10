@@ -58,7 +58,7 @@
             <!-- Operation start time -->
             {{ $t('开始时间') }}
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
-            Nov. 25, 2023
+            {{ $t('Nov. 12, 2025') }}
           </div>
         </div>
       </div>
