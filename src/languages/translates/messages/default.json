@@ -48,11 +48,229 @@
     ],
     "$id": 15
   },
-  "TENGEN · Awake": {
-    "en-US": "TENGEN · Awake",
+  "天元 · 觉醒": {
+    "en-US": "Truth · Awakening",
     "$files": [
-      "src/views/Home/Home.vue(449-468)"
+      "src/views/Home/Home.vue(449-461)"
     ],
-    "$id": 16
+    "$id": 57
+  },
+  "数字命运的主权时代": {
+    "en-US": "The Era of Financial Sovereignty",
+    "$files": [
+      "src/views/Home/Home.vue(687-701)"
+    ],
+    "$id": 58
+  },
+  "天元链（Tengen）由算法货币 TGN 驱动，开启了一个以「灵性与主权」为核心的新纪元。在这个时代，命运不再是注定的，而是可被算法唤醒、可由共识重塑。": {
+    "en-US": "TENGEN, powered by the algorithmic currency TGN, ushers in the second chapter of digital civilization Awakening.",
+    "$files": [
+      "src/views/Home/Home.vue(945-1026)"
+    ],
+    "$id": 59
+  },
+  "我们将易经哲理与区块链技术融合，让「推演未来」不再只是预测，而是一种参与——用户通过占卜、AI预测与金融操作，共同构建属于人类的数字文明自觉系统。隐私、自由与信任不再是口号，而是天元文明的底层算法。": {
+    "en-US": "Through the launch of the Anonymous Stablecoin and A Pay Privacy Payment Protocol, we are building a decentralized financial operating system, where privacy is a right, not a privilege.",
+    "$files": [
+      "src/views/Home/Home.vue(1044-1148)"
+    ],
+    "$id": 60
+  },
+  "进入应用": {
+    "en-US": "Enter App",
+    "$files": [
+      "src/views/Home/Home.vue(1317-1326)"
+    ],
+    "$id": 61
+  },
+  "协议数据统计": {
+    "en-US": "Agreement data statistics",
+    "$files": [
+      "src/views/Home/Home.vue(1722-1733)"
+    ],
+    "$id": 62
+  },
+  "觉醒协议 · 核心系统": {
+    "en-US": "Awakening Protocol · The Core System",
+    "$files": [
+      "src/views/Home/Home.vue(4262-4278)",
+      "src/views/Home/Home.vue(8817-8833)"
+    ],
+    "$id": 63
+  },
+  "占卜引擎": {
+    "en-US": "Stablecoin Reserve Contract",
+    "$files": [
+      "src/views/Home/Home.vue(5198-5207)"
+    ],
+    "$id": 64
+  },
+  "命运支付系统（A-Pay）": {
+    "en-US": "Privacy Payment Engine",
+    "$files": [
+      "src/views/Home/Home.vue(5703-5722)"
+    ],
+    "$id": 65
+  },
+  "TGN 键合合约": {
+    "en-US": "TGN Bonding Generator",
+    "$files": [
+      "src/views/Home/Home.vue(6214-6227)"
+    ],
+    "$id": 66
+  },
+  "灵性国库（Treasury）": {
+    "en-US": "Treasury Takeover Mechanism",
+    "$files": [
+      "src/views/Home/Home.vue(6716-6735)"
+    ],
+    "$id": 67
+  },
+  "流动性路由机": {
+    "en-US": " Liquidity Routing Machine",
+    "$files": [
+      "src/views/Home/Home.vue(7234-7246)"
+    ],
+    "$id": 68
+  },
+  "占卜挖矿协议": {
+    "en-US": "Anonymous Reward Protocol",
+    "$files": [
+      "src/views/Home/Home.vue(7744-7755)"
+    ],
+    "$id": 69
+  },
+  "NFT灵签保险库": {
+    "en-US": " Token Vault System",
+    "$files": [
+      "src/views/Home/Home.vue(8283-8297)"
+    ],
+    "$id": 70
+  },
+  "质押 · 预测": {
+    "en-US": "Staking · Predictive Yield",
+    "$files": [
+      "src/views/Home/Home.vue(13363-13375)"
+    ],
+    "$id": 71
+  },
+  "质押 TGN，即是觉醒未来。通过接入天元的算法发行引擎，用户可参与双轨系统：非稳定币 TGN + 稳定币 A 的组合将持续产生收益与治理权。收益比例根据系统需求、社区活跃度与生态总锁仓量动态调整，确保整个系统处于「自平衡、自增长、自演化」状态。每一次质押，既是参与，也是一次“命运投射”。": {
+    "en-US": "Stake TGN to awaken its intrinsic value.Through participation in the algorithmic issuance engine, users can earn dual-track rewards based on both TGN (non-stable) and A (stablecoin).Returns are dynamically adjusted according to ecosystem demand and user contribution.",
+    "$files": [
+      "src/views/Home/Home.vue(13847-13996)"
+    ],
+    "$id": 72
+  },
+  "流动性 · 自由": {
+    "en-US": "How to participate",
+    "$files": [
+      "src/views/Home/Home.vue(17731-17744)"
+    ],
+    "$id": 73
+  },
+  "提供流动性": {
+    "en-US": "Provide Liquidity",
+    "$files": [
+      "src/views/Home/Home.vue(18461-18471)"
+    ],
+    "$id": 74
+  },
+  "为 TGN/A 池提供流动性，即是成为文明的建构者。您将从每一次交易中分享收益，同时推动天元稳定币的生成与系统的稳定运行。": {
+    "en-US": "Supply liquidity to the TGN/A pool and earn from every transaction across the ecosystem.Your participation fuels the birth and growth of the A stablecoin",
+    "$files": [
+      "src/views/Home/Home.vue(18795-18861)"
+    ],
+    "$id": 75
+  },
+  "了解": {
+    "en-US": "Get to know",
+    "$files": [
+      "src/views/Home/Home.vue(19040-19047)"
+    ],
+    "$id": 76
+  },
+  "贷款抵押": {
+    "en-US": "Collateralized Loans",
+    "$files": [
+      "src/views/Home/Home.vue(19549-19558)"
+    ],
+    "$id": 77
+  },
+  "质押 TGN，即可生成稳定币 A。A 不仅是支付工具，更是您进入天元生态的“隐形通行证”：它可用于匿名支付、DAO 治理与 DeFi 交互，让您在无须暴露身份的情况下，畅游金融主权世界。在天元链的世界里，自由 = 算法 + 信任 + 匿名权利。": {
+    "en-US": "Stake TGN to generate A stablecoins.Use A for anonymous payments, DAO governance, and borderless DeFi interactions — all withoutrevealing your identity.",
+    "$files": [
+      "src/views/Home/Home.vue(19891-20018)"
+    ],
+    "$id": 78
+  },
+  "立即参与": {
+    "en-US": "Participate now",
+    "$files": [
+      "src/views/Home/Home.vue(20201-20210)"
+    ],
+    "$id": 79
+  },
+  "天元生态进化 · 路线规划": {
+    "en-US": "Tengen Ecosystem Roadmap",
+    "$files": [
+      "src/views/Home/Home.vue(20903-20921)"
+    ],
+    "$id": 80
+  },
+  "阶段 · 启元": {
+    "en-US": "The Genesis Stage",
+    "$files": [
+      "src/views/Home/Home.vue(22430-22442)"
+    ],
+    "$id": 81
+  },
+  "构建非稳定币 TGN 的发行飞轮，完善核心协议与占卜经济模型。AI 占卜、NFT 灵签、质押系统上线，形成最初的灵性经济形态。": {
+    "en-US": "Build the non-stablecoin issuance flywheel and refine the native incentive mechanisms of the TGN protocol.",
+    "$files": [
+      "src/views/Home/Home.vue(22708-22776)"
+    ],
+    "$id": 82
+  },
+  "阶段 · 觉醒": {
+    "en-US": "The Awakening Stage",
+    "$files": [
+      "src/views/Home/Home.vue(23858-23870)"
+    ],
+    "$id": 83
+  },
+  "推出稳定币 A 与隐私支付协议 A Pay，进入加密金融主权时代，开启跨生态支付与匿名结算网络。": {
+    "en-US": "Launch the Stablecoin + Privacy Payment Protocol (A Pay) and ignite the era of Crypto Sovereignty.",
+    "$files": [
+      "src/views/Home/Home.vue(24130-24183)"
+    ],
+    "$id": 84
+  },
+  "阶段 · 永恒": {
+    "en-US": "The Eternal Stage",
+    "$files": [
+      "src/views/Home/Home.vue(25263-25275)"
+    ],
+    "$id": 85
+  },
+  "生态系统进入完全自治状态，形成多链互联、AI驱动、自我演化的文明系统。天元链不再只是区块链，而是数字命运的秩序引擎。": {
+    "en-US": "Evolve into a fully autonomous, multi-chain, and self-adaptive civilization where the Tengen Protocol becomes a living ecosystem of perpetual innovation.",
+    "$files": [
+      "src/views/Home/Home.vue(25520-25583)"
+    ],
+    "$id": 86
+  },
+  "天有元气，地有常道，人有主权，链有天命。": {
+    "en-US": "Heaven has its vitality, earth has its constant way, people have sovereignty, and the chain has its destiny.",
+    "$files": [
+      "src/views/Home/Home.vue(26093-26118)"
+    ],
+    "$id": 87
+  },
+  "天元链（Tengen）用算法复刻命运，用共识构建主权。这是一场关于觉醒的实验，也是人类数字文明的再生。欢迎来到 天元纪元。": {
+    "en-US": "Tengen Chain uses algorithms to replicate destiny and consensus to build sovereignty. This is an experiment in awakening and a rebirth of human digital civilization. Welcome to the Tengen Era.",
+    "$files": [
+      "src/views/Home/Home.vue(26680-26746)"
+    ],
+    "$id": 88
   }
 }
