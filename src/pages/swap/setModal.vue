@@ -29,10 +29,10 @@ function submit() {
         </span>
       </n-flex>
       <n-flex justify="space-between" :size="0">
-        <div v-for="(item, index) in tabList" :key="index" :class="tabKey === index ? 'bg-primary text-[#fff]' : ''" class="h-34px w-80px flex cursor-pointer items-center justify-center rounded-6 bg-#d9d9d9" @click="tabKey = index, value = parseFloat(item)">
+        <div v-for="(item, index) in tabList" :key="index" :class="tabKey === index ? 'bg-primary text-[#fff]' : ''" class="h-34px w-70px flex cursor-pointer items-center justify-center rounded-6 bg-#d9d9d9" @click="tabKey = index, value = parseFloat(item)">
           <span class="text-[12px]">{{ item }}</span>
         </div>
-        <div class="w-80px">
+        <div class="w-70px">
           <n-input-number
             v-model:value="value"
             :show-button="false"

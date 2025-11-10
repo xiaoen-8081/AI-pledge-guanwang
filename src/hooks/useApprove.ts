@@ -1,6 +1,7 @@
 import type { Currency, CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 import type { Address, Hash } from 'viem'
 import { MaxUint256 } from '@pancakeswap/swap-sdk-core'
+import { useI18n } from 'vue-i18n'
 
 import type { RefOrComputedRef } from '@/constants/types'
 
@@ -34,6 +35,8 @@ export interface TaskListParams {
 }
 
 export function useGetAllowance() {
+  const { t } = useI18n()
+
   const { address: account } = useAccount()
   // 获取代币的授权额度
   const loading = ref(false)
@@ -42,7 +45,7 @@ export function useGetAllowance() {
     spender: Address | undefined,
   ) {
     if (!account.value || !spender) {
-      window.$NaiveMessage.error('钱包地址或授权地址不能为空')
+      window.$NaiveMessage.error(t('钱包地址或授权地址不能为空'))
       throw new Error('钱包地址或授权地址不能为空')
     }
     try {
@@ -108,6 +111,8 @@ export function useApproveCall(
 
 // 授权
 export function useApprove() {
+  const { t } = useI18n()
+
   const { writeContractCallBack } = wagmiWriteContract()
   const txHash: any = ref('')
   const { address: account } = useAccount()
@@ -125,7 +130,7 @@ export function useApprove() {
       args: [option.constantsAddress || SWAP_ADDRESS, MaxUint256],
     }
     if (!account.value) {
-      window.$Toast.show('请连接钱包')
+      window.$Toast.show(t('请连接钱包'))
       op?.onStop?.()
       return
     }
