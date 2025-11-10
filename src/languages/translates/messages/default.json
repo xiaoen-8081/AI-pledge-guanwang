@@ -1,0 +1,58 @@
+{
+  "没有找到此合约": {
+    "en-US": "没有找到此合约",
+    "$files": [
+      "src/hooks/useApproveCallback.ts(3383-3394)"
+    ],
+    "$id": 9
+  },
+  "交易估算gas失败": {
+    "en-US": "交易估算gas失败",
+    "$files": [
+      "src/hooks/useApproveCallback.ts(4115-4128)"
+    ],
+    "$id": 10
+  },
+  "Approve symbol": {
+    "en-US": "Approve symbol",
+    "$files": [
+      "src/hooks/useApproveCallback.ts(4650-4669)"
+    ],
+    "$id": 11
+  },
+  "Connect Wallet": {
+    "en-US": "Connect Wallet",
+    "$files": [
+      "src/components/Header/Web3Status.vue(1657-1676)"
+    ],
+    "$id": 12
+  },
+  "提示": {
+    "en-US": "提示",
+    "$files": [
+      "src/components/Layout/Page.vue(1417-1424)"
+    ],
+    "$id": 13
+  },
+  "copy": {
+    "en-US": "copy",
+    "$files": [
+      "src/components/global/DyCopy.vue(617-625)"
+    ],
+    "$id": 14
+  },
+  "支付": {
+    "en-US": "支付",
+    "$files": [
+      "src/pages/swap/index.vue(10180-10186)"
+    ],
+    "$id": 15
+  },
+  "TENGEN · Awake": {
+    "en-US": "TENGEN · Awake",
+    "$files": [
+      "src/views/Home/Home.vue(449-468)"
+    ],
+    "$id": 16
+  }
+}

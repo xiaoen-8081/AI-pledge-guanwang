@@ -47,7 +47,14 @@ async function _getMapUserInfo() {
 }
 async function _getqueryReleaseAmount() {
   const queryReleaseAmount = await getqueryReleaseAmount()
-  userInfo.value.queryReleaseAmount = CurrencyAmount.fromRawAmount(TgnToken, queryReleaseAmount as bigint)
+  console.log(queryReleaseAmount)
+
+  userInfo.value.queryReleaseAmount = CurrencyAmount.fromRawAmount(
+    TgnToken,
+    (typeof queryReleaseAmount === 'bigint' || typeof queryReleaseAmount === 'number' || typeof queryReleaseAmount === 'string')
+      ? queryReleaseAmount
+      : 0n,
+  )
 }
 async function _getlockEndTime() {
   const lockEndTime = await getlockEndTime()
@@ -59,7 +66,14 @@ async function _getwithdrawExtracIntervalTime() {
 }
 async function _getTgnPrice() {
   const tgnPrice = await getTgnPrice()
-  userInfo.value.tgnPrice = CurrencyAmount.fromRawAmount(TgnToken, tgnPrice as bigint)
+  console.log('tgnPrice', tgnPrice)
+
+  userInfo.value.tgnPrice = CurrencyAmount.fromRawAmount(
+    TgnToken,
+    (typeof tgnPrice === 'bigint' || typeof tgnPrice === 'number' || typeof tgnPrice === 'string')
+      ? tgnPrice
+      : 0n,
+  )
 }
 
 const { blockNumber } = useAppBlockHooks()
@@ -119,7 +133,7 @@ async function buy() {
   if (!address)
     return
   const num = await getAllowance(REWARD_TOKEN_ADDRESS, PLEDGE_ADDRESS)
-  const allowanceNum = Number(CurrencyAmount.fromRawAmount(RewardToken, num as bigint).toSignificant(6))
+  const allowanceNum = Number(CurrencyAmount.fromRawAmount(RewardToken, (typeof num === 'bigint' || typeof num === 'number' || typeof num === 'string') ? num : 0n).toSignificant(6))
   console.log('allowanceNum', allowanceNum, value.value)
   if (allowanceNum < value.value) {
     handleApprove()

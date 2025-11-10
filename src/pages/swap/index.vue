@@ -316,7 +316,7 @@ onMounted(() => {
     <template #content>
       <div class="bg">
         <div class="pos-fixed left-0 top-0 z-99 w-full">
-          <div class="mx-auto mt-24 max-w-1440px">
+          <div class="mx-auto mt-12 max-w-1440px">
             <Header />
           </div>
         </div>
@@ -410,13 +410,14 @@ onMounted(() => {
             </div>
             <!--  -->
             <n-button
+              v-if="false"
               disabled
               type="primary"
               style="height: 40px;border-radius: 12px;width: 100%;"
             >
               <span class="text-[18px]"> 敬请期待 </span>
             </n-button>
-            <div v-if="false" class="flex">
+            <div class="flex">
               <n-button
                 v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) && !getAllowanceLoading"
                 :loading="approveLoading"

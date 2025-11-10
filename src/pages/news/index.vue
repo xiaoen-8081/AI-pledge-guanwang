@@ -88,7 +88,7 @@ function toDetail(i) {
       <!-- 7 -->
       <div class="pos-relative w-full">
         <div class="pos-fixed left-0 top-0 z-99 w-full">
-          <div class="mx-auto mt-24 max-w-1440px">
+          <div class="mx-auto mt-12 max-w-1440px">
             <Header />
           </div>
         </div>

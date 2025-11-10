@@ -5,7 +5,7 @@
 <template>
   <div class="pos-relative w-full">
     <div class="pos-fixed left-0 top-0 z-99 w-full">
-      <div class="mx-auto mt-24 max-w-1440px">
+      <div class="mx-auto mt-12 max-w-1440px">
         <Header />
       </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="bgImg z-11 h-[550px] w-full sm:h-880px">
       <div class="mx-auto max-w-1440px px-15px pt-88px md:pt-200px">
         <div class="textColor text-[36px] font-bold md:text-[60px]">
-          TENGEN · Awake
+          {{ $t('TENGEN · Awake') }}
         </div>
         <div class="aos-init aos-animate text-[36px] text-[#1A1A1A] leading-[44px] font-[Bayon] uppercase md:text-[60px] md:leading-[78px]">
           the Era of Financial Sovereignty

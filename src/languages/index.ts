@@ -12,7 +12,7 @@ import defaultMessages from './messages/en-US'
 const messages = { 'zh-CN': () => import('./messages/zh-CN'), 'en-US': defaultMessages }
 
 export const i18nScope = new VoerkaI18nScope<TranslateComponentType, TransformResultType>({
-  id: 'TGN__3_1_2', // 当前作用域的id
+  id: 'TGN__3_1_9', // 当前作用域的id
   idMap, // 消息id映射列表
   formatters, // 格式化器
   storage, // 语言配置存储器

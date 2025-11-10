@@ -5,6 +5,7 @@ import messages from '@intlify/unplugin-vue-i18n/messages'
 export const langs = [
   { locale: 'en' },
   { locale: 'cn' },
+  { locale: 'hk' },
 ]
 
 export function getI18nLocale() {

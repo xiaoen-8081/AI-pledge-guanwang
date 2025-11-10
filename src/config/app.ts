@@ -1,5 +1,5 @@
 // app-name
-export const APP_NAME = 'WE_BASE'
+export const APP_NAME = 'TGN_BASE'
 // 本地个人存储
 export const USERINFO_KEY = `${APP_NAME}_USERINFO`
 // 本地token存储

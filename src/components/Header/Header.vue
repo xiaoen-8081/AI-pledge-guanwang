@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useCollapsedPopupHooks } from '@/stores/application/hooks'
+import { useI18n } from 'vue-i18n'
 
+const { locale } = useI18n()
 const [collapsed] = useCollapsedPopupHooks()
 
 const options = [
@@ -9,6 +11,24 @@ const options = [
   { name: 'Swap', label: 'Swap', value: 'cn' },
   { name: 'Public', label: 'Public Offering', value: 'cn' },
   { name: 'Private', label: 'Private Sale', value: 'cn' },
+]
+
+const languageOptions = [
+  {
+    label: '中文简体',
+    key: '1',
+    value: 'cn',
+  },
+  {
+    label: '中文繁体',
+    key: '2',
+    value: 'hk',
+  },
+  {
+    label: 'English',
+    key: '3',
+    value: 'en',
+  },
 ]
 
 const router = useRouter()
@@ -25,6 +45,12 @@ function toPage(item: any) {
   }
 
   router.push({ name: item.name })
+}
+async function handleSelect(e: { key: string }) {
+  const lang = languageOptions[Number(e) - 1]?.value
+  if (lang) {
+    locale.value = lang
+  }
 }
 </script>
 
@@ -57,6 +83,17 @@ function toPage(item: any) {
                   {{ x.label }}
                 </div>
               </n-flex>
+              <n-dropdown
+                trigger="click"
+                :options="languageOptions"
+                @select="handleSelect"
+              >
+                <div
+                  class="h-[34px] w-[34px] flex items-center justify-center rounded-full text-[#000]"
+                >
+                  <div class="i-iconoir:language text-28px" />
+                </div>
+              </n-dropdown>
             </n-flex>
           </n-flex>
           <div v-if="route.name === 'Public' || route.name === 'Private' || route.name === 'Swap'" class="ml-40px mr-40px h40px">
