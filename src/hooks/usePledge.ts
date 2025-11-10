@@ -225,7 +225,19 @@ export function useMapUserInfo() {
     })
     return res
   }
-  return { getMapUserInfo, getqueryReleaseAmount, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
+  //
+  const getIsWithdrawTime = async () => {
+    if (!account.value)
+      return
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'isWithdrawTime',
+      args: [account.value],
+    })
+    return res
+  }
+  return { getIsWithdrawTime, getMapUserInfo, getqueryReleaseAmount, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
 }
 
 // 认购

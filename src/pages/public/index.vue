@@ -27,6 +27,7 @@ const {
   getlockEndTime,
   getwithdrawExtracIntervalTime,
   getTgnPrice,
+  getIsWithdrawTime,
 } = useMapUserInfo()
 
 async function _get_usdt_balance() {
@@ -78,6 +79,11 @@ async function _getTgnPrice() {
       : 0n,
   )
 }
+const isWithdrawTime = ref(false)
+async function _getIsWithdrawTime() {
+  const res = await getIsWithdrawTime()
+  isWithdrawTime.value = Boolean(res)
+}
 
 const { blockNumber } = useAppBlockHooks()
 watch(blockNumber, () => {
@@ -93,6 +99,7 @@ function _init() {
   _getwithdrawExtracIntervalTime()
   _getTgnPrice()
   _get_usdt_balance()
+  _getIsWithdrawTime()
 }
 
 // 提现
@@ -295,7 +302,7 @@ onMounted(() => {
                   </span>
                 </div>
                 <n-button
-                  :disabled="txLoading || userInfo?.queryReleaseAmount?.equalTo(0)"
+                  :disabled="txLoading || userInfo?.queryReleaseAmount?.equalTo(0) || !isWithdrawTime"
                   :loading="txLoading"
                   type="primary"
                   color="#73CC2E"
@@ -326,7 +333,7 @@ onMounted(() => {
                 <!--  -->
                 <div class="my-4px flex justify-between">
                   <span class="text-[16px] text-[#666]">USDT</span>
-                  <span class="text-[16px] text-[#666]">balance: {{ userInfo.usdtBalance || 0 }}</span>
+                  <span class="text-[12px] text-[#666]" style="font-family: Roboto;">balance: {{ userInfo.usdtBalance || 0 }}</span>
                 </div>
                 <n-input-number
                   v-model:value="value"
