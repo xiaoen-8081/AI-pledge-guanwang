@@ -109,10 +109,23 @@ async function handleSelect(e: { key: string }) {
             {{ $t('Enrers TGN Application') }}
           </div>
         </div>
-        <div class="mr-10px flex md:hidden">
+        <div class="mr-10px flex flex items-center md:hidden">
           <div class="mr-10px">
             <Web3Status v-if="route.name === 'Public' || route.name === 'Private' || route.name === 'Swap'" />
           </div>
+
+          <n-dropdown
+            style="font-family: Noto Sans SC, Noto Sans SC;"
+            trigger="click"
+            :options="languageOptions"
+            @select="handleSelect"
+          >
+            <div
+              class="h-[34px] w-[34px] flex items-center justify-center rounded-full text-[#000]"
+            >
+              <div class="i-iconoir:language text-28px" />
+            </div>
+          </n-dropdown>
           <n-button text type="default">
             <div class="i-carbon:list text-28" @click="collapsed = !collapsed" />
           </n-button>
