@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { timeFormat } from '@/utils/utils'
+import { useI18n } from 'vue-i18n'
+import { locale } from '@/locales'
 
 const newsData: any = ref({})
 const flashNews: any = ref([])
@@ -7,6 +9,16 @@ const current = ref<number>(0)
 const currentStatus = ref<'process' | 'finish' | 'error'>('process') // Add this line
 const checkbox = ref(true)
 const downTime = ref<number>(60)
+const { t } = useI18n()
+
+//
+const lang = ref(1)
+watch(locale, (val) => {
+  lang.value = val === 'cn' ? 1 : val === 'en' ? 3 : 2
+  nextTick(() => {
+    send()
+  })
+}, { immediate: true })
 
 const timer = ref()
 watch (checkbox, (newVal) => {
@@ -25,20 +37,20 @@ watch (checkbox, (newVal) => {
 }, { immediate: true })
 
 onMounted(async () => {
-  send()
+  // send()
 })
 
-const tabsList = ref<any>([{ name: '精选', id: '' }])
+const tabsList = ref<any>([{ name: t('精选'), id: '' }])
 
 const tagId = ref('')
 async function send(lastTime?: string) {
   try {
     let url = ''
     if (lastTime) {
-      url = tagId.value ? `https://api.panewslab.com/webapi/flashnews?rn=20&lid=1&apppush=0&tagId=${tagId.value}&lastTime=${lastTime}` : `https://api.panewslab.com/webapi/flashnews?rn=20&lid=1&apppush=0&lastTime=${lastTime}`
+      url = tagId.value ? `https://api.panewslab.com/webapi/flashnews?rn=20&lid=${lang.value}&apppush=0&tagId=${tagId.value}&lastTime=${lastTime}` : `https://api.panewslab.com/webapi/flashnews?rn=20&lid=${lang.value}&apppush=0&lastTime=${lastTime}`
     }
     else {
-      url = tagId.value ? `https://api.panewslab.com/webapi/flashnews?rn=20&lid=1&apppush=0&tagId=${tagId.value}` : 'https://api.panewslab.com/webapi/flashnews?rn=20&lid=1&apppush=0'
+      url = tagId.value ? `https://api.panewslab.com/webapi/flashnews?rn=20&lid=${lang.value}&apppush=0&tagId=${tagId.value}` : `https://api.panewslab.com/webapi/flashnews?rn=20&lid=${lang.value}&apppush=0`
     }
     const res = await fetch(url, {
       method: 'GET',
@@ -62,7 +74,7 @@ async function send(lastTime?: string) {
     else {
       flashNews.value = json.data.flashNews
     }
-    tabsList.value = [{ name: '精选', id: '' }, ...newsData.value.tag.map((item: any) => ({ name: item.name, id: item.id }))]
+    tabsList.value = [{ name: t('精选'), id: '' }, ...newsData.value.tag.map((item: any) => ({ name: item.name, id: item.id }))]
     console.log('返回结果：', json.data)
   }
   catch (err) {
@@ -112,7 +124,7 @@ function toDetail(i) {
                     <n-checkbox v-model:checked="checkbox" style="margin-right: 12px">
                       <div>
                         <span class="mr-4px">{{ downTime }}</span>
-                        <span>秒后自动刷新</span>
+                        <span>{{ $t('秒后自动刷新') }}</span>
                       </div>
                     </n-checkbox>
                   </div>
@@ -126,7 +138,7 @@ function toDetail(i) {
                   <n-checkbox v-model:checked="checkbox" style="margin-right: 12px">
                     <div>
                       <span class="">{{ downTime }}</span>
-                      <span>秒后自动刷新</span>
+                      <span>{{ $t('秒后自动刷新') }}</span>
                     </div>
                   </n-checkbox>
                 </div>
@@ -146,8 +158,8 @@ function toDetail(i) {
                     </div>
                     <div class="ml-10px h-60px w-100px">
                       <div class="mt-2px h-30px w-full flex items-center text-18px c-#222">
-                        <span v-if="Number(item.date.split('-')[2]) === Number(new Date().getDate())">今天</span>
-                        <span v-else-if="Number(item.date.split('-')[2]) === Number(new Date().getDate() - 1)">昨天</span>
+                        <span v-if="Number(item.date.split('-')[2]) === Number(new Date().getDate())">{{ $t('今天') }}</span>
+                        <span v-else-if="Number(item.date.split('-')[2]) === Number(new Date().getDate() - 1)">{{ $t('昨天') }}</span>
                         <span v-else />
                       </div>
                       <div class="mt-2px h-30px w-full flex items-center c-#222">
@@ -195,7 +207,7 @@ function toDetail(i) {
               </template>
               <!--  -->
               <div class="mt-20px flex cursor-pointer justify-center text-20px c-[rgba(115,204,46)]" @click="send(flashNews?.[flashNews?.length - 1]?.list?.[flashNews?.[flashNews?.length - 1]?.list?.length - 1]?.ctime)">
-                加载更多快讯
+                {{ $t('加载更多快讯') }}
               </div>
             </div>
           </div>

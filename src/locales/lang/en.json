@@ -51,5 +51,13 @@
   "Media reports": "Media reports",
   "返回": "Back",
   "此页面属于": "This page belongs to",
-  "切换": "Switch"
+  "切换": "Switch",
+
+  "精选": "Featured",
+  "秒后自动刷新": "Auto refresh in seconds",
+  "今天": "Today",
+  "昨天": "Yesterday",
+  "加载更多快讯": "Load more news",
+  "作者": "Author",
+  "本内容只为提供市场信息，不构成投资建议": "This content is for market information only and does not constitute investment advice"
 }

@@ -37,10 +37,10 @@ onMounted(() => {
                 {{ info.desc }}
               </div>
               <div class="mt-[20px] text-center lg:text-[18px]">
-                作者：{{ info.author?.name }}
+                {{ $t('作者') }}：{{ info.author?.name }}
               </div>
               <div class="text-center lg:text-[18px]">
-                本内容只为提供市场信息，不构成投资建议
+                {{ $t('本内容只为提供市场信息，不构成投资建议') }}
               </div>
             </div>
           </div>
