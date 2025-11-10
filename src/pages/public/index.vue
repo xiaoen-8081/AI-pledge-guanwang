@@ -87,7 +87,8 @@ async function _withdraw() {
     onError: () => {
       txLoading.value = false
       // 错误处理
-      window.$Toast.show('提现失败')
+      // window.$Toast.show('提现失败')
+      window.$Toast.show('Withdrawal failed')
     },
     onStop: () => {
       txLoading.value = false
@@ -95,7 +96,8 @@ async function _withdraw() {
     onSuccess: () => {
       // 成功处理
       txLoading.value = false
-      window.$Toast.show('提现成功')
+      // window.$Toast.show('提现成功')
+      window.$Toast.show('Withdrawal successful')
     },
   })
 }
@@ -105,11 +107,13 @@ const { getAllowance } = useGetAllowance()
 const buyLoading = ref(false)
 async function buy() {
   if (!value.value || value.value <= 0) {
-    window.$Toast.show('请输入认购数量')
+    // window.$Toast.show('请输入认购数量')
+    window.$Toast.show('Please enter the subscription quantity')
     return
   }
   if (value.value > userInfo.value.usdtBalance) {
-    window.$Toast.show('余额不足')
+    // window.$Toast.show('余额不足')
+    window.$Toast.show('not sufficient funds')
     return
   }
   if (!address)
@@ -134,7 +138,8 @@ async function handleApprove() {
     { tokenAddress: REWARD_TOKEN_ADDRESS, constantsAddress: PLEDGE_ADDRESS }
     , {
       onSuccess: () => {
-        window.$NaiveMessage.success(('授权成功'), {
+        // window.$NaiveMessage.success(('授权成功'), {
+        window.$NaiveMessage.success(('Authorization successful'), {
           showIcon: false,
         })
         approveLoading.value = false
@@ -142,7 +147,8 @@ async function handleApprove() {
       },
       onError: () => {
         approveLoading.value = false
-        window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
+        // window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
+        window.$NaiveMessage.error(('Authorization failed. Please re-authorize the quota'), {
           showIcon: false,
         })
       },
@@ -162,7 +168,8 @@ async function _subscribe() {
     onError: () => {
       buyLoading.value = false
       // 错误处理
-      window.$Toast.show('认购失败')
+      // window.$Toast.show('认购失败')
+      window.$Toast.show('Subscription failed')
     },
     onStop: () => {
       buyLoading.value = false
@@ -170,7 +177,8 @@ async function _subscribe() {
     onSuccess: () => {
       // 成功处理
       buyLoading.value = false
-      window.$Toast.show('认购成功')
+      // window.$Toast.show('认购成功')
+      window.$Toast.show('Subscription successful')
       value.value = null
       toU.value = 0
     },
@@ -216,7 +224,8 @@ onMounted(() => {
               class="relative mt-[-90px] h-[100px] flex items-center rounded-xl px-[20px]" style="background: linear-gradient(135deg, rgba(255,255,255,0) 0%, #d9efcb 29%), #ebf8e4;"
             >
               <div class="flex flex-col">
-                <span class="mt-12px text-[18px] text-[#666666]">公募锁仓数量（TGN）</span>
+                <!-- <span class="mt-12px text-[18px] text-[#666666]">公募锁仓数量（TGN）</span> -->
+                <span class="mt-12px text-[18px] text-[#666666]">Public Offering Quantity（TGN）</span>
                 <div class="">
                   <span class="text-[30px] text-[#73CC2E] font-bold">
                     {{
@@ -232,7 +241,8 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="usdt" preview-disabled />
-                    <span class="ml-4px text-[#999]">锁仓价值($)</span>
+                    <!-- <span class="ml-4px text-[#999]">锁仓价值($)</span> -->
+                    <span class="ml-4px text-[#999]">Locked value($)</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#000] font-bold">
                     {{
@@ -245,7 +255,8 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="tgn" preview-disabled />
-                    <span class="ml-4px text-[#999]">待提现(TGN)</span>
+                    <!-- <span class="ml-4px text-[#999]">待提现(TGN)</span> -->
+                    <span class="ml-4px text-[#999]">Pending withdrawal(TGN)</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
                     {{ userInfo.queryReleaseAmount
@@ -260,7 +271,8 @@ onMounted(() => {
               </div>
               <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="flex flex-col items-center justify-center">
-                  <span class="text-[#999]">预计释放时间</span>
+                  <!-- <span class="text-[#999]">预计释放时间</span> -->
+                  <span class="text-[#999]">Expected release time</span>
                   <span
                     v-if="userInfo.lockEndTime > userInfo.lastWithdraTime"
                     class="mt-[4px] text-[14px] text-[#000]"
@@ -287,7 +299,8 @@ onMounted(() => {
                   style="width: 116px"
                   @click="_withdraw"
                 >
-                  <span>提现</span>
+                  <!-- <span>提现</span> -->
+                  <span style="font-family: Noto Sans SC, Noto Sans SC;">Withdraw</span>
                 </n-button>
               </div>
               <!--  -->
@@ -317,7 +330,7 @@ onMounted(() => {
                   :show-button="false"
                   :bordered="false"
                   style="border: none;"
-                  clearable placeholder="请输入数量" class="flex-1"
+                  clearable placeholder="Please enter the quantity" class="flex-1"
                   @input="toUSDT"
                   @clear="toU = 0"
                 >
@@ -327,7 +340,8 @@ onMounted(() => {
                 </n-input-number>
                 <!--  -->
                 <div class="mt-10px">
-                  <span class="text-[14px] text-[#666]">获得</span>
+                  <!-- <span class="text-[14px] text-[#666]">获得</span> -->
+                  <span class="text-[14px] text-[#666]">Acquire</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
                   <span class="text-24px text-[#000] font-bold">{{ toU }}</span>
@@ -343,7 +357,8 @@ onMounted(() => {
                     style="width: 116px"
                     @click="buy"
                   >
-                    <span>认购</span>
+                    <!-- <span>认购</span> -->
+                    <span>Subscription</span>
                   </n-button>
                 </div>
               </div>
