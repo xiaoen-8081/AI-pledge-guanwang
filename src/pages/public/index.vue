@@ -224,8 +224,7 @@ onMounted(() => {
             <Header />
           </div>
         </div>
-        <div class="mx-auto max-w-[480px] pt-[80px] lg:pb-20px">
-          <div />
+        <div class="mx-auto mt-[-80px] max-w-[480px] pt-[80px] md:mt-0 lg:pb-20px">
           <n-image width="100%" :src="bg" preview-disabled />
           <!-- <div class="h-[140px] w-[100%]" /> -->
           <div class="flex flex-1 flex-col bg-#fff px-[20px]">
@@ -387,7 +386,7 @@ onMounted(() => {
   <style scoped>
   .bg {
   width: 100vw;
-  /* height: calc(100vh - 120px); */
+  /* height: calc(100vh - 30px); */
   background-image: url('/src/assets/img/lockBg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;

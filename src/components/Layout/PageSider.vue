@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useCollapsedPopupHooks } from '@/stores/application/hooks'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const [collapsed, close] = useCollapsedPopupHooks()
 
 const options = [
-  { name: 'Home', label: 'Home' },
-  { name: 'News', label: 'News' },
-  { name: 'Swap', label: 'Swap', value: 'cn' },
-  { name: 'Public', label: 'Public Offering', value: 'cn' },
-  { name: 'Private', label: 'Private Sale', value: 'cn' },
+  { name: 'Home', label: t('Home'), value: 'cn' },
+  { name: 'News', label: t('News'), value: 'cn' },
+  { name: 'Swap', label: t('Swap'), value: 'cn' },
+  { name: 'Public', label: t('Public'), value: 'cn' },
+  { name: 'Private', label: t('Private'), value: 'cn' },
 ]
 const router = useRouter()
 function toPage(item) {
@@ -27,7 +29,7 @@ function toPage(item) {
       <template #header>
         <n-flex class="" justify="space-between">
           <div @click="$router.replace({ name: 'Home' })">
-            <img src="/src/assets/img/logo.svg" style="width: 60px;" alt="">
+            <img src="/src/assets/img/logo.svg" style="width: 80px;" alt="">
           </div>
           <n-button text @click="collapsed = !collapsed">
             <template #icon>
@@ -53,3 +55,9 @@ function toPage(item) {
     </n-drawer-content>
   </n-drawer>
 </template>
+
+<style scoped>
+::v-deep(.n-drawer-header) {
+  padding-left: 0px !important;
+}
+</style>
