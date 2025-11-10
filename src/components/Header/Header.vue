@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCollapsedPopupHooks } from '@/stores/application/hooks'
 import { useI18n } from 'vue-i18n'
+import { USERINFO_KEY } from '@/config/app'
 
 const { locale, t } = useI18n()
 const [collapsed] = useCollapsedPopupHooks()
@@ -50,6 +51,7 @@ async function handleSelect(e: { key: string }) {
   const lang = languageOptions[Number(e) - 1]?.value
   if (lang) {
     locale.value = lang
+    localStorage.setItem(`${USERINFO_KEY}_LAN`, lang)
     options.forEach((item) => {
       item.label = t(item.name)
     })

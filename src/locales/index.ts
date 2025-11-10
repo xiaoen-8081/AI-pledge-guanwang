@@ -9,7 +9,7 @@ export const langs = [
 ]
 
 export function getI18nLocale() {
-  const lang = localStorage.getItem(`${USERINFO_KEY}_LAN`) || 'cn'
+  const lang = localStorage.getItem(`${USERINFO_KEY}_LAN`) || 'en'
   if (langs.map(x => x.locale).includes(lang))
     return lang
   return lang
