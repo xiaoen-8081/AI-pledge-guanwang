@@ -3,12 +3,13 @@ import { t } from '@/languages'
 import usdtImg from '@/assets/img/usdt.png'
 import tgnImg from '@/assets/img/tgn.jpg'
 import { useCollectWallet } from '@/hooks/useCollectWallethooks'
+import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 
 import { useGetAmountsOut, useSwapExactTokensForTokensSupportingFeeOnTransferTokens, useSwapTokensForExactTokens, useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { parseUnits } from 'viem'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
-import { SWAP_ADDRESS } from '@/constants'
+import { RewardToken, SWAP_ADDRESS, TgnToken } from '@/constants'
 import { calcSwapParams } from './useCalc'
 import setModal from './setModal.vue'
 // import tryParseAmount from '@/utils/tryParseAmount'
@@ -67,7 +68,8 @@ const _getAmountsOut = debounce(async () => {
     return
   }
   // 查授权
-  allowanceNum.value = await _getAllowance((is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value) as `0x${string}`)
+  const num = await _getAllowance((is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value) as `0x${string}`)
+  allowanceNum.value = Number(CurrencyAmount.fromRawAmount(is_TgToU.value ? TgnToken : RewardToken, num).toSignificant(6))
   console.log(allowanceNum.value, 'allowanceNum')
   // 算兑换
   const res: any = await getAmountsOut({
@@ -140,10 +142,10 @@ async function handleApprove() {
         window.$NaiveMessage.success(('授权成功'), {
           showIcon: false,
         })
-        approveLoading.value = true
+        approveLoading.value = false
       },
       onError: () => {
-        approveLoading.value = true
+        approveLoading.value = false
         window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
           showIcon: false,
         })
@@ -410,6 +412,7 @@ onMounted(() => {
             <div class="flex">
               <n-button
                 v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) && !getAllowanceLoading"
+                :loading="approveLoading"
                 class="mr-10px flex-1"
                 type="primary"
                 style="height: 40px;border-radius: 12px;"
