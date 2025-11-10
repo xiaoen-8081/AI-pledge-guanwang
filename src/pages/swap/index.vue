@@ -69,7 +69,11 @@ const _getAmountsOut = debounce(async () => {
   }
   // 查授权
   const num = await _getAllowance((is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value) as `0x${string}`)
-  allowanceNum.value = Number(CurrencyAmount.fromRawAmount(is_TgToU.value ? TgnToken : RewardToken, num).toSignificant(6))
+  console.log(num, 'allowance')
+
+  allowanceNum.value = is_TgToU.value
+    ? Number(CurrencyAmount.fromRawAmount(TgnToken, num as bigint).toExact())
+    : Number(CurrencyAmount.fromRawAmount(RewardToken, num as bigint).toExact())
   console.log(allowanceNum.value, 'allowanceNum')
   // 算兑换
   const res: any = await getAmountsOut({
@@ -128,7 +132,7 @@ async function _getAllowance(tokenAddress: `0x${string}`) {
   const res = await getAllowance(tokenAddress, SWAP_ADDRESS)
   getAllowanceLoading.value = false
   console.warn(res)
-  return Number(res)
+  return (res)
 }
 
 // 授权
