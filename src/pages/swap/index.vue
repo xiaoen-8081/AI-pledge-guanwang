@@ -409,7 +409,14 @@ onMounted(() => {
               </div>
             </div>
             <!--  -->
-            <div class="flex">
+            <n-button
+              disabled
+              type="primary"
+              style="height: 40px;border-radius: 12px;width: 100%;"
+            >
+              <span class="text-[18px]"> 敬请期待 </span>
+            </n-button>
+            <div v-if="false" class="flex">
               <n-button
                 v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) && !getAllowanceLoading"
                 :loading="approveLoading"
