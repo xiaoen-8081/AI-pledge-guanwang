@@ -10,6 +10,9 @@ import { PLEDGE_ADDRESS, REWARD_TOKEN_ADDRESS, RewardToken, TgnToken } from '@/c
 import { useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const { address } = useAccount()
 const value = ref(null)
@@ -101,8 +104,7 @@ async function _withdraw() {
     onError: () => {
       txLoading.value = false
       // 错误处理
-      // window.$Toast.show('提现失败')
-      window.$Toast.show('Withdrawal failed')
+      window.$Toast.show(t('提现失败'))
     },
     onStop: () => {
       txLoading.value = false
@@ -110,8 +112,7 @@ async function _withdraw() {
     onSuccess: () => {
       // 成功处理
       txLoading.value = false
-      // window.$Toast.show('提现成功')
-      window.$Toast.show('Withdrawal successful')
+      window.$Toast.show(t('提现成功'))
     },
   })
 }
@@ -121,13 +122,11 @@ const { getAllowance } = useGetAllowance()
 const buyLoading = ref(false)
 async function buy() {
   if (!value.value || value.value <= 0) {
-    // window.$Toast.show('请输入认购数量')
-    window.$Toast.show('Please enter the subscription quantity')
+    window.$Toast.show(t('请输入认购数量'))
     return
   }
   if (value.value > userInfo.value.usdtBalance) {
-    // window.$Toast.show('余额不足')
-    window.$Toast.show('not sufficient funds')
+    window.$Toast.show(t('余额不足'))
     return
   }
   if (!address)
@@ -152,8 +151,7 @@ async function handleApprove() {
     { tokenAddress: REWARD_TOKEN_ADDRESS, constantsAddress: PLEDGE_ADDRESS }
     , {
       onSuccess: () => {
-        // window.$NaiveMessage.success(('授权成功'), {
-        window.$NaiveMessage.success(('Authorization successful'), {
+        window.$NaiveMessage.success(t('授权成功'), {
           showIcon: false,
         })
         approveLoading.value = false
@@ -161,8 +159,7 @@ async function handleApprove() {
       },
       onError: () => {
         approveLoading.value = false
-        // window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
-        window.$NaiveMessage.error(('Authorization failed. Please re-authorize the quota'), {
+        window.$NaiveMessage.error(t('授权失败，请重新授权额度'), {
           showIcon: false,
         })
       },
@@ -182,8 +179,7 @@ async function _subscribe() {
     onError: () => {
       buyLoading.value = false
       // 错误处理
-      // window.$Toast.show('认购失败')
-      window.$Toast.show('Subscription failed')
+      window.$Toast.show(t('认购失败'))
     },
     onStop: () => {
       buyLoading.value = false
@@ -191,8 +187,7 @@ async function _subscribe() {
     onSuccess: () => {
       // 成功处理
       buyLoading.value = false
-      // window.$Toast.show('认购成功')
-      window.$Toast.show('Subscription successful')
+      window.$Toast.show(t('认购成功'))
       value.value = null
       toU.value = 0
     },
@@ -238,8 +233,7 @@ onMounted(() => {
               class="relative mt-[-90px] h-[100px] flex items-center rounded-xl px-[20px]" style="background: linear-gradient(135deg, rgba(255,255,255,0) 0%, #d9efcb 29%), #ebf8e4;"
             >
               <div class="flex flex-col">
-                <!-- <span class="mt-12px text-[18px] text-[#666666]">公募锁仓数量（TGN）</span> -->
-                <span class="mt-12px text-[18px] text-[#666666]">Public Offering Quantity（TGN）</span>
+                <span class="mt-12px text-[18px] text-[#666666]">{{ $t('公募锁仓数量（TGN）') }}</span>
                 <div class="">
                   <span class="text-[30px] text-[#73CC2E] font-bold">
                     {{
@@ -255,8 +249,7 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="usdt" preview-disabled />
-                    <!-- <span class="ml-4px text-[#999]">锁仓价值($)</span> -->
-                    <span class="ml-4px text-[#999]">Locked value($)</span>
+                    <span class="ml-4px text-[#999]">{{ $t('锁仓价值($)') }}</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#000] font-bold">
                     {{
@@ -269,8 +262,7 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="tgn" preview-disabled />
-                    <!-- <span class="ml-4px text-[#999]">待提现(TGN)</span> -->
-                    <span class="ml-4px text-[#999]">Pending withdrawal(TGN)</span>
+                    <span class="ml-4px text-[#999]">{{ $t('待提现(TGN)') }}</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
                     {{ userInfo.queryReleaseAmount
@@ -285,8 +277,7 @@ onMounted(() => {
               </div>
               <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="flex flex-col items-center justify-center">
-                  <!-- <span class="text-[#999]">预计释放时间</span> -->
-                  <span class="text-[#999]">Expected release time</span>
+                  <span class="text-[#999]">{{ $t('预计释放时间') }}</span>
                   <span
                     v-if="userInfo.lockEndTime > userInfo.lastWithdraTime"
                     class="mt-[4px] text-[14px] text-[#000]"
@@ -313,8 +304,7 @@ onMounted(() => {
                   style="width: 116px"
                   @click="_withdraw"
                 >
-                  <!-- <span>提现</span> -->
-                  <span style="font-family: Noto Sans SC, Noto Sans SC;">Withdraw</span>
+                  <span style="font-family: Noto Sans SC, Noto Sans SC;">{{ $t('提现') }}</span>
                 </n-button>
               </div>
               <!--  -->
@@ -328,7 +318,7 @@ onMounted(() => {
                 </div>
                 <!--  -->
                 <div class="mt-10px">
-                  <span class="text-[16px] text-[#666]">Price</span>
+                  <span class="text-[16px] text-[#666]">{{ $t('价格') }}</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
                   <span class="text-24px text-primary font-bold">{{ userInfo.tgnPrice?.toSignificant(6) }}</span>
@@ -354,8 +344,7 @@ onMounted(() => {
                 </n-input-number>
                 <!--  -->
                 <div class="mt-10px">
-                  <!-- <span class="text-[14px] text-[#666]">获得</span> -->
-                  <span class="text-[14px] text-[#666]">Acquire</span>
+                  <span class="text-[14px] text-[#666]">{{ $t('获得') }}</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
                   <span class="text-24px text-[#000] font-bold">{{ toU }}</span>
@@ -371,8 +360,7 @@ onMounted(() => {
                     style="width: 116px"
                     @click="buy"
                   >
-                    <!-- <span>认购</span> -->
-                    <span>Subscription</span>
+                    <span>{{ $t('认购') }}</span>
                   </n-button>
                 </div>
               </div>
