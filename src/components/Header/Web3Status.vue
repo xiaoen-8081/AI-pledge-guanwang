@@ -36,7 +36,7 @@ async function handleDisconnect() {
       <n-flex vertical class="b1-borderColor1 w-200 rounded-14 bg-#fff p-4" :size="0">
         <dy-button quaternary height="45px" type="default" radius="12px" @click="handleDisconnect">
           <div class="w-200 flex-row-between text-left">
-            <span class="">断开</span>
+            <span class="">{{ $t('断开') }}</span>
             <div class="i-carbon:logout text-20" />
           </div>
         </dy-button>
@@ -45,7 +45,7 @@ async function handleDisconnect() {
   </template>
   <template v-else>
     <dy-button :loading="isLoading" :disabled="isLoading" type="primary" color="#000" @click="collect()">
-      {{ $t('Connect Wallet') }}
+      {{ $t('连接钱包') }}
     </dy-button>
   </template>
 </template>

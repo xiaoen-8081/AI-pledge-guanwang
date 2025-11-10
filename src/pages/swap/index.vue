@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { t } from '@/languages'
+import { useI18n } from 'vue-i18n'
 import usdtImg from '@/assets/img/usdt.png'
 import tgnImg from '@/assets/img/tgn.jpg'
 import { useCollectWallet } from '@/hooks/useCollectWallethooks'
@@ -12,6 +12,8 @@ import { useApprove, useGetAllowance } from '@/hooks/useApprove'
 import { RewardToken, SWAP_ADDRESS, TgnToken } from '@/constants'
 import { calcSwapParams } from './useCalc'
 import setModal from './setModal.vue'
+
+const { t } = useI18n()
 // import tryParseAmount from '@/utils/tryParseAmount'
 // import { ERC20Token } from '@pancakeswap/swap-sdk-evm'
 
@@ -143,14 +145,14 @@ async function handleApprove() {
     { tokenAddress: is_TgToU.value ? tgTokenAddress.value : usdtTokenAddress.value }
     , {
       onSuccess: () => {
-        window.$NaiveMessage.success(('授权成功'), {
+        window.$NaiveMessage.success(t('授权成功'), {
           showIcon: false,
         })
         approveLoading.value = false
       },
       onError: () => {
         approveLoading.value = false
-        window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
+        window.$NaiveMessage.error(t('授权失败，请重新授权额度'), {
           showIcon: false,
         })
       },
@@ -174,7 +176,7 @@ const amountInMax = ref('')
 async function swap() {
   if (is_TgToU.value) {
     if (Number(value1.value) > Number(banance1.value)) {
-      window.$NaiveMessage.success(('余额不足'), {
+      window.$NaiveMessage.success(t('余额不足'), {
         showIcon: false,
       })
       return
@@ -182,7 +184,7 @@ async function swap() {
   }
   else {
     if (Number(value1.value) > Number(banance2.value)) {
-      window.$NaiveMessage.success(('余额不足'), {
+      window.$NaiveMessage.success(t('余额不足'), {
         showIcon: false,
       })
       return
@@ -209,7 +211,7 @@ async function swap() {
     amountInMax.value = (res.amountInMax * 10).toFixed()
   }
   if (isAdd_Addr.value && !toAddress.value) {
-    window.$NaiveMessage.success(('请输入钱包地址'), {
+    window.$NaiveMessage.success(t('请输入钱包地址'), {
       showIcon: false,
     })
     return
@@ -240,7 +242,7 @@ async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
     deadline: _deadline.toString(),
   }, {
     onSuccess: () => {
-      window.$NaiveMessage.success(('兑换成功'), {
+      window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
       swapLoading.value = false
@@ -248,7 +250,7 @@ async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
       value2.value = ''
     },
     onError: () => {
-      window.$NaiveMessage.error(('兑换失败，请重试'), {
+      window.$NaiveMessage.error(t('兑换失败，请重试'), {
         showIcon: false,
       })
       swapLoading.value = false
@@ -268,7 +270,7 @@ async function _swapTokensForExactTokens() {
     deadline: _deadline.toString(),
   }, {
     onSuccess: () => {
-      window.$NaiveMessage.success(('兑换成功'), {
+      window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
       swapLoading.value = false
@@ -276,7 +278,7 @@ async function _swapTokensForExactTokens() {
       value2.value = ''
     },
     onError: () => {
-      window.$NaiveMessage.error(('兑换失败，请重试'), {
+      window.$NaiveMessage.error(t('兑换失败，请重试'), {
         showIcon: false,
       })
       swapLoading.value = false
@@ -334,14 +336,14 @@ onMounted(() => {
               <div class="rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
                 <div class="flex items-center justify-between">
                   <span>{{ t('支付') }}</span>
-                  <span>余额：{{ address ? is_TgToU ? banance1 : banance2 : '--' }}</span>
+                  <span>{{ $t('余额') }}：{{ address ? is_TgToU ? banance1 : banance2 : '--' }}</span>
                 </div>
                 <div class="mt-10px flex items-center justify-between">
                   <n-input
                     v-model:value="value1"
                     :bordered="false"
                     style="border: none;padding-left: 0px;padding: 0px;"
-                    clearable placeholder="请输入数量" class="flex-1"
+                    clearable :placeholder="$t('请输入数量')" class="flex-1"
                     @input="isInput1 = true, _getAmountsOut()"
                   />
                   <div class="flex flex-1 items-center justify-end">
@@ -352,10 +354,10 @@ onMounted(() => {
                 </div>
               </div>
               <div class="flex items-center justify-between p-20px">
-                <span>价格</span>
+                <span>{{ $t('价格') }}</span>
                 <div class="flex items-center">
-                  <span v-if="toUSDT" class="mr-4px">1 TGN 兑换 {{ oneTG || '--' }} USDT </span>
-                  <span v-else class="mr-4px">1 USDT 兑换 {{ oneUSDT || '--' }} USDT </span>
+                  <span v-if="toUSDT" class="mr-4px">1 TGN {{ $t('兑换') }} {{ oneTG || '--' }} USDT </span>
+                  <span v-else class="mr-4px">1 USDT {{ $t('兑换') }} {{ oneUSDT || '--' }} USDT </span>
                   <div class="i-ri:exchange-line text-20 text-primary" @click="toUSDT = !toUSDT" />
                 </div>
               </div>
@@ -364,20 +366,20 @@ onMounted(() => {
             <div class="flex items-center justify-between p-20px">
               <div class="i-material-symbols:arrow-downward text-20 text-primary" @click="exchange" />
               <span class="cursor-pointer text-primary" @click="showMoadl = true">
-                高级设置
+                {{ $t('高级设置') }}
               </span>
             </div>
             <div class="rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
               <div class="flex items-center justify-between">
-                <span>兑换成（约）</span>
-                <span>余额：{{ address ? !is_TgToU ? banance1 : banance2 : '--' }}</span>
+                <span>{{ $t('兑换成（约）') }}</span>
+                <span>{{ $t('余额') }}：{{ address ? !is_TgToU ? banance1 : banance2 : '--' }}</span>
               </div>
               <div class="mt-10px flex items-center justify-between">
                 <n-input
                   v-model:value="value2"
                   :bordered="false"
                   style="border: none;"
-                  clearable placeholder="请输入数量" class="flex-1"
+                  clearable :placeholder="$t('请输入数量')" class="flex-1"
                   @input="isInput1 = false, _getAmountsOut()"
                 />
                 <div class="flex flex-1 items-center justify-end">
@@ -394,20 +396,20 @@ onMounted(() => {
               <div class="flex cursor-pointer items-center">
                 <div class="text-14" :class="isAdd_Addr ? 'i-material-symbols:check-indeterminate-small-rounded text-[#ff8e18]' : 'i-material-symbols:add  text-primary'" />
                 <span :class="isAdd_Addr ? 'text-[#ff8e18]' : 'text-primary' " @click="addTOAddress">
-                  {{ isAdd_Addr ? '移除接收方' : '添加接收方' }}
+                  {{ isAdd_Addr ? $t('移除接收方') : $t('添加接收方') }}
                 </span>
               </div>
             </div>
             <div v-if="isAdd_Addr" class="mb-20px rounded-16 bg-#fff p-20px" style="box-shadow: 0 10px 40px 0 rgba(21,55,156,.1);">
               <div class="flex items-center">
-                <span>接收方</span>
+                <span>{{ $t('接收方') }}</span>
               </div>
               <div class="mt-10px flex items-center">
                 <n-input
                   v-model:value="toAddress"
                   :bordered="false"
                   clearable
-                  placeholder="请输入钱包地址"
+                  :placeholder="$t('请输入钱包地址')"
                   class="flex-1"
                 />
               </div>
@@ -419,7 +421,7 @@ onMounted(() => {
               type="primary"
               style="height: 40px;border-radius: 12px;width: 100%;"
             >
-              <span class="text-[18px]"> 敬请期待 </span>
+              <span class="text-[18px]"> {{ $t('敬请期待') }} </span>
             </n-button>
             <div class="flex">
               <n-button
@@ -440,7 +442,7 @@ onMounted(() => {
                 style="height: 40px;border-radius: 12px;"
                 @click="collect"
               >
-                <span class="text-[18px]"> 连接钱包 </span>
+                <span class="text-[18px]"> {{ $t('连接钱包') }} </span>
               </n-button>
               <n-button
                 v-else
