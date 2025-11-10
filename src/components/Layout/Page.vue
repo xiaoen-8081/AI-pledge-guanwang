@@ -52,8 +52,8 @@ async function handleSwitch() {
       :mask-closable="false"
       type="warning"
       :title="$t('提示')"
-      :content="`此页面属于${supportChain.name}, 切换网络以继续。`"
-      positive-text="切换"
+      :content="`${$t('此页面属于')}${supportChain.name}`"
+      :positive-text="$t('切换')"
       @positive-click="handleSwitch()"
     />
 
@@ -80,11 +80,11 @@ async function handleSwitch() {
                 <!-- <img src="/src/assets/img/logo.svg" alt="Oradin Logo" class="w-[80px]"> -->
                 <div class="flex flex-row items-center text-[16px] text-white italic">
                   <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Frequently Asked Questions (FAQ)
+                    {{ $t('Frequently Asked Questions (FAQ)') }}
                   </div> <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Contact us
+                    {{ $t('Contact us') }}
                   </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Media reports
+                    {{ ($t('Media reports')) }}
                   </div>
                 </div>
               </div> <div class="flex flex-row items-center">
@@ -101,11 +101,11 @@ async function handleSwitch() {
               </div> <div class="w-full text-center">
                 <div class="w-full flex flex-row items-center justify-between text-[10px] text-white italic space-x-[40px]">
                   <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Frequently Asked Questions (FAQ)
+                    {{ $t('Frequently Asked Questions (FAQ)') }}
                   </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Contact us
+                    {{ $t('Contact us') }}
                   </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
-                    Media reports
+                    {{ ($t('Media reports')) }}
                   </div>
                 </div>
               </div>

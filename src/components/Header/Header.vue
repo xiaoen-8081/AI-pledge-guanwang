@@ -2,15 +2,15 @@
 import { useCollapsedPopupHooks } from '@/stores/application/hooks'
 import { useI18n } from 'vue-i18n'
 
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const [collapsed] = useCollapsedPopupHooks()
 
 const options = [
-  { name: 'Home', label: 'Home', value: 'cn' },
-  { name: 'News', label: 'News', value: 'cn' },
-  { name: 'Swap', label: 'Swap', value: 'cn' },
-  { name: 'Public', label: 'Public Offering', value: 'cn' },
-  { name: 'Private', label: 'Private Sale', value: 'cn' },
+  { name: 'Home', label: t('Home'), value: 'cn' },
+  { name: 'News', label: t('News'), value: 'cn' },
+  { name: 'Swap', label: t('Swap'), value: 'cn' },
+  { name: 'Public', label: t('Public'), value: 'cn' },
+  { name: 'Private', label: t('Private'), value: 'cn' },
 ]
 
 const languageOptions = [
@@ -50,6 +50,9 @@ async function handleSelect(e: { key: string }) {
   const lang = languageOptions[Number(e) - 1]?.value
   if (lang) {
     locale.value = lang
+    options.forEach((item) => {
+      item.label = t(item.name)
+    })
   }
 }
 </script>
@@ -64,7 +67,7 @@ async function handleSelect(e: { key: string }) {
         <div v-else class="ml-15px flex cursor-pointer select-none items-center" @click="$router.back()">
           <div class="i-carbon:chevron-left text-[18px] text-[#000] font-bold lg:text-[24px]" />
           <div class="text-[14px] text-[#000] lg:text-[20px]">
-            返回
+            {{ $t('返回') }}
           </div>
         </div>
         <div class="hidden md:flex">
@@ -84,6 +87,7 @@ async function handleSelect(e: { key: string }) {
                 </div>
               </n-flex>
               <n-dropdown
+                style="font-family: Noto Sans SC, Noto Sans SC;"
                 trigger="click"
                 :options="languageOptions"
                 @select="handleSelect"
@@ -100,7 +104,7 @@ async function handleSelect(e: { key: string }) {
             <Web3Status />
           </div>
           <div v-else class="btnBg ml-40px mr-40px h40px w200px flex items-center justify-center text-white">
-            Enrers TGN Application
+            {{ $t('Enrers TGN Application') }}
           </div>
         </div>
         <div class="mr-10px flex md:hidden">

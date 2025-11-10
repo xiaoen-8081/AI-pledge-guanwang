@@ -309,7 +309,7 @@ onMounted(() => {
       location.reload()
     })
     window.ethereum.on('chainChanged', async () => {
-      location.reload()
+      // location.reload()
     })
   }
 })
