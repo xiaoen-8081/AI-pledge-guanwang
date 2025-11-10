@@ -232,30 +232,36 @@
                   <span class="text-[12px] md:text-[34px]">365</span><span> Days</span>
                 </div>
               </div>
-            </div> <div class="flex flex-row items-center md:mt-[20px]">
+            </div>
+            <div class="flex flex-row items-center md:mt-[20px]">
               <div class="mr-[20px] w-[68px] text-[10px] md:mr-[92px] md:w-[161px] md:text-[24px]">
                 Compound interest income
-              </div> <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
+              </div>
+              <!-- <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
                 <div>
                   <span class="text-[12px] md:text-[34px]">43%</span>
                 </div>
-              </div> <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
+              </div>
+              <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
                 <div>
                   <span class="text-[12px] md:text-[34px]">105%</span>
                 </div>
-              </div> <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
+              </div>
+              <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
                 <div>
                   <span class="text-[12px] md:text-[34px]">193%</span>
                 </div>
-              </div> <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
+              </div>
+              <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
                 <div>
                   <span class="text-[12px] md:text-[34px]">763%</span>
                 </div>
-              </div> <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
+              </div>
+              <div class="w-[50px] flex flex-row text-[8px] md:w-[156px] md:text-[20px]">
                 <div>
                   <span class="text-[12px] md:text-[34px]">7909%</span>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

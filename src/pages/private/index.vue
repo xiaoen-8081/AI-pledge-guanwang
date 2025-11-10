@@ -249,7 +249,7 @@ onMounted(() => {
                   <span class="mt-[4px] text-[20px] text-[#000] font-bold">
                     {{
                       userInfo.pledgeAmount
-                        ? Calc.Mul(userInfo.pledgeAmount?.toSignificant(6), userInfo.tgnPrice?.toSignificant(6)) : '--'
+                        ? Calc.Mul(userInfo.pledgeAmount?.toSignificant(6), userInfo.tgnPrice?.toSignificant(6)) : 0
                     }}
                   </span>
                 </div>
@@ -265,7 +265,7 @@ onMounted(() => {
                         userInfo.queryReleaseAmount.toSignificant(6),
                         1,
                       )
-                      : '--'
+                      : 0
                     }}
                   </span>
                 </div>
@@ -277,7 +277,7 @@ onMounted(() => {
                     v-if="userInfo.lockEndTime > userInfo.lastWithdraTime"
                     class="mt-[4px] text-[14px] text-[#000]"
                   >
-                    {{ timeFormat(Number(userInfo.lockEndTime) * 1000, 'yyyy/mm/dd hh:MM') }}
+                    {{ timeFormat(Number(userInfo.lockEndTime) * 1000) }}
                   </span>
                   <span v-else class="mt-[4px] text-[16px] text-[#000]">
                     {{
@@ -285,7 +285,7 @@ onMounted(() => {
                         Calc.Add(
                           Number(userInfo.lastWithdraTime),
                           Number(userInfo.withdrawExtracIntervalTime),
-                        ) * 1000, 'yyyy/mm/dd hh:MM',
+                        ) * 1000,
                       )
                     }}
                   </span>
@@ -322,7 +322,7 @@ onMounted(() => {
                 <!--  -->
                 <div class="my-4px flex justify-between">
                   <span class="text-[16px] text-[#666]">USDT</span>
-                  <span class="text-[16px] text-[#666]">balance: {{ userInfo.usdtBalance || '--' }}</span>
+                  <span class="text-[16px] text-[#666]">balance: {{ userInfo.usdtBalance || 0 }}</span>
                 </div>
                 <n-input-number
                   v-model:value="value"

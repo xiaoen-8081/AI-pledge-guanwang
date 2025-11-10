@@ -245,6 +245,8 @@ async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
       window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
+      _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
+      _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
       swapLoading.value = false
       value1.value = ''
       value2.value = ''
@@ -273,6 +275,8 @@ async function _swapTokensForExactTokens() {
       window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
+      _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
+      _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
       swapLoading.value = false
       value1.value = ''
       value2.value = ''
