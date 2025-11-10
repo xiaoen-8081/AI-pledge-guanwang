@@ -112,7 +112,7 @@ export function useApprove() {
   const txHash: any = ref('')
   const { address: account } = useAccount()
 
-  const approve = async (option: { tokenAddress }, op?: {
+  const approve = async (option: { tokenAddress, constantsAddress?: string }, op?: {
     onError?: () => void
     onStop?: () => void
     onSuccess?: () => void
@@ -122,7 +122,7 @@ export function useApprove() {
       account: account.value,
       address: option.tokenAddress,
       functionName: 'approve',
-      args: [SWAP_ADDRESS, MaxUint256],
+      args: [option.constantsAddress || SWAP_ADDRESS, MaxUint256],
     }
     if (!account.value) {
       window.$Toast.show('请连接钱包')

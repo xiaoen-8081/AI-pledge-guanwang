@@ -2,37 +2,18 @@
 import bg from '@/assets/img/bg.png'
 import tgn from '@/assets/img/tgn.png'
 import usdt from '@/assets/img/usdt.png'
-import { useMapUserInfo, useWithdraw } from '@/hooks/usePledge'
+import { useMapUserInfo, useSubscription, useWithdraw } from '@/hooks/usePledge'
 import { Calc, timeFormat } from '@/utils/utils'
 import { useAppBlockHooks } from '@/stores/application/hooks'
 import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
-import { RewardToken, TgnToken } from '@/constants'
+import { PLEDGE_ADDRESS, REWARD_TOKEN_ADDRESS, RewardToken, TgnToken } from '@/constants'
 import { useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
+import { useApprove, useGetAllowance } from '@/hooks/useApprove'
 
 const { address } = useAccount()
 const value = ref(null)
-
-const txLoading = ref(false)
-const { withdraw } = useWithdraw()
-async function _withdraw() {
-  txLoading.value = true
-  await withdraw({
-    onError: () => {
-      txLoading.value = false
-      // 错误处理
-      window.$Toast.show('提现失败')
-    },
-    onStop: () => {
-      txLoading.value = false
-    },
-    onSuccess: () => {
-      // 成功处理
-      txLoading.value = false
-      window.$Toast.show('提现成功')
-    },
-  })
-}
+const toU = ref(0)
 
 const userInfo: any = ref({})
 const { getTokenBalance } = useTokenBalance()
@@ -97,13 +78,111 @@ function _init() {
   _get_usdt_balance()
 }
 
+// 提现
+const txLoading = ref(false)
+const { withdraw } = useWithdraw()
+async function _withdraw() {
+  txLoading.value = true
+  await withdraw({
+    onError: () => {
+      txLoading.value = false
+      // 错误处理
+      window.$Toast.show('提现失败')
+    },
+    onStop: () => {
+      txLoading.value = false
+    },
+    onSuccess: () => {
+      // 成功处理
+      txLoading.value = false
+      window.$Toast.show('提现成功')
+    },
+  })
+}
+
+// 认购
+const { getAllowance } = useGetAllowance()
+const buyLoading = ref(false)
+async function buy() {
+  if (!value.value || value.value <= 0) {
+    window.$Toast.show('请输入认购数量')
+    return
+  }
+  if (value.value > userInfo.value.usdtBalance) {
+    window.$Toast.show('余额不足')
+    return
+  }
+  if (!address)
+    return
+  const num = await getAllowance(REWARD_TOKEN_ADDRESS, PLEDGE_ADDRESS)
+  const allowanceNum = Number(CurrencyAmount.fromRawAmount(RewardToken, num as bigint).toSignificant(6))
+  console.log('allowanceNum', allowanceNum, value.value)
+  if (allowanceNum < value.value) {
+    handleApprove()
+    return
+  }
+  buyLoading.value = true
+  _subscribe()
+}
+
+// 授权
+const approveLoading = ref(false)
+const { approve } = useApprove()
+async function handleApprove() {
+  approveLoading.value = true
+  approve(
+    { tokenAddress: REWARD_TOKEN_ADDRESS, constantsAddress: PLEDGE_ADDRESS }
+    , {
+      onSuccess: () => {
+        window.$NaiveMessage.success(('授权成功'), {
+          showIcon: false,
+        })
+        approveLoading.value = false
+        _subscribe()
+      },
+      onError: () => {
+        approveLoading.value = false
+        window.$NaiveMessage.error(('授权失败，请重新授权额度'), {
+          showIcon: false,
+        })
+      },
+      onStop: () => {
+      },
+    },
+  )
+}
+
+// 认购方法
+const { subscription } = useSubscription()
+async function _subscribe() {
+  buyLoading.value = true
+  await subscription({
+    usdt: value.value ?? 0,
+  }, {
+    onError: () => {
+      buyLoading.value = false
+      // 错误处理
+      window.$Toast.show('认购失败')
+    },
+    onStop: () => {
+      buyLoading.value = false
+    },
+    onSuccess: () => {
+      // 成功处理
+      buyLoading.value = false
+      window.$Toast.show('认购成功')
+      value.value = null
+      toU.value = 0
+    },
+  })
+}
+
 function max() {
   if (!address)
     return
   value.value = userInfo.value.usdtBalance
   toUSDT()
 }
-const toU = ref(0)
 function toUSDT() {
   if (value.value === null || value.value === undefined || value.value === 0) {
     toU.value = 0
@@ -128,7 +207,7 @@ onMounted(() => {
             <Header />
           </div>
         </div>
-        <div class="mx-auto max-w-[480px] pt-[80px]">
+        <div class="mx-auto max-w-[480px] pt-[80px] lg:pb-20px">
           <div />
           <n-image width="100%" :src="bg" preview-disabled />
           <!-- <div class="h-[140px] w-[100%]" /> -->
@@ -153,20 +232,20 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="usdt" preview-disabled />
-                    <span class="ml-4px text-[#999]">锁仓价值</span>
+                    <span class="ml-4px text-[#999]">锁仓价值($)</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#000] font-bold">
                     {{
                       userInfo.pledgeAmount
                         ? Calc.Mul(userInfo.pledgeAmount?.toSignificant(6), userInfo.tgnPrice?.toSignificant(6)) : '--'
-                    }} $
+                    }}
                   </span>
                 </div>
                 <div class="h-[38px] w-[1px] bg-[#E0E0E0]" />
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="tgn" preview-disabled />
-                    <span class="ml-4px text-[#999]">待提现</span>
+                    <span class="ml-4px text-[#999]">待提现(TGN)</span>
                   </div>
                   <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
                     {{ userInfo.queryReleaseAmount
@@ -175,7 +254,7 @@ onMounted(() => {
                         1,
                       )
                       : '--'
-                    }} TGN
+                    }}
                   </span>
                 </div>
               </div>
@@ -257,12 +336,12 @@ onMounted(() => {
                 <!--  -->
                 <div class="absolute z-99" style="bottom: -16px; left: 50%; margin-left: -58px;">
                   <n-button
-                    :loading="txLoading"
+                    :loading="buyLoading"
                     type="primary"
                     color="#73CC2E"
                     round
                     style="width: 116px"
-                    @click="_withdraw"
+                    @click="buy"
                   >
                     <span>认购</span>
                   </n-button>
@@ -291,7 +370,7 @@ onMounted(() => {
   <style scoped>
   .bg {
   width: 100vw;
-  height: calc(100vh - 120px);
+  /* height: calc(100vh - 120px); */
   background-image: url('/src/assets/img/lockBg.jpg');
   background-repeat: no-repeat;
   background-size: 100% 100%;

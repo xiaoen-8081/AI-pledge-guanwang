@@ -1,4 +1,5 @@
 import type { Hash } from 'viem'
+import { parseUnits } from 'viem'
 
 import to from 'await-to-js'
 
@@ -225,4 +226,51 @@ export function useMapUserInfo() {
     return res
   }
   return { getMapUserInfo, getqueryReleaseAmount, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
+}
+
+// 认购
+export function useSubscription() {
+  const { writeContractCallBack } = wagmiWriteContract()
+  const txHash: any = ref('')
+  const { address: account } = useAccount()
+
+  const subscription = async (options: { usdt: number }, op?: {
+    onError?: () => void
+    onStop?: () => void
+    onSuccess?: () => void
+  }) => {
+    const args = {
+      abi: pledgeAbi,
+      account: account.value,
+      address: PLEDGE_ADDRESS,
+      functionName: 'subscription',
+      args: [BigInt(parseUnits(options.usdt.toString(), 6))],
+    }
+    if (!account.value) {
+      window.$Toast.show('请连接钱包')
+      op?.onStop?.()
+      return
+    }
+    const [err, res] = await to(writeContractCallBack(args))
+    if (err) {
+      op?.onStop?.()
+      throw err
+    }
+    txHash.value = res
+
+    const [err1, res1] = await to(
+      getTransactionsResFinally(txHash.value as Hash),
+    )
+    if (err1) {
+      op?.onError?.()
+      throw err1
+    }
+    if (res1.status === 'success') {
+      op?.onSuccess?.()
+    }
+    else {
+      op?.onError?.()
+    }
+  }
+  return { subscription } as const
 }
