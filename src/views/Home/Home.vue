@@ -19,7 +19,7 @@
           <!-- the Era of Financial Sovereignty -->
           {{ $t('数字命运的主权时代') }}
         </div>
-        <div data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate mb-[24px] mt-[12px] text-[16px] text-[#1A1A1A] leading-[28px] italic md:mt-[24px] md:w-[754px] md:text-[24px] md:leading-[38px]">
+        <div data-aos="fade-up" data-aos-delay="400" class="Roboto aos-init aos-animate mb-[24px] mt-[12px] text-[16px] text-[#1A1A1A] leading-[28px] italic md:mt-[24px] md:w-[754px] md:text-[24px] md:leading-[38px]">
           {{ $t('天元链（Tengen）由算法货币 TGN 驱动，开启了一个以「灵性与主权」为核心的新纪元。在这个时代，命运不再是注定的，而是可被算法唤醒、可由共识重塑。') }}
           {{ $t('我们将易经哲理与区块链技术融合，让「推演未来」不再只是预测，而是一种参与——用户通过占卜、AI预测与金融操作，共同构建属于人类的数字文明自觉系统。隐私、自由与信任不再是口号，而是天元文明的底层算法。') }}
         </div>
@@ -199,7 +199,7 @@
             <!-- <span>Staking income </span> <span class="gradient-text2">forecast</span> -->
             <!-- <span>Staking income </span> <span class="gradient-text2">forecast</span> -->
             <span>{{ $t('质押 · 预测') }}</span>
-          </div> <div class="mb-[32px] text-[16px] text-white leading-[24px] italic md:mb-[78px] md:h-[210px] md:w-[674px] md:text-[20px] md:leading-[42px]">
+          </div> <div class="Roboto mb-[32px] text-[16px] text-white leading-[24px] italic md:mb-[78px] md:h-[210px] md:w-[674px] md:text-[20px] md:leading-[42px]">
             <!-- Stake TGN, awaken value. By participating in the new algorithmic issuance engine, users can
             earn rewards through a dual-track system combining non-stable TGN and stable A. Returns are
             adjusted based on ecosystem demand and user contribution. -->
@@ -278,7 +278,7 @@
           <div class="mb-[20px] text-[24px] text-black font-[Bayon] uppercase md:mb-[30px] md:text-[44px]">
             <!-- Provide liquidity. -->
             {{ $t('提供流动性') }}
-          </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
+          </div> <div class="Roboto mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
             <!-- Provide liquidity to the TGN/A pool and earn yield from every transaction in the ecosystem.
             Participation fuels the birth of stablecoin. -->
             {{ $t('为 TGN/A 池提供流动性，即是成为文明的建构者。您将从每一次交易中分享收益，同时推动天元稳定币的生成与系统的稳定运行。') }}
@@ -294,7 +294,7 @@
           <div class="mb-[30px] text-[24px] text-black font-[Bayon] uppercase md:text-[44px]">
             <!-- Loan mortgage. -->
             {{ $t('贷款抵押') }}
-          </div> <div class="mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
+          </div> <div class="Roboto mb-[48px] text-[16px] leading-[24px] italic md:mb-[94px] md:w-[514px] md:text-[24px] md:leading-[42px]">
             <!-- Stake TGN to generate Stablecoin. Use A for anonymous payment, DAO governance, and borderless
             DeFi interactions—without disclosing your identity. -->
             {{ $t('质押 TGN，即可生成稳定币 A。A 不仅是支付工具，更是您进入天元生态的“隐形通行证”：它可用于匿名支付、DAO 治理与 DeFi 交互，让您在无须暴露身份的情况下，畅游金融主权世界。在天元链的世界里，自由 = 算法 + 信任 + 匿名权利。') }}
@@ -321,10 +321,10 @@
             </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan1.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
             </div>
-          </div> <div class="plan-card-text mb-[22px] mt-[33px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
+          </div> <div class="plan-card-text mb-[10px] mt-[20px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
             <!-- Tengen Stage -->
             {{ $t('阶段 · 启元') }}
-          </div> <div class="plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
+          </div> <div class="Roboto plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
             <!-- Build a non-stablecoin issuance flywheel, complete the native incentive mechanism of the TGN
             protocol -->
             {{ $t('构建非稳定币 TGN 的发行飞轮，完善核心协议与占卜经济模型。AI 占卜、NFT 灵签、质押系统上线，形成最初的灵性经济形态。') }}
@@ -336,10 +336,10 @@
             </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan2.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
             </div>
-          </div> <div class="plan-card-text mb-[22px] mt-[33px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
+          </div> <div class="plan-card-text mb-[10px] mt-[20px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
             <!-- Awakening Stage -->
             {{ $t('阶段 · 觉醒') }}
-          </div> <div class="plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
+          </div> <div class="Roboto plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
             <!-- Launch of Stablecoin + Privacy Payment Protocol A Pay, initiating the era of crypto
             sovereignty -->
             {{ $t('推出稳定币 A 与隐私支付协议 A Pay，进入加密金融主权时代，开启跨生态支付与匿名结算网络。') }}
@@ -348,13 +348,15 @@
           <div class="flex flex-row items-center justify-between">
             <div class="plan-card-text text-[50px] text-[#73CC2E] font-[Bayon] transition-colors duration-300">
               3.0
-            </div> <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
+            </div>
+            <div class="plan-card-circle h-[80px] w-[80px] flex flex-row items-center justify-center rounded-full bg-[rgba(0,0,0,0.3)]">
               <img src="/src/assets/img/plan3.svg" alt="" class="plan-card-icon h-[48px] w-[48px] transition-all duration-300">
             </div>
-          </div> <div class="plan-card-text mb-[22px] mt-[33px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
+          </div> <div class="plan-card-text mb-[10px] mt-[20px] text-[32px] font-[Bayon] uppercase transition-colors duration-300 md:mt-[38px]">
             <!-- Eternal Stage -->
             {{ $t('阶段 · 永恒') }}
-          </div> <div class="plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
+          </div>
+          <div class="Roboto plan-card-text text-[20px] leading-[30px] italic transition-colors duration-300">
             <!-- Protocol ecology is fully autonomous, multi-chain interconnected, civilization self-evolving -->
             {{ $t('生态系统进入完全自治状态，形成多链互联、AI驱动、自我演化的文明系统。天元链不再只是区块链，而是数字命运的秩序引擎。') }}
           </div>
@@ -369,14 +371,14 @@
           <span>{{ $t('天有元气，地有常道，人有主权，链有天命。') }}</span>
         </div>
         <div class="max-w-[1280px] px-15px text-center text-[20px] leading-[40px] md:text-[24px] md:leading-[48px]">
-          <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+          <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate Roboto">
             <!-- We believe every individual has the right to economic
             privacy and autonomous currency issuance.
             TENGEN is building a digital civilization where algorithmic creation, anonymous exchange, and
             self-sovereign assets are no longer future ideals—but present realities. -->
             {{ $t('天元链（Tengen）用算法复刻命运，用共识构建主权。这是一场关于觉醒的实验，也是人类数字文明的再生。欢迎来到 天元纪元。') }}
           </p>
-          <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+          <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate Roboto">
             {{ $t('欢迎来到 天元纪元。') }}
           </p>
           <!-- <p data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
