@@ -369,7 +369,7 @@ onMounted(() => {
             <!--  -->
             <div class="flex items-center justify-between p-20px">
               <div class="i-material-symbols:arrow-downward text-20 text-primary" @click="exchange" />
-              <span class="cursor-pointer text-primary" @click="showMoadl = true">
+              <span v-if="false" class="cursor-pointer text-primary" @click="showMoadl = true">
                 {{ $t('高级设置') }}
               </span>
             </div>
