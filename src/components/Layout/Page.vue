@@ -41,6 +41,10 @@ async function handleSwitch() {
     // disabled.value = false
   }
 }
+
+function toWhitepaper() {
+  window.open(`http://tengenscan.org/pdf/whitepaper.html`)
+}
 </script>
 
 <template>
@@ -102,9 +106,14 @@ async function handleSwitch() {
                 <div class="w-full flex flex-row items-center justify-between text-[10px] text-white italic space-x-[40px]">
                   <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ $t('Frequently Asked Questions (FAQ)') }}
-                  </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
+                  </div>
+                  <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ $t('Contact us') }}
-                  </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
+                  </div>
+                  <div class="cursor-pointer transition-colors hover:text-[#73CC2E]" @click="toWhitepaper">
+                    {{ $t('白皮书') }}
+                  </div>
+                  <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ ($t('Media reports')) }}
                   </div>
                 </div>
