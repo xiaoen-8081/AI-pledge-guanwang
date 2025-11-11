@@ -85,7 +85,11 @@ function toWhitepaper() {
                 <div class="flex flex-row items-center text-[16px] text-white italic">
                   <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ $t('Frequently Asked Questions (FAQ)') }}
-                  </div> <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
+                  </div>
+                  <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]" @click="toWhitepaper">
+                    {{ $t('白皮书') }}
+                  </div>
+                  <div class="mr-[52px] cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ $t('Contact us') }}
                   </div> <div class="cursor-pointer transition-colors hover:text-[#73CC2E]">
                     {{ ($t('Media reports')) }}
