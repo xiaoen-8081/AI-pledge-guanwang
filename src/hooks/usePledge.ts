@@ -186,6 +186,20 @@ export function useMapUserInfo() {
     return res
   }
   //
+  const getlockStartTime = async () => {
+    if (!account.value) {
+      // window.$Toast.show('请连接钱包')
+      return
+    }
+    const res = await readContract(wagmiConfig, {
+      abi: pledgeAbi,
+      address: PLEDGE_ADDRESS,
+      functionName: 'lockStartTime',
+      args: [],
+    })
+    return res
+  }
+  //
   const getlockEndTime = async () => {
     if (!account.value) {
       // window.$Toast.show('请连接钱包')
@@ -237,7 +251,7 @@ export function useMapUserInfo() {
     })
     return res
   }
-  return { getIsWithdrawTime, getMapUserInfo, getqueryReleaseAmount, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
+  return { getIsWithdrawTime, getMapUserInfo, getqueryReleaseAmount, getlockStartTime, getlockEndTime, getwithdrawExtracIntervalTime, getTgnPrice } as const
 }
 
 // 认购

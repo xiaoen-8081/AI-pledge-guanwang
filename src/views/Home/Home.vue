@@ -50,7 +50,7 @@
             <!-- TGN value -->
             {{ $t('TGN 值') }}
           </div> <div class="gradient-text text-[40px] text-black leading-[40px] font-[Bayon] md:text-[60px] md:leading-[108px]">
-            $ 203,153,663
+            $ 1,000,000,000
           </div>
         </div>
         <div data-aos="fade-up" data-aos-delay="600" class="aos-init aos-animate md:text-center">
@@ -375,6 +375,9 @@
             TENGEN is building a digital civilization where algorithmic creation, anonymous exchange, and
             self-sovereign assets are no longer future ideals—but present realities. -->
             {{ $t('天元链（Tengen）用算法复刻命运，用共识构建主权。这是一场关于觉醒的实验，也是人类数字文明的再生。欢迎来到 天元纪元。') }}
+          </p>
+          <p data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+            {{ $t('欢迎来到 天元纪元。') }}
           </p>
           <!-- <p data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
             <span class="text-[#73CC2E]">①</span> TGN represents
