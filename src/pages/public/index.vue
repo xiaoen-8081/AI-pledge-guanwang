@@ -257,14 +257,14 @@ onMounted(() => {
               class="relative mt-[-90px] h-[100px] flex items-center rounded-xl px-[20px]" style="background: linear-gradient(135deg, rgba(255,255,255,0) 0%, #d9efcb 29%), #ebf8e4;"
             >
               <div class="flex flex-col">
-                <span class="mt-12px text-[18px] text-[#666666]">{{ $t('公募锁仓数量（TGN）') }}</span>
+                <span class="Roboto mt-12px text-[17px] text-[#666666]">{{ $t('公募锁仓数量（TGN）') }}</span>
                 <div class="">
-                  <span class="text-[30px] text-[#73CC2E] font-bold">
+                  <span class="text-[30px] text-[#73CC2E] font-500">
                     {{
                       userInfo.pledgeAmount?.toSignificant(6)
                     }}
                   </span>
-                  <!-- <span class="text-[20px] font-bold text-[#73CC2E]"> USDT </span> -->
+                  <!-- <span class="text-[20px] font-500 text-[#73CC2E]"> USDT </span> -->
                 </div>
               </div>
             </div>
@@ -273,9 +273,9 @@ onMounted(() => {
                 <div class="flex flex-1 flex-col items-center justify-center">
                   <div class="flex items-center">
                     <n-image width="20px" :src="usdt" preview-disabled />
-                    <span class="ml-4px text-[#999]">{{ $t('锁仓价值($)') }}</span>
+                    <span class="Roboto ml-4px text-13px text-[#999]">{{ $t('锁仓价值($)') }}</span>
                   </div>
-                  <span class="mt-[4px] text-[20px] text-[#000] font-bold">
+                  <span class="mt-[4px] text-[20px] text-[#000] font-500">
                     {{
                       userInfo.pledgeAmount
                         ? Calc.Mul(userInfo.pledgeAmount?.toSignificant(6), userInfo.tgnPrice?.toSignificant(6)) : 0
@@ -284,11 +284,11 @@ onMounted(() => {
                 </div>
                 <div class="h-[38px] w-[1px] bg-[#E0E0E0]" />
                 <div class="flex flex-1 flex-col items-center justify-center">
-                  <div class="flex items-center">
+                  <div class="flex items-center justify-center">
                     <n-image width="20px" :src="tgn" preview-disabled />
-                    <span class="ml-4px text-[#999]">{{ $t('待提现(TGN)') }}</span>
+                    <span class="Roboto ml-4px text-center text-13px text-[#999]">{{ $t('待提现(TGN)') }}</span>
                   </div>
-                  <span class="mt-[4px] text-[20px] text-[#73CC2E] font-bold">
+                  <span class="mt-[4px] text-[20px] text-[#73CC2E] font-500">
                     {{ userInfo.queryReleaseAmount
                       ? Calc.Mul(
                         userInfo.queryReleaseAmount.toSignificant(6),
@@ -301,13 +301,13 @@ onMounted(() => {
               </div>
               <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="flex flex-col items-center justify-center">
-                  <span class="text-[#999]">{{ $t('预计释放时间') }}</span>
-                  <span v-if="blockTime > userInfo.lockEndTime" class="mt-[4px] text-[16px] text-[#000]">
+                  <span class="Roboto text-[#999]">{{ $t('预计释放时间') }}</span>
+                  <span v-if="blockTime > userInfo.lockEndTime" class="Roboto mt-[4px] text-[14px] text-[#000]">
                     {{ timeFormat(Number(userInfo.lockEndTime) * 1000) }}
                   </span>
                   <span
                     v-else
-                    class="mt-[4px] text-[16px] text-[#000]"
+                    class="Roboto mt-[4px] text-[14px] text-[#000]"
                   >
                     {{ Number(userInfo.lastWithdraTime) === 0
                       ? timeFormat(Number(userInfo.lockStartTime) * 1000)
@@ -346,7 +346,7 @@ onMounted(() => {
                   <span class="text-[16px] text-[#666]">{{ $t('价格') }}</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
-                  <span class="text-24px text-primary font-bold">{{ userInfo.tgnPrice?.toSignificant(6) }}</span>
+                  <span class="text-24px text-primary font-500">{{ userInfo.tgnPrice?.toSignificant(6) }}</span>
                   <span class="text-[16px] text-[#666]">USD</span>
                 </div>
                 <!--  -->
@@ -372,7 +372,7 @@ onMounted(() => {
                   <span class="text-[14px] text-[#666]">{{ $t('获得') }}</span>
                 </div>
                 <div class="mt-[-10px] flex items-center justify-between">
-                  <span class="text-24px text-[#000] font-bold">{{ toU }}</span>
+                  <span class="text-24px text-[#000] font-500">{{ toU }}</span>
                   <span class="text-[16px] text-[#666]">TGN</span>
                 </div>
                 <!--  -->
