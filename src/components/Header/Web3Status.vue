@@ -28,8 +28,7 @@ async function handleDisconnect() {
     >
       <template #trigger>
         <n-flex class="h-40 cursor-pointer rounded-16 bg-#000 pl-12 pr-8 text-#fff font-600 hover:opacity-65" align="center" :size="0">
-          <div class="i-carbon:wallet mr-4 text-20" />
-          <span class="">{{ formatStringEncrypt(address, 2, 5) }}</span>
+          <span class="">{{ formatStringEncrypt(address, 2, 4) }}</span>
           <div class="i-mdi:chevron-down text-20" />
         </n-flex>
       </template>

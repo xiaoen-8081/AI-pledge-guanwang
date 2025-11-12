@@ -9,7 +9,7 @@ const options = [
   { name: 'Home', label: t('Home'), value: 'cn' },
   { name: 'News', label: t('News'), value: 'cn' },
   { name: 'Swap', label: t('Swap'), value: 'cn' },
-  { name: 'Public', label: t('Public'), value: 'cn' },
+  // { name: 'Public', label: t('Public'), value: 'cn' },
   { name: 'Private', label: t('Private'), value: 'cn' },
 ]
 const router = useRouter()

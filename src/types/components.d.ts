@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Application: typeof import('./../components/Application/Application.vue')['default']
-    Bottom: typeof import('./../components/Layout/Bottom.vue')['default']
     DyAppLoading: typeof import('./../components/global/DyAppLoading.vue')['default']
     DyButton: typeof import('./../components/global/DyButton.vue')['default']
     DyCopy: typeof import('./../components/global/DyCopy.vue')['default']

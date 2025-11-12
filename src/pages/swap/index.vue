@@ -345,6 +345,7 @@ onMounted(() => {
                 <div class="mt-10px flex items-center justify-between">
                   <n-input
                     v-model:value="value1"
+                    readonly
                     :bordered="false"
                     style="border: none;padding-left: 0px;padding: 0px;"
                     clearable :placeholder="$t('请输入数量')" class="flex-1"
@@ -360,8 +361,10 @@ onMounted(() => {
               <div class="flex items-center justify-between p-20px">
                 <span>{{ $t('价格') }}</span>
                 <div class="flex items-center">
-                  <span v-if="toUSDT" class="mr-4px">1 TGN {{ $t('兑换') }} {{ oneTG || '--' }} USDT </span>
-                  <span v-else class="mr-4px">1 USDT {{ $t('兑换') }} {{ oneUSDT || '--' }} USDT </span>
+                  <!-- <span v-if="toUSDT" class="mr-4px">1 TGN {{ $t('兑换') }} {{ oneTG || '--' }} USDT </span>
+                  <span v-else class="mr-4px">1 USDT {{ $t('兑换') }} {{ oneUSDT || '--' }} TGN </span> -->
+                  <span v-if="toUSDT" class="mr-4px">1 TGN {{ $t('兑换') }} {{ '0.02' }} USDT </span>
+                  <span v-else class="mr-4px">1 USDT {{ $t('兑换') }} {{ '50' }} TGN </span>
                   <div class="i-ri:exchange-line text-20 text-primary" @click="toUSDT = !toUSDT" />
                 </div>
               </div>
@@ -381,6 +384,7 @@ onMounted(() => {
               <div class="mt-10px flex items-center justify-between">
                 <n-input
                   v-model:value="value2"
+                  readonly
                   :bordered="false"
                   style="border: none;"
                   clearable :placeholder="$t('请输入数量')" class="flex-1"
@@ -411,6 +415,7 @@ onMounted(() => {
               <div class="mt-10px flex items-center">
                 <n-input
                   v-model:value="toAddress"
+                  readonly
                   :bordered="false"
                   clearable
                   :placeholder="$t('请输入钱包地址')"
@@ -420,14 +425,14 @@ onMounted(() => {
             </div>
             <!--  -->
             <n-button
-              v-if="false"
+
               disabled
               type="primary"
               style="height: 40px;border-radius: 12px;width: 100%;"
             >
               <span class="text-[18px]"> {{ $t('敬请期待') }} </span>
             </n-button>
-            <div class="flex">
+            <div v-if="false" class="flex">
               <n-button
                 v-if="value1 && allowanceNum < (isInput1 ? parseFloat(value1) : parseFloat(value2)) && !getAllowanceLoading"
                 :loading="approveLoading"

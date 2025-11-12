@@ -10,7 +10,7 @@ const options = [
   { name: 'Home', label: t('Home'), value: 'cn' },
   { name: 'News', label: t('News'), value: 'cn' },
   { name: 'Swap', label: t('Swap'), value: 'cn' },
-  { name: 'Public', label: t('Public'), value: 'cn' },
+  // { name: 'Public', label: t('Public'), value: 'cn' },
   { name: 'Private', label: t('Private'), value: 'cn' },
 ]
 
@@ -63,8 +63,11 @@ async function handleSelect(e: { key: string }) {
   <div class="Roboto z-10 w-full">
     <n-flex vertical :size="0">
       <n-flex align="center" justify="space-between" class="h-54">
-        <div v-if="isOptionRoute" class="" @click="$router.replace({ name: 'Home' })">
+        <div v-if="isOptionRoute" class="flex items-center" @click="$router.replace({ name: 'Home' })">
           <img src="/src/assets/img/logo.svg" style="width: 120px;" alt="">
+          <span v-if="route.name === 'Home' || route.name === 'News' " class="ml-[-12px] mt-[10px] text-[16px] font-bold">
+            Price: $0.02
+          </span>
         </div>
         <div v-else class="ml-15px flex cursor-pointer select-none items-center" @click="$router.back()">
           <div class="i-carbon:chevron-left text-[18px] text-[#000] font-bold lg:text-[24px]" />
@@ -110,7 +113,7 @@ async function handleSelect(e: { key: string }) {
           </div>
         </div>
         <div class="mr-10px flex flex items-center md:hidden">
-          <div class="mr-10px">
+          <div class="mr-4px">
             <Web3Status v-if="route.name === 'Public' || route.name === 'Private' || route.name === 'Swap'" />
           </div>
 
