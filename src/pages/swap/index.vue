@@ -27,7 +27,7 @@ const toAddress = ref('')
 const allowanceNum = ref(0)
 const isInput1 = ref(true)
 const is_TgToU = ref(true)
-const tgTokenAddress = ref('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f')
+const tgTokenAddress = ref('0xaE0F1142c0a87c5b46632DAfBA057Ab0C852f2ba')
 const usdtTokenAddress = ref('0xc2132D05D31c914a87C6611C10748AEb04B58e8F')
 const banance1 = ref('')
 const banance2 = ref('')
@@ -245,7 +245,7 @@ async function _swapExactTokensForTokensSupportingFeeOnTransferTokens() {
       window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
-      _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
+      _getBalance('0xaE0F1142c0a87c5b46632DAfBA057Ab0C852f2ba', 1)
       _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
       swapLoading.value = false
       value1.value = ''
@@ -275,7 +275,7 @@ async function _swapTokensForExactTokens() {
       window.$NaiveMessage.success(t('兑换成功'), {
         showIcon: false,
       })
-      _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
+      _getBalance('0xaE0F1142c0a87c5b46632DAfBA057Ab0C852f2ba', 1)
       _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
       swapLoading.value = false
       value1.value = ''
@@ -306,7 +306,7 @@ async function collect() {
 }
 
 onMounted(() => {
-  _getBalance('0x68aef8d07D175B5eEF8fad2D6d6e9F2cDE68AA6f', 1)
+  _getBalance('0xaE0F1142c0a87c5b46632DAfBA057Ab0C852f2ba', 1)
   _getBalance('0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 2, 6)
   _getOnePrice()
 
