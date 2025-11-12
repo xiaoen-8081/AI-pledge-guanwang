@@ -99,6 +99,9 @@ async function getLatestBlockTime(blockNumber) {
   // 根据区块号获取区块详细信息
   const block = await getBlock(wagmiConfig, { blockNumber })
   const timestamp = Number(block.timestamp)
+  if (timestamp > userInfo.value.lockEndTime) {
+    _getqueryReleaseAmount()
+  }
   blockTime.value = timestamp
 }
 
@@ -106,7 +109,6 @@ function _init() {
   if (!address)
     return
   _getMapUserInfo()
-  _getqueryReleaseAmount()
   _getlockStartTime()
   _getlockEndTime()
   _getwithdrawExtracIntervalTime()
@@ -141,6 +143,14 @@ async function _withdraw() {
 const { getAllowance } = useGetAllowance()
 const buyLoading = ref(false)
 async function buy() {
+  if (!value.value || value.value <= 0) {
+    window.$Toast.show(t('请输入认购数量'))
+    return
+  }
+  if (value.value < 0.01) {
+    window.$Toast.show(t('认购不能小于0.01'))
+    return
+  }
   if (!value.value || value.value <= 0) {
     window.$Toast.show(t('请输入认购数量'))
     return

@@ -28,7 +28,7 @@ export const TGN_ADDRESS: Address
 // 锁仓代币USDT地址
 export const REWARD_TOKEN_ADDRESS: Address
   // = '0xdf745Ce4513f1B6b5AdC07A82F76253377f70c9e' // 测试
-  = '0xC2132D05D31C914A87C6611C10748AEB04B58E8F' // 正式
+  = '0xc2132D05D31c914a87C6611C10748AEb04B58e8F' // 正式
 export const RewardToken = new ERC20Token(
   137,
   REWARD_TOKEN_ADDRESS,
