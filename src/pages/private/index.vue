@@ -357,7 +357,7 @@ onMounted(() => {
                 <!--  -->
                 <div class="my-4px flex justify-between">
                   <span class="text-[16px] text-[#666]">USDT</span>
-                  <span class="text-[12px] text-[#666]" style="font-family: Roboto;">balance: {{ userInfo.usdtBalance || 0 }}</span>
+                  <span class="text-[12px] text-[#666]" style="font-family: Roboto;">{{ $t('balance') }}: {{ userInfo.usdtBalance || 0 }}</span>
                 </div>
                 <n-input-number
                   v-model:value="value"
@@ -369,7 +369,7 @@ onMounted(() => {
                   @clear="toU = 0"
                 >
                   <template #suffix>
-                    <span @click="max">MAX</span>
+                    <span @click="max">{{ $t('MAX') }}</span>
                   </template>
                 </n-input-number>
                 <!--  -->

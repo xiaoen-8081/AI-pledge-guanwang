@@ -99,5 +99,7 @@
 
   "钱包地址或授权地址不能为空": "Wallet address or authorization address cannot be empty",
   "请连接钱包": "Please connect wallet",
-  "认购不能小于0.01": "Subscription cannot be less than 0.01"
+  "认购不能小于0.01": "Subscription cannot be less than 0.01",
+  "balance": "balance",
+  "MAX": "MAX"
 }
