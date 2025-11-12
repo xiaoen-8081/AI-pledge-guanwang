@@ -9,8 +9,10 @@ import { CurrencyAmount } from '@pancakeswap/swap-sdk-core'
 import { PLEDGE_ADDRESS, REWARD_TOKEN_ADDRESS, RewardToken, TgnToken } from '@/constants'
 import { useTokenBalance } from '@/hooks/useSwap'
 import { useAccount } from '@wagmi/vue'
+import { getBlock } from '@wagmi/core'
 import { useApprove, useGetAllowance } from '@/hooks/useApprove'
 import { useI18n } from 'vue-i18n'
+import { wagmiConfig } from '@/utils/wagmi'
 
 const { t } = useI18n()
 
@@ -24,6 +26,7 @@ const { getTokenBalance } = useTokenBalance()
 const {
   getMapUserInfo,
   getqueryReleaseAmount,
+  getlockStartTime,
   getlockEndTime,
   getwithdrawExtracIntervalTime,
   getTgnPrice,
@@ -58,6 +61,10 @@ async function _getqueryReleaseAmount() {
       : 0n,
   )
 }
+async function _getlockStartTime() {
+  const lockStartTime = await getlockStartTime()
+  userInfo.value.lockStartTime = Number(lockStartTime)
+}
 async function _getlockEndTime() {
   const lockEndTime = await getlockEndTime()
   userInfo.value.lockEndTime = Number(lockEndTime)
@@ -83,14 +90,24 @@ async function _getIsWithdrawTime() {
 
 const { blockNumber } = useAppBlockHooks()
 watch(blockNumber, () => {
+  getLatestBlockTime(blockNumber.value)
   _init()
 }, { immediate: true })
+
+const blockTime = ref(0)
+async function getLatestBlockTime(blockNumber) {
+  // 根据区块号获取区块详细信息
+  const block = await getBlock(wagmiConfig, { blockNumber })
+  const timestamp = Number(block.timestamp)
+  blockTime.value = timestamp
+}
 
 function _init() {
   if (!address)
     return
   _getMapUserInfo()
   _getqueryReleaseAmount()
+  _getlockStartTime()
   _getlockEndTime()
   _getwithdrawExtracIntervalTime()
   _getTgnPrice()
@@ -280,21 +297,22 @@ onMounted(() => {
               <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="Roboto flex flex-col items-center justify-center">
                   <span class="text-[#999]">{{ $t('预计释放时间') }}</span>
-                  <span
-                    v-if="userInfo.lockEndTime > userInfo.lastWithdraTime"
-                    class="Roboto mt-[4px] text-[14px] text-12px text-[#000]"
-                  >
+                  <span v-if="blockTime >= userInfo.lockEndTime" class="Roboto mt-[4px] text-[14px] text-[#000]">
                     {{ timeFormat(Number(userInfo.lockEndTime) * 1000) }}
                   </span>
-                  <span v-else class="Roboto mt-[4px] text-[16px] text-12px text-[#000]">
-                    {{
-                      timeFormat(
+                  <span
+                    v-else
+                    class="Roboto mt-[4px] text-[14px] text-[#000]"
+                  >
+                    {{ Number(userInfo.lastWithdraTime) === 0
+                      ? timeFormat(Number(userInfo.lockStartTime) * 1000)
+                      : timeFormat(
                         Calc.Add(
                           Number(userInfo.lastWithdraTime),
                           Number(userInfo.withdrawExtracIntervalTime),
                         ) * 1000,
-                      )
-                    }}
+                      ) }}
+
                   </span>
                 </div>
                 <n-button

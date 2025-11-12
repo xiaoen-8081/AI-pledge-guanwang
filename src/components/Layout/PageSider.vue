@@ -4,14 +4,14 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const [collapsed, close] = useCollapsedPopupHooks()
+const options = ref([
+  { name: 'Home', label: 'Home', value: 'cn' },
+  { name: 'News', label: 'News', value: 'cn' },
+  { name: 'Swap', label: 'Swap', value: 'cn' },
+  // { name: 'Public', label: 'Public', value: 'cn' },
+  { name: 'Private', label: 'Private', value: 'cn' },
+])
 
-const options = [
-  { name: 'Home', label: t('Home'), value: 'cn' },
-  { name: 'News', label: t('News'), value: 'cn' },
-  { name: 'Swap', label: t('Swap'), value: 'cn' },
-  // { name: 'Public', label: t('Public'), value: 'cn' },
-  { name: 'Private', label: t('Private'), value: 'cn' },
-]
 const router = useRouter()
 function toPage(item) {
   if (item.url) {
@@ -48,7 +48,7 @@ function toPage(item) {
           @click="toPage(x)"
         >
           <div class="text-16">
-            {{ x.label }}
+            {{ t(x.label) }}
           </div>
         </n-button>
       </n-flex>

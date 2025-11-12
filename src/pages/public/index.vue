@@ -302,7 +302,7 @@ onMounted(() => {
               <div class="mt-[4px] flex items-center justify-between px-[20px]">
                 <div class="flex flex-col items-center justify-center">
                   <span class="Roboto text-[#999]">{{ $t('预计释放时间') }}</span>
-                  <span v-if="blockTime > userInfo.lockEndTime" class="Roboto mt-[4px] text-[14px] text-[#000]">
+                  <span v-if="blockTime >= userInfo.lockEndTime" class="Roboto mt-[4px] text-[14px] text-[#000]">
                     {{ timeFormat(Number(userInfo.lockEndTime) * 1000) }}
                   </span>
                   <span
