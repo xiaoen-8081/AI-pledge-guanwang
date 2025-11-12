@@ -66,6 +66,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAccountActiveChain: typeof import('../hooks/useAccountActiveChain')['useAccountActiveChain']
   const useActiveChainId: typeof import('../hooks/useActiveChainId')['useActiveChainId']
+  const useAddToken: typeof import('../hooks/useAddToken')['useAddToken']
   const useAddTolentoWallet: typeof import('../hooks/token')['useAddTolentoWallet']
   const useApprove: typeof import('../hooks/useApprove')['useApprove']
   const useApproveCall: typeof import('../hooks/useApprove')['useApproveCall']
