@@ -14,10 +14,12 @@ export const DEFAULT_TTRANS_GAS = 0
 export const POOR_ADDRESS: Address = '0x34576aA4a93824d4DAEe876AD72b44cad6448DcD'
 
 // ------------------------------------------------------
-// 锁仓合约地址
+// 私募锁仓合约地址
 export const PLEDGE_ADDRESS: Address
 // = '0x2F6Eea9EDd9D791e4C1542F83Ad4D1B52b8709E0' // 测试
-= '0x56e03fA0D08A52265B62eEdBeBFf687655668636' // 正式
+// = '0x56e03fA0D08A52265B62eEdBeBFf687655668636' // 正式
+// = '0xa9f9c59B0e0aaBb857e2e7Ac3843de0940e2e4Dd' // 正式
+= '0xe7C5E75519F19E0eF4Ac6496952e9daDD623238e' // 正式
 // swap合约地址
 export const SWAP_ADDRESS: Address
   = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff' // 测试/正式
